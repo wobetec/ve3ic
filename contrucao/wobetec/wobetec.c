@@ -48,6 +48,12 @@ typedef struct _no {
 
 
 //////////////////////////VARIAVEIS GLOBAIS///////////////////////////
+//Referencia para o inicio e para a posicao atual na lista encadeada
+no *ptr_inicio, *ptr_atual;
+//Referencia para o arquivo de saida
+FILE *arquivo_saida;
+
+//Criterios globais
 
 
 /////////////////////////////PROTOTIPOS///////////////////////////////
@@ -69,7 +75,26 @@ void atualizar_criterios_globais(int indice);
 //mecanica do jogo
 
 /////////////////////////////////MAIN/////////////////////////////////
+int main(){
 
+    //Inicialização do processo de log
+    if(!(arquivo_saida = fopen(NOME_ARQUIVO_SAIDA, "w"))){
+        printf("ERRO 01: ERRO AO ABRIR O ARQUIVO DE SAIDA.");
+        exit(1);
+    }
+    
+    //Página inicial com menuzinho
+    
+
+
+
+
+    return 0;
+}
 
 ////////////////////////////OUTRAS FUNCOES////////////////////////////
+
+char *ler_nome_jogador(char *nome_arquivo){
+    
+}
 
