@@ -24,5 +24,5 @@ char *imagens(char *nome_arquivo){
 }
 
 int main(){
-    imagens("./imagens/batalha1.txt");
+    imagens("./imagens/batalhaboss2.txt");
 }
