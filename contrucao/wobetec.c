@@ -1,1 +1,5 @@
-oi job
+#include <stdio.h>
+
+int main(){
+    return 1;
+}
