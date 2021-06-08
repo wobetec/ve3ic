@@ -46,13 +46,13 @@ int chave = 0;
 
 ////////////////////////////PROTOTIPOS//////////////////////////////
 char *ler_nome_jogador(char *nome_arquivo);
-void cadastrar_no(int indice, char *texto, tipo_no tipo, int n_opcoes, opcao *opcoes);
-void cadastrar_nos();
-no *buscar_no(int indice);
+void cadastrar_no(int indice, char *texto, tipo_no tipo, int n_opcoes, opcao *opcoes);//inserir nó
+void cadastrar_nos();//aplica a cadastrar_no varias vezes
+no *buscar_no(int indice); //busa no na lista encadeada
 int ler_indice_proximo_no(char opcao);
 int verificar_criterio_acesso(int indice);
 void atualizar_criterios_globais(int indice);
-void apagar_lista();
+void apagar_lista();//freela alista encadeada
 
 ///////////////////////////////MAIN///////////////////////////////
 int main() { 
