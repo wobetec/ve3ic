@@ -42,7 +42,7 @@ typedef struct _no {
 	tipo_no tipo;
 	int n_opcoes;
 	opcao opcoes[MAX_OPCOES];
-    char *adcional_c;
+    char adcional_c[65];
 	struct _no *ant;
 	struct _no *prox;
 } no;
@@ -76,8 +76,8 @@ void cadastrar_nos();//aplica a cadastrar_no varias vezes
 
 //secundarias
 int ler_indice_proximo_no(char opcao);
-char *imagem(char *nome_arquivo);
-int barra_de_vida(int vida);
+void imagem(char *nome_arquivo);
+void barra_de_vida(int vida);
 
 //parte grafica
 void pausa();
@@ -87,14 +87,17 @@ void limpar();
 
 /////////////////////////////////MAIN/////////////////////////////////
 int main(){
-    system("MODE con cols=91 lines=31");
+    system("MODE con cols=91 lines=35 ");
 
     //Inicialização do processo de log
     if(!(arquivo_saida = fopen(NOME_ARQUIVO_SAIDA, "w"))){
         printf("ERRO 01: ERRO AO ABRIR O ARQUIVO DE SAIDA.");
         exit(1);
     }
-    
+
+    //Montagem da lista encadeada
+    cadastrar_nos();
+
     //Tela de boas vindas
     limpar();
     imagem("./imagens/bemvindo.txt");
@@ -105,16 +108,20 @@ int main(){
 	fprintf(arquivo_saida, "Bem-vindo ao LABIRINTO de IC, %s!\n", nome_jogador);
     pausa();
 
-    //Montagem da lista encadeada
-    cadastrar_nos();
-
     //carregar o no zero
     ptr_atual = buscar_no(0);
 
     //Laco principal
     while(1) {
-		//Se no nao eh terminal, apresentar texto e ler a opcao selecionada
-        system("cls");
+        limpar();
+
+        if(ptr_atual->adcional_c[0] == '.'){
+            imagem(ptr_atual->adcional_c);
+        }else{//aqui vao os adicionais de cada no
+
+        }
+
+        //Se no nao eh terminal, apresentar texto e ler a opcao selecionada
 		if(ptr_atual->tipo != terminal){
 			int indice_proximo_no = -1;
 			while(indice_proximo_no == -1){
@@ -127,7 +134,7 @@ int main(){
                             printf("OPCAO INVALIDA!\n");
                             fprintf(arquivo_saida, "OPCAO INVALIDA!\n");
                         }
-                        system("pause");
+                        pausa();
                         break;
                     default:;
                         char opcao;
@@ -198,7 +205,7 @@ char *ler_nome_jogador(char *nome_arquivo){
 //##########CRIACAO DE NOS E MANIPULACAO DA LISTA ENCADEADA##########//
 
 //criacao de nos e manipulacao da lista encadeada
-void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no tipo, no_complexo compl, int n_opcoes, opcao *opcoes, char *adcional_c){
+void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no tipo, no_complexo compl, int n_opcoes, opcao *opcoes, char adcional_c[64]){
 
     //alocação dinâmica da memória
     no *ptr = (no *) malloc(sizeof(no));
@@ -238,7 +245,8 @@ void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no
             ptr->ant = NULL;
             ptr->prox = NULL;
 
-            ptr->adcional_c = adcional_c;
+            strcpy(ptr->adcional_c, adcional_c);
+            
 
             if(ptr_aux != NULL){
                 while(ptr_aux->prox != NULL){
@@ -253,48 +261,48 @@ void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no
             break;
 
         case entrada:
-            cadastrar_no(indice, -1, texto, 0, tipo, passar, n_opcoes, opcoes, "");
+            cadastrar_no(indice, -1, texto, 0, tipo, passar, n_opcoes, opcoes, adcional_c);
             break;
 
         case sala_item:
-            cadastrar_no(indice, codigo, texto, 0, tipo, passar, 1, opcoes, "");
-            cadastrar_no(indice+1, codigo+1, texto, 1, tipo, passar, 2, opcoes, "");
-            cadastrar_no(indice+2, codigo+2, texto, 2, tipo, passar, 3, opcoes, "");
+            cadastrar_no(indice, codigo, texto, 0, tipo, passar, 1, opcoes, adcional_c);
+            cadastrar_no(indice+1, codigo+1, texto, 1, tipo, passar, 2, opcoes, adcional_c);
+            cadastrar_no(indice+2, codigo+2, texto, 2, tipo, passar, 3, opcoes, adcional_c);
             break;
 
         case pedra:
-            cadastrar_no(indice, codigo, texto, 0, tipo, passar, n_opcoes, opcoes, "");
+            cadastrar_no(indice, codigo, texto, 0, tipo, passar, n_opcoes, opcoes, adcional_c);
             break;
 
         case saida:
-            cadastrar_no(indice, codigo, texto, 0, tipo, passar, n_opcoes, opcoes, "");
+            cadastrar_no(indice, codigo, texto, 0, tipo, passar, n_opcoes, opcoes, adcional_c);
             break;
 
         case fechadura:
             cadastrar_no(indice, codigo, texto, 0, tipo, nao_complexo, n_opcoes, opcoes, "G3");
-            cadastrar_no(indice+1, codigo, texto, 1, tipo, passar, n_opcoes+1, opcoes, "");
-            cadastrar_no(indice+2, codigo, texto, 2, tipo, passar, n_opcoes+2, opcoes, "");
+            cadastrar_no(indice+1, codigo, texto, 1, tipo, passar, n_opcoes+1, opcoes, adcional_c);
+            cadastrar_no(indice+2, codigo, texto, 2, tipo, passar, n_opcoes+2, opcoes, adcional_c);
             break;
 
         case enigma:
-            cadastrar_no(indice, codigo, texto, 0, tipo, nao_complexo, n_opcoes, opcoes, "");
+            cadastrar_no(indice, codigo, texto, 0, tipo, nao_complexo, n_opcoes, opcoes, adcional_c);
 
             for(int i=0; i<n_opcoes; i++){
-                cadastrar_no(indice+i+1, codigo+1+i, texto, i+1, tipo, passar, n_opcoes+1+i, opcoes, "");
+                cadastrar_no(indice+i+1, codigo+1+i, texto, i+1, tipo, passar, n_opcoes+1+i, opcoes, adcional_c);
             }
 
             break;
 
         case luta:
             if(n_opcoes==4){
-                cadastrar_no(indice, codigo, texto, 0, tipo, passar, 1, opcoes, "");
+                cadastrar_no(indice, codigo, texto, 0, tipo, passar, 1, opcoes, adcional_c);
                 for(int i=0; i<n_opcoes-1; i++){
-                    cadastrar_no(indice+1+i, codigo+1+i, texto, i+1, tipo, passar, 2+i, opcoes, "");
+                    cadastrar_no(indice+1+i, codigo+1+i, texto, i+1, tipo, passar, 2+i, opcoes, adcional_c);
                 }
             }else if(n_opcoes==5){
-                cadastrar_no(indice, codigo, texto, 0, tipo, nao_complexo, 2, opcoes, "");
+                cadastrar_no(indice, codigo, texto, 0, tipo, nao_complexo, 2, opcoes, adcional_c);
                 for(int i=0; i<n_opcoes-2; i++){
-                    cadastrar_no(indice+1+i, codigo+1+i, texto, i+1, tipo, passar, 3+i, opcoes, "");
+                    cadastrar_no(indice+1+i, codigo+1+i, texto, i+1, tipo, passar, 3+i, opcoes, adcional_c);
                 }
             }
 
@@ -324,7 +332,7 @@ void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no
             ptr->ant = NULL;
             ptr->prox = NULL;
 
-            ptr->adcional_c = adcional_c;
+            strcpy(ptr->adcional_c, adcional_c);
 
 
             if(ptr_aux != NULL){
@@ -635,9 +643,9 @@ int ler_indice_proximo_no(char opcao){
 //###########################PARTE GRAFICA##########################//
 
 //print as imagens na tela e escreve no arquivo de saida
-char *imagem(char *nome_arquivo){
+void imagem(char *nome_arquivo){
     FILE* arquivo;
-    char linha[100], *leitura=NULL;
+    char linha[91], *leitura=NULL;
 
     arquivo=fopen(nome_arquivo, "rt");
 
@@ -648,7 +656,7 @@ char *imagem(char *nome_arquivo){
     }
 
     while(!feof(arquivo)){
-        leitura=fgets(linha, 100, arquivo);
+        leitura=fgets(linha, 91, arquivo);
             if(leitura){
                 printf("%s", linha);
 				fprintf(arquivo_saida, "%s", linha);
@@ -659,7 +667,7 @@ char *imagem(char *nome_arquivo){
     fclose(arquivo);
 }
 
-int barra_de_vida(int vida){
+void barra_de_vida(int vida){
     int i=0;
 
     printf("\n-----------------------------------\n");
