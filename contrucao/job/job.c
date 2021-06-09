@@ -2,6 +2,16 @@
 #include <stdlib.h>
 #include <string.h>
 
+char *imagens(char *nome_arquivo);
+int barra_de_vida(int vida);
+
+int vidamax;
+
+int main(){
+    imagens("./imagens/batalhaboss1.txt");
+    barra_de_vida(25); 
+}
+
 char *imagens(char *nome_arquivo){
     FILE* arquivo;
     char linha[100], *leitura=NULL;
@@ -23,6 +33,17 @@ char *imagens(char *nome_arquivo){
     fclose(arquivo);
 }
 
-int main(){
-    imagens("./imagens/batalhaboss2.txt");
+int barra_de_vida(int vida){
+    int i=0;
+
+    printf("\n-----------------------------------\n");
+    printf("HP: "); 
+    for(i=0; i<vida/4; i++){    
+        printf("|");
+    }
+    for(int j=(vida/4); j<vidamax/4; j++){
+        printf(" ");
+    }
+    printf(" %d/%d\n", vida, vidamax); 
+    printf("-----------------------------------\n");
 }

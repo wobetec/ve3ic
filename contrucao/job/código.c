@@ -83,7 +83,6 @@ int barra_de_vida(int vida);
 
 /////////////////////////////////MAIN/////////////////////////////////
 int main(){
-
     //Inicialização do processo de log
     if(!(arquivo_saida = fopen(NOME_ARQUIVO_SAIDA, "w"))){
         printf("ERRO 01: ERRO AO ABRIR O ARQUIVO DE SAIDA.");
@@ -92,9 +91,9 @@ int main(){
     
     //Página inicial com menuzinho
     char nome_jogador[100];
-    imagem("./imagens/bemvindo.txt");
     strcpy(nome_jogador, ler_nome_jogador(NOME_ARQUIVO_ENTRADA));
-	printf("Bem-vindo ao jogo  %s!\n", nome_jogador);
+    printf("Bem-vindo ao LABIRINTO de IC, %s!\n", nome_jogador);
+	fprintf(arquivo_saida, "Bem-vindo ao LABIRINTO de IC, %s!\n", nome_jogador);
 
     //Montagem da lista encadeada
         cadastrar_nos();
@@ -442,10 +441,8 @@ char *imagem(char *nome_arquivo){
         leitura=fgets(linha, 100, arquivo);
             if(leitura){
                 printf("%s", linha);
-				fprintf(arquivo_saida, "%s", linha);
             }
     }       
-    printf("\n");
     fclose(arquivo);
 }
 
