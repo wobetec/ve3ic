@@ -95,7 +95,7 @@ int main(){
     imagem("./imagens/bemvindo.txt");
     strcpy(nome_jogador, ler_nome_jogador(NOME_ARQUIVO_ENTRADA));
 	printf("Bem-vindo ao jogo  %s!\n", nome_jogador);
-
+    fprintf(arquivo_saida, "Bem-vindo ao jogo %s!\n", nome_jogador);
     //Montagem da lista encadeada
         cadastrar_nos();
 
@@ -444,8 +444,9 @@ char *imagem(char *nome_arquivo){
                 printf("%s", linha);
 				fprintf(arquivo_saida, "%s", linha);
             }
-    }       
-    printf("\n");
+    }      
+    printf("\n"); 
+    fprintf(arquivo_saida, "\n");
     fclose(arquivo);
 }
 
