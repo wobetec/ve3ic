@@ -66,7 +66,7 @@ int pedras = 0;
 char *ler_nome_jogador(char *nome_arquivo);
 
 //Gerenciamento da lista encadeada
-void cadastrar_no(char **texto, int n_textos, tipo_no tipo, no_complexo compl, int n_opcoes, opcao *opcoes);
+void cadastrar_no(int code, char texto[][501], int n_textos, tipo_no tipo, no_complexo compl, int n_opcoes, opcao *opcoes, char *adcional_c);
 no *buscar_no(int indice); //busa no na lista encadeada
 void apagar_lista();//freela alista encadeada
 
@@ -79,6 +79,7 @@ int verificar_criterio_acesso(int indice);
 void atualizar_criterios_globais(int indice);
 
 //mecanica do jogo
+
 
 /////////////////////////////////MAIN/////////////////////////////////
 int main(){
@@ -102,9 +103,30 @@ int main(){
     ptr_atual = buscar_no(0);
 
     //Laco principal
-    while(1){
-
-    }
+    while(1) {
+		//Se no nao eh terminal, apresentar texto e ler a opcao selecionada
+		if(ptr_atual->tipo != terminal){
+			int indice_proximo_no = -1;
+			while(indice_proximo_no == -1){
+				char opcao;
+				printf("%s", ptr_atual->texto);
+				fprintf(arquivo_saida, "%s", ptr_atual->texto);
+				scanf(" %c", &opcao);
+				fprintf(arquivo_saida, "%c\n", opcao);
+				//Ler proximo no a partir da opcao
+				indice_proximo_no = ler_indice_proximo_no(opcao);
+				if(indice_proximo_no == -1){
+					printf("OPCAO INVALIDA!\n");
+					fprintf(arquivo_saida, "OPCAO INVALIDA!\n");
+				}
+			}
+		}
+		else{//Se no eh terminal, apresentar texto e finalizar programa
+			printf("%s", ptr_atual->texto);
+			fprintf(arquivo_saida, "%s", ptr_atual->texto);
+			break;
+		}
+	}
 
     //Libera o espaço utlizado pela lista encadeada
     apagar_lista();
@@ -148,7 +170,7 @@ char *ler_nome_jogador(char *nome_arquivo){
 //##########CRIACAO DE NOS E MANIPULACAO DA LISTA ENCADEADA##########//
 
 //criacao de nos e manipulacao da lista encadeada
-void cadastrar_no(int code, char **texto, int n_textos, tipo_no tipo, no_complexo compl, int n_opcoes, opcao *opcoes, char *adcional_c){
+void cadastrar_no(int code, char texto[][501], int n_textos, tipo_no tipo, no_complexo compl, int n_opcoes, opcao *opcoes, char *adcional_c){
 
     //alocação dinâmica da memória
     no *ptr = (no *) malloc(sizeof(no));
@@ -157,6 +179,11 @@ void cadastrar_no(int code, char **texto, int n_textos, tipo_no tipo, no_complex
         fprintf(arquivo_saida, "\nERRO 03: ERRO NA ALOCACAO DE MEMORIA.");
         exit(1);
     }
+
+    //Variáveis utilizadas em varios switchs e que deram erro
+    no *ptr_aux = ptr_inicio;
+    int codigo = compl*100;
+    int make = 70000000;// 7 000 00 00
 
     //swirch que define como serão os nós especiais criados
     switch(compl){
@@ -167,7 +194,6 @@ void cadastrar_no(int code, char **texto, int n_textos, tipo_no tipo, no_complex
             ptr->indice = contador_de_no;
             
             //gerando o código daquele nó
-            int make = 70000000;// 7 000 00 00
             if(code == -1){
                 make += (contador_de_no*10000);
             }else{
@@ -188,7 +214,6 @@ void cadastrar_no(int code, char **texto, int n_textos, tipo_no tipo, no_complex
 
             ptr->adcional_c = adcional_c;
 
-            no *ptr_aux = ptr_inicio;
             if(ptr_aux != NULL){
                 while(ptr_aux->prox != NULL){
                     ptr_aux = ptr_aux->prox;
@@ -202,38 +227,33 @@ void cadastrar_no(int code, char **texto, int n_textos, tipo_no tipo, no_complex
             break;
 
         case entrada:
-             cadastrar_no(-1, texto, 0, tipo, passar, n_opcoes, opcoes, "");
+            cadastrar_no(-1, texto, 0, tipo, passar, n_opcoes, opcoes, "");
             break;
 
         case sala_item:
-            int codigo = compl*100;
             cadastrar_no(codigo, texto, 0, tipo, passar, n_opcoes, opcoes, "");
             cadastrar_no(codigo+1, texto, 1, tipo, passar, n_opcoes, opcoes, "");
             cadastrar_no(codigo+2, texto, 2, tipo, passar, n_opcoes, opcoes, "");
             break;
 
         case pedra:
-            int codigo = compl*100;
             cadastrar_no(codigo, texto, 0, tipo, passar, n_opcoes, opcoes, "");
             break;
 
         case saida:
-            int codigo = compl*100;
             cadastrar_no(codigo, texto, 0, tipo, passar, n_opcoes, opcoes, "");
             break;
 
         case fechadura:
-            int codigo = compl*100;
             cadastrar_no(codigo, texto, 0, tipo, passar, n_opcoes, opcoes, "CA2");
             break;
 
         case enigma:
-            int codigo = compl*100;
+    
 
             break;
 
         case luta:
-            int codigo = compl*100;
             cadastrar_no(codigo, texto, 0, tipo, passar, n_opcoes, opcoes, "");
             cadastrar_no(codigo+1, texto, 1, tipo, passar, n_opcoes, opcoes, "");
             cadastrar_no(codigo+2, texto, 2, tipo, passar, n_opcoes, opcoes, "");
@@ -241,20 +261,18 @@ void cadastrar_no(int code, char **texto, int n_textos, tipo_no tipo, no_complex
             break;
 
         case nao_complexo:
-            int codigo = compl*100;
             //define o indice de forma automática
             contador_de_no++;
             ptr->indice = contador_de_no;
             
             //gerando o código daquele nó
-            int make = 70000000;// 7 000 00 00
             if(code == -1){
                 make += (contador_de_no*10000);
             }else{
-                make += ((contador_de_no-(code%100))*10000 + code);
+                make += ((contador_de_no-(codigo%100))*10000 + codigo);
             }
-
             ptr->code = make;
+
             strcpy(ptr->texto, texto[n_textos]);
             ptr->tipo = tipo;
             ptr->n_opcoes = n_opcoes;
@@ -268,7 +286,7 @@ void cadastrar_no(int code, char **texto, int n_textos, tipo_no tipo, no_complex
 
             ptr->adcional_c = adcional_c;
 
-            no *ptr_aux = ptr_inicio;
+
             if(ptr_aux != NULL){
                 while(ptr_aux->prox != NULL){
                     ptr_aux = ptr_aux->prox;
@@ -291,6 +309,12 @@ void cadastrar_no(int code, char **texto, int n_textos, tipo_no tipo, no_complex
 
 }
 
+
+void log(no atual){
+
+}
+
+
 //cadastras todos os nos na lista encadeada
 void cadastrar_nos(){
     /* MODELO DE CADASTRO
@@ -304,6 +328,53 @@ void cadastrar_nos(){
             opcoes,
             adcional_c)
     */
+
+    opcao opcoes_0[2] = {{'D', 1}, {'E', 2}};
+    char texto_0[1][501] = {"\nENTRADA DO LABIRINTO\nVoce esta na entrada do labirinto e precisa decidir qual direcao seguir.\nD - Ir para a direita\nE - Ir para a esquerda\n\nOpcao escolhida: "};
+	cadastrar_no(
+        -1, 
+        texto_0,
+        0,
+		raiz,
+        nao_complexo,
+        2,
+        opcoes_0,
+        "");
+    
+    opcao opcoes_1[1] = {{'*', 0}};
+    char texto_1[1][501] = {"\nCAMINHO SEM SAIDA\nVoce encontrou um caminho sem saida, porem ha uma chave caida no chao.\nDigite qualquer tecla + <ENTER> para pegar a chave e retornar a entrada do labirinto... "};
+	cadastrar_no(
+        -1, 
+        texto_1,
+        0,
+		nao_terminal,
+        nao_complexo,
+        2,
+        opcoes_1,
+        "");
+
+    opcao opcoes_2[2] = {{'A', 3}, {'B', 0}};
+    char texto_2[1][501] = {"\nPASSAGEM BLOQUEADA\nVoce encontrou uma passagem bloqueada com uma fechadura. O que deseja fazer?\nA - Tentar desbloquear a passagem\nB - Voltar a entrada do labirinto\n\nOpcao escolhida: "};
+	cadastrar_no(
+        -1, 
+        texto_2,
+        0,
+		terminal,
+        nao_complexo,
+        2,
+        opcoes_2,
+        "");
+    
+    char texto_3[1][501] = {"\nPARABENS! Voce conseguiu desbloquear a passagem com a chave e sair do labirinto!"};
+	cadastrar_no(
+        -1, 
+        texto_3,
+        0,
+		terminal,
+        nao_complexo,
+        0,
+        NULL,
+        "");
 }
 
 //funcao para buscar no a partir do indice
@@ -359,7 +430,5 @@ int ler_indice_proximo_no(char opcao){
 	}
     printf("\nERRO 06: PROXIMO NO NAO LOCALIZADO.");
     fprintf(arquivo_saida,"\nERRO 06: PROXIMO NO NAO LOCALIZADO.");
+    exit(1);
 }
-
-
-
