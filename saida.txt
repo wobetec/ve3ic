@@ -1,0 +1,42 @@
+   _.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._
+.-'---      - ---     --     ---   -----   - --       ----  ----   -     ---`-.
+ )                                                                           (
+(                                                                             )
+.______    _______ .___  ___.    ____    ____  __  .__   __.  _______    ______   
+|   _  \  |   ____||   \/   |    \   \  /   / |  | |  \ |  | |       \  /  __  \  
+|  |_)  | |  |__   |  \  /  |     \   \/   /  |  | |   \|  | |  .--.  ||  |  |  | 
+|   _  <  |   __|  |  |\/|  | |||| \      /   |  | |  . `  | |  |  |  ||  |  |  | 
+|  |_)  | |  |____ |  |  |  |       \    /    |  | |  |\   | |  '--'  ||  `--'  | 
+|______/  |_______||__|  |__|        \__/     |__| |__| \__| |_______/  \______/                                                         
+ )                                                                           (
+(___       _       _       _       _       _       _       _       _       ___)
+    `-._.-' (___ _) `-._.-' `-._.-' )     ( `-._.-' `-._.-' (__ _ ) `-._.-'
+            ( _ __)                (_     _)                (_ ___)
+            (__  _)                 `-._.-'                 (___ _)
+            `-._.-'                                         `-._.-'
+ENTRADA DO LABIRINTO
+Voce esta na entrada do labirinto e precisa decidir qual direcao seguir.
+D - Ir para a direita
+E - Ir para a esquerda
+
+Opcao escolhida: D
+
+CAMINHO SEM SAIDA
+Voce encontrou um caminho sem saida, porem ha uma chave caida no chao.
+Digite qualquer tecla + <ENTER> para pegar a chave e retornar a entrada do labirinto... A
+
+ENTRADA DO LABIRINTO
+Voce esta na entrada do labirinto e precisa decidir qual direcao seguir.
+D - Ir para a direita
+E - Ir para a esquerda
+
+Opcao escolhida: E
+
+PASSAGEM BLOQUEADA
+Voce encontrou uma passagem bloqueada com uma fechadura. O que deseja fazer?
+A - Tentar desbloquear a passagem
+B - Voltar a entrada do labirinto
+
+Opcao escolhida: A
+
+PARABENS! Voce conseguiu desbloquear a passagem com a chave e sair do labirinto!
