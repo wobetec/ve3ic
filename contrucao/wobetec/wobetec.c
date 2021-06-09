@@ -60,6 +60,8 @@ int contador_de_no = -1;
 
 //Criterios globais
 int pedras = 0;
+int vida = 100;
+int vida_MAX = 100;
 
 /////////////////////////////PROTOTIPOS///////////////////////////////
 char *ler_nome_jogador(char *nome_arquivo);
@@ -74,8 +76,9 @@ void cadastrar_nos();//aplica a cadastrar_no varias vezes
 
 //secundarias
 int ler_indice_proximo_no(char opcao);
-int verificar_criterio_acesso(int indice);
-void atualizar_criterios_globais(int indice);
+char *imagem(char *nome_arquivo);
+int barra_de_vida(int vida);
+
 
 //mecanica do jogo
 
@@ -89,6 +92,7 @@ int main(){
         exit(1);
     }
     
+    imagem("./imagens/bemvindo.txt");
     //Página inicial com menuzinho
     char nome_jogador[100];
     strcpy(nome_jogador, ler_nome_jogador(NOME_ARQUIVO_ENTRADA));
@@ -622,5 +626,48 @@ int ler_indice_proximo_no(char opcao){
     exit(1);
 }
 
+//###########################PARTE GRAFICA##########################//
+
+
 //#########################MECANICA DE JOGO#########################//
+
+char *imagem(char *nome_arquivo){
+    FILE* arquivo;
+    char linha[100], *leitura=NULL;
+
+    arquivo=fopen(nome_arquivo, "rt");
+
+    if(arquivo==NULL){
+        printf("\nERRO AO ABRIR A IMAGEM!");
+        fprintf(arquivo, "\nERRO AO ABRIR A IMAGEM!");
+        exit(1); 
+    }
+
+    while(!feof(arquivo)){
+        leitura=fgets(linha, 100, arquivo);
+            if(leitura){
+                printf("%s", linha);
+				fprintf(arquivo_saida, "%s", linha);
+            }
+    }      
+    printf("\n"); 
+    fprintf(arquivo_saida, "\n");
+    fclose(arquivo);
+}
+
+int barra_de_vida(int vida){
+    int i=0;
+
+    printf("\n-----------------------------------\n");
+    printf("HP: "); 
+    for(i=0; i<vida/4; i++){    
+        printf("|");
+    }
+    for(int j=(vida/4); j<vida/4; j++){
+        printf(" ");
+    }
+    printf(" %d/%d\n", vida, vida); 
+    printf("-----------------------------------\n");
+}
+
 
