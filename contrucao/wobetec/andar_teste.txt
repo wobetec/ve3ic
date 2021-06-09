@@ -1,0 +1,42 @@
+Bem vindo JOGADOR
+Essa historia comeca... acho que em um belo dia de sol, voce esta indo para o IMEnso instituto e de repente... bummmmm!!
+
+
+2
+\n-Que lugar eh esse? Onde eu estou?\n-Ta perdido aluno? - Disse uma voz misteriosa - Essa eh a masmorra da casa do trem, ngm nunca saiu daqui, nao vivo pelo menos. Eu sou o espirito Cerqueireanista que guia os nobres engenheiros nessa jornada. Já vou avisando que estou com pressa, já já outro quadrupede vai cair aqui, então pegue aquela faca e vamos. \n-Como assim? o que ta acontecendo?\n-Tudo sera respondido no seu tempo, mas por hora escolha por onde ir:\n
+E-Esquerda D-Direita
+
+3
+-Outra bifurcacao?\n
+-Nao pondere aluno...\n
+ESQUERDA DIREITA VOLTAR
+
+4
+-Essa eh a sa salados enigmas, dizem que foi aqui que Einstein trancou e Galileu ficou maluco. Vamos ver do que voce eh capaz:\nQUESTÃO: Qual elemento da azul no teste de chama?\n1-Na  2-Cu  3-Mg  4-K \nDigite a opcao: 
+
+4.1
+Qual a ideia aluno?
+4.2
+Voce devia conhecer o tal de Lavoisier, ele tambem acertou essa...
+4.3
+eu hein, ta perdido?
+4.4
+kkkkkkkk
+
+5
+-Uma gema! mas pra que eu vou usar isso?
+-Calma aluno, faz parte do seu path of warrior.
+
+6
+-Corre Cerque alguma coisa, um monstroooo! \n-Antes até dava para fugir se voce nao tivesse acordado ele, agora eh guerra tua. \n-O que eu facooo? ele ta vindo!! \n-Tenta acertar a faca nele imbecil.
+
+6.1
+-Bom, mas vai ter que fazer melhor se quiser sair dessa vivo. \n-VIVO?
+6.2
+-Por espartaaaa\n
+6.3
+-Parece que voce esta pegando o jeito, mas isso nao foi um elogio, disse a mesma coisa mara o Isack e o infeliz morreu com uma maca que caiu na cabeca.\n
+
+7
+-Encontrou um gema, nem pergunte nada, so pegue.
+

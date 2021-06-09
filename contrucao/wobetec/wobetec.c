@@ -1,6 +1,5 @@
 /*
 Olhar para refatorar:
-    Implementar o Enigma no básico
     Criar as funcinalidades de jogo
     Colocar opcao no comeco do jogo
 */
@@ -38,6 +37,7 @@ typedef struct _no {
 	int indice;
     int code; //7pppttff (p=indice do pai, t=tipo, f="indice" do filho)
 	char texto[501];
+    no_complexo tipo_especifico;
 	tipo_no tipo;
 	int n_opcoes;
 	opcao opcoes[MAX_OPCOES];
@@ -64,7 +64,7 @@ int pedras = 0;
 char *ler_nome_jogador(char *nome_arquivo);
 
 //Gerenciamento da lista encadeada
-void cadastrar_no(int code, char texto[][501], int n_textos, tipo_no tipo, no_complexo compl, int n_opcoes, opcao *opcoes, char *adcional_c);
+void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no tipo, no_complexo compl, int n_opcoes, opcao *opcoes, char *adcional_c);
 no *buscar_no(int indice); //busa no na lista encadeada
 void apagar_lista();//freela alista encadeada
 
@@ -103,21 +103,39 @@ int main(){
     //Laco principal
     while(1) {
 		//Se no nao eh terminal, apresentar texto e ler a opcao selecionada
+        system("cls");
 		if(ptr_atual->tipo != terminal){
 			int indice_proximo_no = -1;
 			while(indice_proximo_no == -1){
-				char opcao;
-				printf("%s", ptr_atual->texto);
-				fprintf(arquivo_saida, "%s", ptr_atual->texto);
-				scanf(" %c", &opcao);
-				fprintf(arquivo_saida, "%c\n", opcao);
-				//Ler proximo no a partir da opcao
-				indice_proximo_no = ler_indice_proximo_no(opcao);
-				if(indice_proximo_no == -1){
-					printf("OPCAO INVALIDA!\n");
-					fprintf(arquivo_saida, "OPCAO INVALIDA!\n");
-				}
+                switch(ptr_atual->tipo_especifico){
+                    case passar:
+                        printf("%s", ptr_atual->texto);
+                        fprintf(arquivo_saida, "%s", ptr_atual->texto);
+                        indice_proximo_no = ler_indice_proximo_no('#');
+                        if(indice_proximo_no == -1){
+                            printf("OPCAO INVALIDA!\n");
+                            fprintf(arquivo_saida, "OPCAO INVALIDA!\n");
+                        }
+                        system("pause");
+                        break;
+                    default:;
+                        char opcao;
+                        printf("%s", ptr_atual->texto);
+                        fprintf(arquivo_saida, "%s", ptr_atual->texto);
+                        scanf(" %c", &opcao);
+                        fprintf(arquivo_saida, "%c\n", opcao);
+                        //Ler proximo no a partir da opcao
+                        indice_proximo_no = ler_indice_proximo_no(opcao);
+                        if(indice_proximo_no == -1){
+                            printf("OPCAO INVALIDA!\n");
+                            fprintf(arquivo_saida, "OPCAO INVALIDA!\n");
+                        }
+                    break;
+                }
 			}
+            if(indice_proximo_no == 8){
+                printf("Teste");
+            }
             ptr_atual= buscar_no(indice_proximo_no);
 		}
 		else{//Se no eh terminal, apresentar texto e finalizar programa
@@ -169,7 +187,7 @@ char *ler_nome_jogador(char *nome_arquivo){
 //##########CRIACAO DE NOS E MANIPULACAO DA LISTA ENCADEADA##########//
 
 //criacao de nos e manipulacao da lista encadeada
-void cadastrar_no(int code, char texto[][501], int n_textos, tipo_no tipo, no_complexo compl, int n_opcoes, opcao *opcoes, char *adcional_c){
+void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no tipo, no_complexo compl, int n_opcoes, opcao *opcoes, char *adcional_c){
 
     //alocação dinâmica da memória
     no *ptr = (no *) malloc(sizeof(no));
@@ -189,24 +207,22 @@ void cadastrar_no(int code, char texto[][501], int n_textos, tipo_no tipo, no_co
         
         case passar:
             //define o indice de forma automática
-            contador_de_no++;
-            ptr->indice = contador_de_no;
+            ptr->indice = indice;
             
             //gerando o código daquele nó
             if(code == -1){
-                make += (contador_de_no*10000);
+                make += (indice*10000);
             }else{
-                make += ((contador_de_no-(code%100))*10000 + code);
+                make += ((indice-(code%100))*10000 + code);
             }
 
             ptr->code = make;
             strcpy(ptr->texto, texto[n_textos]);
+            ptr->tipo_especifico = passar;
             ptr->tipo = tipo;
             ptr->n_opcoes = n_opcoes;
 
-            for(int i=0; i<n_opcoes; i++){
-                ptr->opcoes[i] = opcoes[i];
-            }
+            ptr->opcoes[0]= opcoes[n_opcoes-1];
 
             ptr->ant = NULL;
             ptr->prox = NULL;
@@ -226,53 +242,65 @@ void cadastrar_no(int code, char texto[][501], int n_textos, tipo_no tipo, no_co
             break;
 
         case entrada:
-            cadastrar_no(-1, texto, 0, tipo, passar, n_opcoes, opcoes, "");
+            cadastrar_no(indice, -1, texto, 0, tipo, passar, n_opcoes, opcoes, "");
             break;
 
         case sala_item:
-            cadastrar_no(codigo, texto, 0, tipo, passar, n_opcoes, opcoes, "");
-            cadastrar_no(codigo+1, texto, 1, tipo, passar, n_opcoes, opcoes, "");
-            cadastrar_no(codigo+2, texto, 2, tipo, passar, n_opcoes, opcoes, "");
+            cadastrar_no(indice, codigo, texto, 0, tipo, passar, n_opcoes, opcoes, "");
+            cadastrar_no(indice+1, codigo+1, texto, 1, tipo, passar, n_opcoes, opcoes, "");
+            cadastrar_no(indice+2, codigo+2, texto, 2, tipo, passar, n_opcoes, opcoes, "");
             break;
 
         case pedra:
-            cadastrar_no(codigo, texto, 0, tipo, passar, n_opcoes, opcoes, "");
+            cadastrar_no(indice, codigo, texto, 0, tipo, passar, n_opcoes, opcoes, "");
             break;
 
         case saida:
-            cadastrar_no(codigo, texto, 0, tipo, passar, n_opcoes, opcoes, "");
+            cadastrar_no(indice, codigo, texto, 0, tipo, passar, n_opcoes, opcoes, "");
             break;
 
         case fechadura:
-            cadastrar_no(codigo, texto, 0, tipo, passar, n_opcoes, opcoes, "CA2");
+            cadastrar_no(indice, codigo, texto, 0, tipo, passar, n_opcoes, opcoes, "CA2");
             break;
 
         case enigma:
-    
+            cadastrar_no(indice, codigo, texto, 0, tipo, nao_complexo, n_opcoes, opcoes, "");
+
+            for(int i=0; i<n_opcoes; i++){
+                cadastrar_no(indice+i+1, codigo+1+i, texto, i+1, tipo, passar, n_opcoes+1+i, opcoes, "");
+            }
 
             break;
 
         case luta:
-            cadastrar_no(codigo, texto, 0, tipo, passar, n_opcoes, opcoes, "");
-            cadastrar_no(codigo+1, texto, 1, tipo, passar, n_opcoes, opcoes, "");
-            cadastrar_no(codigo+2, texto, 2, tipo, passar, n_opcoes, opcoes, "");
-            cadastrar_no(codigo+3, texto, 3, tipo, passar, n_opcoes, opcoes, "");
+            if(n_opcoes==4){
+                cadastrar_no(indice, codigo, texto, 0, tipo, passar, 1, opcoes, "");
+                for(int i=0; i<n_opcoes-1; i++){
+                    cadastrar_no(indice+1+i, codigo+1+i, texto, i+1, tipo, passar, 2+i, opcoes, "");
+                }
+            }else if(n_opcoes==5){
+                cadastrar_no(indice, codigo, texto, 0, tipo, nao_complexo, 2, opcoes, "");
+                for(int i=0; i<n_opcoes; i++){
+                    cadastrar_no(indice+1+i, codigo+1+i, texto, i+1, tipo, passar, 3+i, opcoes, "");
+                }
+            }
+
             break;
 
         case nao_complexo:
-            //define o indice de forma automática
-            contador_de_no++;
-            ptr->indice = contador_de_no;
+
+            ptr->indice = indice;
             
             //gerando o código daquele nó
             if(code == -1){
-                make += (contador_de_no*10000);
+                make += (indice*10000);
             }else{
-                make += ((contador_de_no-(codigo%100))*10000 + codigo);
+                make += ((indice-(codigo%100))*10000 + codigo);
             }
             ptr->code = make;
 
             strcpy(ptr->texto, texto[n_textos]);
+            ptr->tipo_especifico = nao_complexo;
             ptr->tipo = tipo;
             ptr->n_opcoes = n_opcoes;
 
@@ -318,22 +346,23 @@ void cadastrar_nos(){
             opcoes,
             adcional_c)
     */
-
-    opcao opcoes_0[2] = {{'D', 1}, {'E', 2}};
-    char texto_0[1][501] = {"\nENTRADA DO LABIRINTO\nVoce esta na entrada do labirinto e precisa decidir qual direcao seguir.\nD - Ir para a direita\nE - Ir para a esquerda\n\nOpcao escolhida: "};
+    opcao opcoes_0[1] = {{'#', 1}};
+    char texto_0[1][501] = {"-Que lugar eh esse? Onde eu estou?\n-Ta perdido aluno? - Disse uma voz misteriosa - Essa eh a masmorra da casa do trem, ngm nunca saiu daqui, nao vivo pelo menos. Eu sou o espirito Cerqueireanista que guia os nobres engenheiros nessa jornada. Ja vou avisando que estou com pressa, ja ja outro quadrupede vai cair aqui, entao pegue aquela faca e vamos. \n-Como assim? o que ta acontecendo?\n-Tudo sera respondido no seu tempo, mas por hora vamos em frente\n"};
 	cadastrar_no(
+        0,
         -1, 
         texto_0,
         0,
 		raiz,
-        nao_complexo,
-        2,
+        entrada,
+        1,
         opcoes_0,
         "");
-    
-    opcao opcoes_1[1] = {{'*', 0}};
-    char texto_1[1][501] = {"\nCAMINHO SEM SAIDA\nVoce encontrou um caminho sem saida, porem ha uma chave caida no chao.\nDigite qualquer tecla + <ENTER> para pegar a chave e retornar a entrada do labirinto... "};
+
+    opcao opcoes_1[2] = {{'E', 2}, {'D', 100}};
+    char texto_1[1][501] = {"Escolha logo por onde quer ir:\nE-Esquerda\nD-Direita\nDigite a opcao: "};
 	cadastrar_no(
+        1,
         -1, 
         texto_1,
         0,
@@ -342,23 +371,79 @@ void cadastrar_nos(){
         2,
         opcoes_1,
         "");
-
-    opcao opcoes_2[2] = {{'A', 3}, {'B', 0}};
-    char texto_2[1][501] = {"\nPASSAGEM BLOQUEADA\nVoce encontrou uma passagem bloqueada com uma fechadura. O que deseja fazer?\nA - Tentar desbloquear a passagem\nB - Voltar a entrada do labirinto\n\nOpcao escolhida: "};
+    
+    opcao opcoes_2[3] = {{'E', 3}, {'D', 9}, {'V', 1}};
+    char texto_2[1][501] = {"-Outra bifurcacao? \n-Nao pondere aluno... \nE-Esquerda \nD-Direita \nV-Voltar \nDigite a opcao: "};
 	cadastrar_no(
+        2,
         -1, 
         texto_2,
         0,
 		nao_terminal,
         nao_complexo,
-        2,
+        3,
         opcoes_2,
         "");
-    
-    char texto_3[1][501] = {"\nPARABENS! Voce conseguiu desbloquear a passagem com a chave e sair do labirinto!"};
+
+    opcao opcoes_3[8] = {{'1', 4}, {'2', 5}, {'3', 6}, {'4', 7}, {'#', 3}, {'#', 8}, {'#', 3}, {'#', 3}};
+    char texto_3[5][501] = {"-Essa eh a sa salados enigmas, dizem que foi aqui que Einstein trancou e Galileu ficou maluco. Vamos ver do que voce eh capaz:\nENIGMA: Qual elemento da azul no teste de chama?\n1-Na  2-Cu  3-Mg  4-K \nDigite a opcao: ", "Qual a ideia aluno?\n", "Voce devia conhecer o tal de Lavoisier, ele tambem acertou essa.\n", "eu hein, ta perdido?\n", "kkkkkkkk\n"};
 	cadastrar_no(
+        3,
         -1, 
         texto_3,
+        5,
+		nao_terminal,
+        enigma,
+        4,
+        opcoes_3,
+        "");
+    
+    opcao opcoes_8[1] = {{'#', 2}};
+    char texto_8[1][501] = {"-Uma gema! mas pra que eu vou usar isso?\n-Calma aluno, faz parte do seu path of warrior.\n"};
+	cadastrar_no(
+        8,
+        -1, 
+        texto_8,
+        0,
+		nao_terminal,
+        pedra,
+        1,
+        opcoes_8,
+        "");
+
+    opcao opcoes_9[4] = {{'#', 10}, {'#', 11}, {'#', 12}, {'#', 13}};
+    char texto_9[4][501] = {"-Corre Cerque alguma coisa, um monstroooo! \n-Antes ate dava para fugir se voce nao tivesse acordado ele, agora eh guerra tua. \n-O que eu facooo? ele ta vindo!! \n-Tenta acertar a faca nele imbecil.\n", "-Bom, mas vai ter que fazer melhor se quiser sair dessa vivo. \n-VIVO?\n", "-Por espartaaaa\n", "-Parece que voce esta pegando o jeito, mas isso nao foi um elogio, disse a mesma coisa mara o Isack e o infeliz morreu com uma maca que caiu na cabeca.\n"};
+	cadastrar_no(
+        9,4
+        -1, 
+        texto_9,
+        4,
+		nao_terminal,
+        luta,
+        4,
+        opcoes_9,
+        "");
+        
+    opcao opcoes_13[1] = {{'#', 2}};
+    char texto_13[1][501] = {"-Encontrou um gema, nem pergunte nada, so pegue.\n"};
+	cadastrar_no(
+        13,
+        -1, 
+        texto_13,
+        0,
+		nao_terminal,
+        pedra,
+        1,
+        opcoes_13,
+        "");
+    
+
+
+    char texto_f[1][501] = {"\nFIm apenas para fins de teste"};
+	cadastrar_no(
+        100,
+        -1, 
+        texto_f,
         0,
 		terminal,
         nao_complexo,
@@ -408,6 +493,9 @@ void apagar_lista(){
 //#########################MECANICA DE JOGO#########################//
 
 int ler_indice_proximo_no(char opcao){
+    if(opcao == '#'){
+        return ptr_atual->opcoes[0].indice_proximo_no;
+    }
     if(ptr_atual->opcoes[0].opcao_selecionada == '*') {
 		return ptr_atual->opcoes[0].indice_proximo_no;
 	}
