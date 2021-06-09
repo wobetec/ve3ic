@@ -2,6 +2,7 @@
 Olhar para refatorar:
     Criar as funcinalidades de jogo
     Colocar opcao no comeco do jogo
+    Implementar as gemas
 */
 
 ////////////////////////INCLUSAO DE BIBLIOTECAS///////////////////////
@@ -24,7 +25,7 @@ typedef enum _tipo_no {
 } tipo_no;
 
 typedef enum _no_complexo {
-    passar, entrada, sala_item, pedra, saida, fechadura, enigma, luta, nao_complexo 
+    passar, entrada, sala_item, pedra, saida, fechadura, enigma, luta, nao_complexo,
 } no_complexo;
 
 /////////////////////////DEFINICAO DE STRUCTS/////////////////////////
@@ -95,7 +96,7 @@ int main(){
 	fprintf(arquivo_saida, "Bem-vindo ao LABIRINTO de IC, %s!\n", nome_jogador);
 
     //Montagem da lista encadeada
-        cadastrar_nos();
+    cadastrar_nos();
 
     //carregar o no zero
     ptr_atual = buscar_no(0);
@@ -246,9 +247,9 @@ void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no
             break;
 
         case sala_item:
-            cadastrar_no(indice, codigo, texto, 0, tipo, passar, n_opcoes, opcoes, "");
-            cadastrar_no(indice+1, codigo+1, texto, 1, tipo, passar, n_opcoes, opcoes, "");
-            cadastrar_no(indice+2, codigo+2, texto, 2, tipo, passar, n_opcoes, opcoes, "");
+            cadastrar_no(indice, codigo, texto, 0, tipo, passar, 1, opcoes, "");
+            cadastrar_no(indice+1, codigo+1, texto, 1, tipo, passar, 2, opcoes, "");
+            cadastrar_no(indice+2, codigo+2, texto, 2, tipo, passar, 3, opcoes, "");
             break;
 
         case pedra:
@@ -260,7 +261,9 @@ void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no
             break;
 
         case fechadura:
-            cadastrar_no(indice, codigo, texto, 0, tipo, passar, n_opcoes, opcoes, "CA2");
+            cadastrar_no(indice, codigo, texto, 0, tipo, nao_complexo, n_opcoes, opcoes, "G3");
+            cadastrar_no(indice+1, codigo, texto, 1, tipo, passar, n_opcoes+1, opcoes, "");
+            cadastrar_no(indice+2, codigo, texto, 2, tipo, passar, n_opcoes+2, opcoes, "");
             break;
 
         case enigma:
@@ -280,7 +283,7 @@ void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no
                 }
             }else if(n_opcoes==5){
                 cadastrar_no(indice, codigo, texto, 0, tipo, nao_complexo, 2, opcoes, "");
-                for(int i=0; i<n_opcoes; i++){
+                for(int i=0; i<n_opcoes-2; i++){
                     cadastrar_no(indice+1+i, codigo+1+i, texto, i+1, tipo, passar, 3+i, opcoes, "");
                 }
             }
@@ -325,6 +328,7 @@ void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no
             }
             break;
 
+
         default:
             printf("\nERRO 04: TIPO DE NO INVALIDO.");
             fprintf(arquivo_saida, "\nERRO 04: TIPO DE NO INVALIDO.");
@@ -359,7 +363,7 @@ void cadastrar_nos(){
         opcoes_0,
         "");
 
-    opcao opcoes_1[2] = {{'E', 2}, {'D', 100}};
+    opcao opcoes_1[2] = {{'E', 2}, {'D', 14}};
     char texto_1[1][501] = {"Escolha logo por onde quer ir:\nE-Esquerda\nD-Direita\nDigite a opcao: "};
 	cadastrar_no(
         1,
@@ -436,20 +440,128 @@ void cadastrar_nos(){
         1,
         opcoes_13,
         "");
-    
 
-
-    char texto_f[1][501] = {"\nFIm apenas para fins de teste"};
+    opcao opcoes_14[3] = {{'E', 20}, {'D', 15}, {'V', 1}};
+    char texto_14[1][501] = {"-Vamos logo, estou com pressa, escolha por onde ir: \nE-Esquerda \nD-Direita \nV-Voltar \nDigite a opcao: "};
 	cadastrar_no(
-        100,
+        14,
         -1, 
-        texto_f,
+        texto_14,
+        0,
+		nao_terminal,
+        nao_complexo,
+        3,
+        opcoes_14,
+        "");
+
+    opcao opcoes_15[4] = {{'#', 16}, {'#', 17}, {'#', 18}, {'#', 19}};
+    char texto_15[4][501] = {"-O que eh aquilooo?? \n-Nao precisava descobir agora... mas ja que gritou n tem jeito, guerra tua. \n-Ele vai me mataaaar!! \n-Reaje aluno, a faca ai na mao nao eh para ser enfeite\n", "-Continua aluno. \n-Eu nao aguento maaais.\n", "-Thunder, thunder, thundercaaaats.\n", "-Agora o aluno ficou maluco de vez, mais um, pelo menos saiu vivo\n"};
+	cadastrar_no(
+        15,
+        -1, 
+        texto_15,
+        4,
+		nao_terminal,
+        luta,
+        4,
+        opcoes_15,
+        "");
+    
+    opcao opcoes_19[1] = {{'#', 14}};
+    char texto_19[1][501] = {"-OLha la, uma gema.\n-So pega logo aluno\n"};
+	cadastrar_no(
+        19,
+        -1, 
+        texto_19,
+        0,
+		nao_terminal,
+        pedra,
+        1,
+        opcoes_19,
+        "");
+    
+    opcao opcoes_20[3] = {{'E', 27}, {'D', 21}, {'V', 14}};
+    char texto_20[1][501] = {"-Por onde vamos seguir aluno? \nE-Esquerda \nD-Direita \nV-Voltar \nDigite a opcao: "};
+	cadastrar_no(
+        20,
+        -1, 
+        texto_20,
+        0,
+		nao_terminal,
+        nao_complexo,
+        3,
+        opcoes_20,
+        "");
+
+    opcao opcoes_21[4] = {{'1', 22}, {'2', 20}, {'#', 24}, {'#', 21}};
+    char texto_21[3][501] = {"-Uma porta, o que eu tenho que fazer? \n-Voce eh burro? tem 3 buracos, acho que voce precisa colocar algo la ne... \n-verdade \n-quer tentar? \n1-Tentar Abrir a passagem \n2-Voltar \nDigite a opcao: ", "-Bom, parece que voce consegui as 3 gemas.\n", "-Va procurar as gemas e volte outra hora.\n"};
+	cadastrar_no(
+        21,
+        -1, 
+        texto_21,
+        3,
+		nao_terminal,
+        fechadura,
+        2,
+        opcoes_21,
+        "");
+    
+    
+    opcao opcoes_24[3] = {{'#', 25}, {'#', 26}, {'#', 27}};
+    char texto_24[3][501] = {"-Olha, que sala cool. O que eh aquilo? \n-Va la e veja.\n", "-Uau, um peitora. \n-Nao eh um peitoral qualquer, esse foi utilizado pelo proprio ricardo franco na guerra contra os australopitecos\n", "-Posso pegar? \n-Se eu fosse voce eu pegaria, vai precisar para continuar vivo hehe.\n"};
+	cadastrar_no(
+        24,
+        -1, 
+        texto_24,
+        3,
+		nao_terminal,
+        sala_item,
+        1,
+        opcoes_24,
+        "");
+    
+    
+    opcao opcoes_27[5] = {{'N', 20}, {'S', 28}, {'#', 29}, {'#', 30}, {'#', 31}};
+    char texto_27[4][501] = {"##sussurros##  \n-Olha so, parece que alguem esta sendo cauteloso - disse o cerqueireanista com tom de orgulho \n-Posso escolher lutar ou n?\n-Claro, a escolha eh sua:\nS-Acordar e lutar contra o monstro\nN-Voltar e deixar o monstro dormindo\nDigita a opcao: ", "-HAHA,SEGURA ESSA INTEGRAL TRIPLA ALUNO REPUGNANTE. \n-Aprendi isso com 14 anos seu otario.\n", "-NAAAAAOOOO.\n-Essa luta eh minha seu professor de uma figa\n", "-Muito bem aluno-disse o cerqueireanista-ha tempos que n encontrava um guerreiro tao bravo nessa masmorra.\n"};
+	cadastrar_no(
+        27,
+        -1, 
+        texto_27,
+        5,
+		nao_terminal,
+        luta,
+        5,
+        opcoes_27,
+        "");
+    
+    opcao opcoes_31[1] = {{'#', 32}};
+    char texto_31[1][501] = {"\n-Uma escada\n-Creio que seja sua saida daqui aluno, voce derrotou o grande TC Rock, esta livre\n\nO aluno nesse momento sai livre, subindo as escadas(mesmo as odiando devido ao trauma do IMEnso instituto), a luz começa a ficar mais clara...\n"};
+	cadastrar_no(
+        31,
+        -1, 
+        texto_31,
+        0,
+		nao_terminal,
+        saida,
+        1,
+        opcoes_31,
+        "");
+    
+    char texto_32[1][501] = {"-Dormindo na aula aluno?\n-Nao senhor-Respondeu o aluno com a baba pendurada na boca\n-TORRADO,duvidas?\n\n###Obrigado por jogar o labirinto###"};
+	cadastrar_no(
+        32,
+        -1, 
+        texto_32,
         0,
 		terminal,
         nao_complexo,
         0,
         NULL,
         "");
+
+
+    
+
 }
 
 //funcao para buscar no a partir do indice
@@ -490,8 +602,6 @@ void apagar_lista(){
 }
 
 
-//#########################MECANICA DE JOGO#########################//
-
 int ler_indice_proximo_no(char opcao){
     if(opcao == '#'){
         return ptr_atual->opcoes[0].indice_proximo_no;
@@ -511,3 +621,6 @@ int ler_indice_proximo_no(char opcao){
     fprintf(arquivo_saida,"\nERRO 06: PROXIMO NO NAO LOCALIZADO.");
     exit(1);
 }
+
+//#########################MECANICA DE JOGO#########################//
+
