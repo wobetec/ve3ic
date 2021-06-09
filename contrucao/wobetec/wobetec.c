@@ -3,8 +3,6 @@ Olhar para refatorar:
     Implementar o Enigma no básico
     Criar as funcinalidades de jogo
     Colocar opcao no comeco do jogo
-UU
-    Implementar o no nao complexo
 */
 
 ////////////////////////INCLUSAO DE BIBLIOTECAS///////////////////////
@@ -97,7 +95,7 @@ int main(){
 	fprintf(arquivo_saida, "Bem-vindo ao LABIRINTO de IC, %s!\n", nome_jogador);
 
     //Montagem da lista encadeada
-    cadastrar_nos();
+        cadastrar_nos();
 
     //carregar o no zero
     ptr_atual = buscar_no(0);
@@ -120,6 +118,7 @@ int main(){
 					fprintf(arquivo_saida, "OPCAO INVALIDA!\n");
 				}
 			}
+            ptr_atual= buscar_no(indice_proximo_no);
 		}
 		else{//Se no eh terminal, apresentar texto e finalizar programa
 			printf("%s", ptr_atual->texto);
@@ -303,15 +302,6 @@ void cadastrar_no(int code, char texto[][501], int n_textos, tipo_no tipo, no_co
             fprintf(arquivo_saida, "\nERRO 04: TIPO DE NO INVALIDO.");
             exit(1);
        }
-
-
-
-
-}
-
-
-void log(no atual){
-
 }
 
 
@@ -359,7 +349,7 @@ void cadastrar_nos(){
         -1, 
         texto_2,
         0,
-		terminal,
+		nao_terminal,
         nao_complexo,
         2,
         opcoes_2,
@@ -423,8 +413,9 @@ int ler_indice_proximo_no(char opcao){
 	}
 	else {
 		for(int i = 0; i < ptr_atual->n_opcoes; i++) {
-			if(ptr_atual->opcoes[i].opcao_selecionada == opcao)
+			if(ptr_atual->opcoes[i].opcao_selecionada == opcao){
 				return ptr_atual->opcoes[i].indice_proximo_no;
+            }
 		}
 		return -1;
 	}
