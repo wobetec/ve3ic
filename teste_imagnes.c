@@ -3,6 +3,8 @@
 #include<stdlib.h>
 #include<string.h>
 
+#define NOME_ARQUIVO_SAIDA "saida.txt"
+FILE *arquivo_saida;
 void imagem(char *nome_arquivo){
     FILE* arquivo;
     char linha[100], *leitura=NULL;
@@ -98,10 +100,6 @@ void barra_superior_luta(int vida_inimigo, int vida_inimigo_MAX, int ataque_inim
 }
 
 int main(){
-    system("MODE con cols=90 lines=35 ");
-    system("cls");
-    barra_superior_luta(100, 100, 16);
-    imagem("./imagens/batalha1.txt");
-    system("pause");
+    
     return 0;
 }
