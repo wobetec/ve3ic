@@ -1,11 +1,9 @@
 /*
 Olhar para refatorar:
-    Implementar as gemas
-    resolver problema na fechadurado
+    fazer as pedras diminuirem na fechadura
     bloquear salas ja passadas
-    sistema de perda e ganho de vida
-    implementar rancho 
-    implementar no de dialogo
+    sistema de perda e ganho de vida 
+    implementar o sistema de vida a luta
 */
 
 ////////////////////////INCLUSAO DE BIBLIOTECAS///////////////////////
@@ -19,16 +17,15 @@ Olhar para refatorar:
 #define MAX_OPCOES 10
 
 //define que pode ser alterado dependo da história (começa no zero)
-#define N_NOS 3
 #define MAX_TEXTO 5
-
+    
 //////////////////////////DEFINICAO DE ENUMS//////////////////////////
 typedef enum _tipo_no {
 	raiz, nao_terminal, terminal
 } tipo_no;
 
 typedef enum _no_complexo {
-    passar, entrada, sala_item, pedra, saida, fechadura, enigma, luta, nao_complexo,
+    passar, entrada, sala_item, pedra, saida, fechadura, enigma, luta, rancho, dialogo, nao_complexo,
 } no_complexo;
 
 /////////////////////////DEFINICAO DE STRUCTS/////////////////////////
@@ -62,16 +59,21 @@ FILE *arquivo_saida;
 int contador_de_no = -1;
 
 //Criterios globais
-int vida = 100;
+int vida = 50;
 int vida_MAX = 100;
 
 //pedras
 int pedras = 0;
 int ja_coletas[15];
 int topo_ja_coletas = -1;
+
+//atributos globais
 int XP = 0;
 int nivel = 0;
 int ataque = 14;
+
+//vida e ataque do inimigo para lutas
+int vida_inimigo=-1, vida_inimigo_MAX=0, ataque_inimigo=0;
 
 /////////////////////////////PROTOTIPOS///////////////////////////////
 char *ler_nome_jogador(char *nome_arquivo);
@@ -96,6 +98,8 @@ void barra_superior_inimigo();
 
 //mecanica do jogo
 void sala_pedras(int indice);
+void atualizar_vida(int ganho, int valor);
+void dano_vida_luta();
 
 
 /////////////////////////////////MAIN/////////////////////////////////
@@ -155,6 +159,44 @@ int main(){
                                 }
                                 pausa();
                                 break;
+
+                            case luta:
+                                limpar();
+                                barra_superior_luta();
+                                //apresneta a imagem de cada no
+                                if(ptr_atual->endereco_imagem[0] == '.'){
+                                    imagem(ptr_atual->endereco_imagem);
+                                }
+
+                                sala_pedras(ptr_atual->indice);
+                                printf("%s", ptr_atual->texto);
+                                fprintf(arquivo_saida, "%s", ptr_atual->texto);
+                                indice_proximo_no = ler_indice_proximo_no('#');
+                                if(indice_proximo_no == -1){
+                                    printf("OPCAO INVALIDA!\n");
+                                    fprintf(arquivo_saida, "OPCAO INVALIDA!\n");
+                                }
+                                pausa();
+                                break;
+
+                            case rancho:
+                                atualizar_vida(1, 20);
+                                limpar();
+                                barra_superior();
+                                if(ptr_atual->endereco_imagem[0] == '.'){
+                                    imagem(ptr_atual->endereco_imagem);
+                                }
+
+                                sala_pedras(ptr_atual->indice);
+                                printf("%s", ptr_atual->texto);
+                                fprintf(arquivo_saida, "%s", ptr_atual->texto);
+                                indice_proximo_no = ler_indice_proximo_no('#');
+                                if(indice_proximo_no == -1){
+                                    printf("OPCAO INVALIDA!\n");
+                                    fprintf(arquivo_saida, "OPCAO INVALIDA!\n");
+                                }
+                                pausa();
+                                break;
                             default:
                                 printf("%s", ptr_atual->texto);
                                 fprintf(arquivo_saida, "%s", ptr_atual->texto);
@@ -185,10 +227,11 @@ int main(){
 
                                 if(indice_proximo_no/1000 == pedras){
                                     indice_proximo_no = indice_proximo_no %1000;
+                                    pedras = pedras - (indice_proximo_no/1000);
                                 }else{
                                     indice_proximo_no = indice_proximo_no %1000 + 1;
                                 }
-                                // fall through
+                                break;
                             default:
                                 printf("%s", ptr_atual->texto);
                                 fprintf(arquivo_saida, "%s", ptr_atual->texto);
@@ -368,6 +411,16 @@ void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no
 
             break;
 
+        case rancho:
+            cadastrar_no(indice, codigo, texto, 0, tipo, passar, 1, opcoes,endereco_imagem);
+            break;
+
+        case dialogo:
+            for(int i=0; i<n_opcoes; i++){
+                cadastrar_no(indice+i, codigo+i, texto, i, tipo, passar, 1+i, opcoes, endereco_imagem);
+            }
+            break;
+
         case nao_complexo:
 
             ptr->indice = indice;
@@ -429,6 +482,60 @@ void cadastrar_nos(){
             opcoes,
             endereco_imagem)
     */
+
+    opcao opcoes_0[1] = {{'#', 1}};
+    char texto_0[1][501] = {"No de entrada\n"};
+	cadastrar_no(
+        0,
+        -1, 
+        texto_0,
+        0,
+		raiz,
+        entrada,
+        1,
+        opcoes_0,
+        "./imagens/labirinto1.txt");
+
+    opcao opcoes_1[4] = {{'#', 2}, {'#', 3}, {'#', 4}, {'#', 5}};
+    char texto_1[4][501] = {"Texto 1 dialogo\n", "Texto 2 dialogo\n", "Texto 3 dialogo\n", "Texto 4 dialogo\n"};
+	cadastrar_no(
+        1,
+        -1, 
+        texto_1,
+        0,
+		nao_terminal,
+        dialogo,
+        4,
+        opcoes_1,
+        "./imagens/guianu.txt");
+    
+    opcao opcoes_5[2] = {{'#', 6}};
+    char texto_5[1][501] = {"mais vida +20\n"};
+	cadastrar_no(
+        5,
+        -1, 
+        texto_5,
+        0,
+		nao_terminal,
+        rancho,
+        1,
+        opcoes_5,
+        "./imagens/labirinto1.txt");
+    
+    char texto_6[1][501] = {"FIM - terminal"};
+	cadastrar_no(
+        6,
+        -1, 
+        texto_6,
+        0,
+		terminal,
+        nao_complexo,
+        0,
+        NULL,
+        "./imagens/personagem.txt");
+
+
+    /*
     opcao opcoes_0[1] = {{'#', 1}};
     char texto_0[1][501] = {"-Que lugar eh esse? Onde eu estou?\n-Ta perdido aluno? - Disse uma voz misteriosa - Essa eh a masmorra da casa do trem, ngm nunca saiu daqui, nao vivo pelo menos. Eu sou o espirito Cerqueireanista que guia os nobres engenheiros nessa jornada. Ja vou avisando que estou com pressa, ja ja outro quadrupede vai cair aqui, entao pegue aquela faca e vamos. \n-Como assim? o que ta acontecendo?\n-Tudo sera respondido no seu tempo, mas por hora vamos em frente\n"};
 	cadastrar_no(
@@ -572,7 +679,7 @@ void cadastrar_nos(){
         opcoes_20,
         "./imagens/labirinto2.txt");
 
-    opcao opcoes_21[4] = {{'1', 3023}, {'2', 20}, {'#', 24}, {'#', 21}};
+    opcao opcoes_21[4] = {{'1', 3022}, {'2', 20}, {'#', 24}, {'#', 21}};
     char texto_21[3][501] = {"-Uma porta, o que eu tenho que fazer? \n-Voce eh burro? tem 3 buracos, acho que voce precisa colocar algo la ne... \n-verdade \n-quer tentar? \n1-Tentar Abrir a passagem \n2-Voltar \nDigite a opcao: ", "-Bom, parece que voce consegui as 3 gemas.\n", "-Va procurar as gemas e volte outra hora.\n"};
 	cadastrar_no(
         21,
@@ -638,9 +745,7 @@ void cadastrar_nos(){
         NULL,
         "./imagens/personagem.txt");
 
-
-    
-
+    */
 }
 
 //funcao para buscar no a partir do indice
@@ -761,7 +866,7 @@ void barra_superior(){
     printf("\n----------------------------- -----------------------------  -------  ---------  ---------\n");
 }
 
-void barra_superior_luta(int vida_inimigo, int vida_inimigo_MAX, int ataque_inimigo){
+void barra_superior_luta(){
     //parte de cima
     printf("------------------------------ ---------          --------- ------------------------------\n");
 
@@ -792,6 +897,7 @@ void barra_superior_luta(int vida_inimigo, int vida_inimigo_MAX, int ataque_inim
     //parte de baixo copia da de cima
     printf("\n------------------------------ ---------          --------- ------------------------------\n");
 }
+
 void limpar(){
     system("cls");
 }
@@ -819,4 +925,22 @@ void sala_pedras(int indice){
     }
     
 }
+
+//adiciona o remove vida do personagem principal( ganho = 0 --> perda)
+void atualizar_vida(int ganho, int valor){
+    if(ganho == 0){
+        vida-=valor;
+    }else{
+        if(vida + valor >= vida_MAX){
+            vida = vida_MAX;
+        }else{
+            vida+=valor;
+        }
+    }
+}
+
+void dano_vida_luta(){
+
+}
+
 
