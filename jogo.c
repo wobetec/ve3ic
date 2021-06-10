@@ -1,8 +1,11 @@
 /*
 Olhar para refatorar:
-    Criar as funcinalidades de jogo
-    Colocar opcao no comeco do jogo
     Implementar as gemas
+    resolver problema na fechadurado
+    bloquear salas ja passadas
+    sistema de perda e ganho de vida
+    implementar rancho 
+    implementar no de dialogo
 */
 
 ////////////////////////INCLUSAO DE BIBLIOTECAS///////////////////////
@@ -84,7 +87,6 @@ void cadastrar_nos();//aplica a cadastrar_no varias vezes
 //secundarias
 int ler_indice_proximo_no(char opcao);
 void imagem(char *nome_arquivo);
-void barra_de_vida(int vida);
 
 //parte grafica
 void pausa();
@@ -127,6 +129,8 @@ int main(){
     while(1) {
         limpar();
 
+        barra_superior();
+
         //apresneta a imagem de cada no
         if(ptr_atual->endereco_imagem[0] == '.'){
             imagem(ptr_atual->endereco_imagem);
@@ -141,7 +145,6 @@ int main(){
                     case passar:
                         switch(code){
                             case pedra:
-                                barra_superior();
                                 sala_pedras(ptr_atual->indice);
                                 printf("%s", ptr_atual->texto);
                                 fprintf(arquivo_saida, "%s", ptr_atual->texto);
@@ -153,7 +156,6 @@ int main(){
                                 pausa();
                                 break;
                             default:
-                                barra_superior();
                                 printf("%s", ptr_atual->texto);
                                 fprintf(arquivo_saida, "%s", ptr_atual->texto);
                                 indice_proximo_no = ler_indice_proximo_no('#');
@@ -169,7 +171,6 @@ int main(){
                         switch(code){;
                             char opcao;
                             case fechadura:
-                                barra_superior();
                                 printf("%s", ptr_atual->texto);
                                 fprintf(arquivo_saida, "%s", ptr_atual->texto);
                                 scanf(" %c", &opcao);
@@ -189,7 +190,6 @@ int main(){
                                 }
                                 // fall through
                             default:
-                                barra_superior();
                                 printf("%s", ptr_atual->texto);
                                 fprintf(arquivo_saida, "%s", ptr_atual->texto);
                                 scanf(" %c", &opcao);
@@ -271,7 +271,13 @@ void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no
 
     //Variáveis utilizadas em varios switchs e que deram erro
     no *ptr_aux = ptr_inicio;
-    int codigo = compl*100;
+    int codigo;
+    if(code == -1){
+        codigo = compl*100;
+    }else{
+        codigo = code;
+    }
+    
     int make = 70000000;// 7 000 00 00
 
     //swirch que define como serão os nós especiais criados
@@ -333,9 +339,9 @@ void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no
             break;
 
         case fechadura:
-            cadastrar_no(indice, codigo, texto, 0, tipo, nao_complexo, n_opcoes, opcoes, "G3");
-            cadastrar_no(indice+1, codigo, texto, 1, tipo, passar, n_opcoes+1, opcoes, endereco_imagem);
-            cadastrar_no(indice+2, codigo, texto, 2, tipo, passar, n_opcoes+2, opcoes, endereco_imagem);
+            cadastrar_no(indice, codigo, texto, 0, tipo, nao_complexo, n_opcoes, opcoes, endereco_imagem);
+            cadastrar_no(indice+1, codigo+1, texto, 1, tipo, passar, n_opcoes+1, opcoes, endereco_imagem);
+            cadastrar_no(indice+2, codigo+1, texto, 2, tipo, passar, n_opcoes+2, opcoes, endereco_imagem);
             break;
 
         case enigma:
@@ -434,7 +440,7 @@ void cadastrar_nos(){
         entrada,
         1,
         opcoes_0,
-        "");
+        "./imagens/labirinto1.txt");
 
     opcao opcoes_1[2] = {{'E', 2}, {'D', 14}};
     char texto_1[1][501] = {"Escolha logo por onde quer ir:\nE-Esquerda\nD-Direita\nDigite a opcao: "};
@@ -447,7 +453,7 @@ void cadastrar_nos(){
         nao_complexo,
         2,
         opcoes_1,
-        "");
+        "./imagens/labirinto2.txt");
     
     opcao opcoes_2[3] = {{'E', 3}, {'D', 9}, {'V', 1}};
     char texto_2[1][501] = {"-Outra bifurcacao? \n-Nao pondere aluno... \nE-Esquerda \nD-Direita \nV-Voltar \nDigite a opcao: "};
@@ -460,7 +466,7 @@ void cadastrar_nos(){
         nao_complexo,
         3,
         opcoes_2,
-        "");
+        "./imagens/labirinto2.txt");
 
     opcao opcoes_3[8] = {{'1', 4}, {'2', 5}, {'3', 6}, {'4', 7}, {'#', 3}, {'#', 8}, {'#', 3}, {'#', 3}};
     char texto_3[5][501] = {"-Essa eh a sa salados enigmas, dizem que foi aqui que Einstein trancou e Galileu ficou maluco. Vamos ver do que voce eh capaz:\nENIGMA: Qual elemento da azul no teste de chama?\n1-Na  2-Cu  3-Mg  4-K \nDigite a opcao: ", "Qual a ideia aluno?\n", "Voce devia conhecer o tal de Lavoisier, ele tambem acertou essa.\n", "eu hein, ta perdido?\n", "kkkkkkkk\n"};
@@ -473,7 +479,7 @@ void cadastrar_nos(){
         enigma,
         4,
         opcoes_3,
-        "");
+        "./imagens/cenario1.txt");
     
     opcao opcoes_8[1] = {{'#', 2}};
     char texto_8[1][501] = {"-Uma gema! mas pra que eu vou usar isso?\n-Calma aluno, faz parte do seu path of warrior.\n"};
@@ -486,7 +492,7 @@ void cadastrar_nos(){
         pedra,
         1,
         opcoes_8,
-        "");
+        "./imagens/gema.txt");
 
     opcao opcoes_9[4] = {{'#', 10}, {'#', 11}, {'#', 12}, {'#', 13}};
     char texto_9[4][501] = {"-Corre Cerque alguma coisa, um monstroooo! \n-Antes ate dava para fugir se voce nao tivesse acordado ele, agora eh guerra tua. \n-O que eu facooo? ele ta vindo!! \n-Tenta acertar a faca nele imbecil.\n", "-Bom, mas vai ter que fazer melhor se quiser sair dessa vivo. \n-VIVO?\n", "-Por espartaaaa\n", "-Parece que voce esta pegando o jeito, mas isso nao foi um elogio, disse a mesma coisa mara o Isack e o infeliz morreu com uma maca que caiu na cabeca.\n"};
@@ -512,7 +518,7 @@ void cadastrar_nos(){
         pedra,
         1,
         opcoes_13,
-        "");
+        "./imagens/gema.txt");
 
     opcao opcoes_14[3] = {{'E', 20}, {'D', 15}, {'V', 1}};
     char texto_14[1][501] = {"-Vamos logo, estou com pressa, escolha por onde ir: \nE-Esquerda \nD-Direita \nV-Voltar \nDigite a opcao: "};
@@ -525,7 +531,7 @@ void cadastrar_nos(){
         nao_complexo,
         3,
         opcoes_14,
-        "");
+        "./imagens/labirinto2.txt");
 
     opcao opcoes_15[4] = {{'#', 16}, {'#', 17}, {'#', 18}, {'#', 19}};
     char texto_15[4][501] = {"-O que eh aquilooo?? \n-Nao precisava descobir agora... mas ja que gritou n tem jeito, guerra tua. \n-Ele vai me mataaaar!! \n-Reaje aluno, a faca ai na mao nao eh para ser enfeite\n", "-Continua aluno. \n-Eu nao aguento maaais.\n", "-Thunder, thunder, thundercaaaats.\n", "-Agora o aluno ficou maluco de vez, mais um, pelo menos saiu vivo\n"};
@@ -538,7 +544,7 @@ void cadastrar_nos(){
         luta,
         4,
         opcoes_15,
-        "");
+        "./imagens/batalha4.txt");
     
     opcao opcoes_19[1] = {{'#', 14}};
     char texto_19[1][501] = {"-OLha la, uma gema.\n-So pega logo aluno\n"};
@@ -551,7 +557,7 @@ void cadastrar_nos(){
         pedra,
         1,
         opcoes_19,
-        "");
+        "./imagens/gema.txt");
     
     opcao opcoes_20[3] = {{'E', 27}, {'D', 21}, {'V', 14}};
     char texto_20[1][501] = {"-Por onde vamos seguir aluno? \nE-Esquerda \nD-Direita \nV-Voltar \nDigite a opcao: "};
@@ -564,9 +570,9 @@ void cadastrar_nos(){
         nao_complexo,
         3,
         opcoes_20,
-        "");
+        "./imagens/labirinto2.txt");
 
-    opcao opcoes_21[4] = {{'1', 3022}, {'2', 20}, {'#', 24}, {'#', 21}};
+    opcao opcoes_21[4] = {{'1', 3023}, {'2', 20}, {'#', 24}, {'#', 21}};
     char texto_21[3][501] = {"-Uma porta, o que eu tenho que fazer? \n-Voce eh burro? tem 3 buracos, acho que voce precisa colocar algo la ne... \n-verdade \n-quer tentar? \n1-Tentar Abrir a passagem \n2-Voltar \nDigite a opcao: ", "-Bom, parece que voce consegui as 3 gemas.\n", "-Va procurar as gemas e volte outra hora.\n"};
 	cadastrar_no(
         21,
@@ -577,7 +583,7 @@ void cadastrar_nos(){
         fechadura,
         2,
         opcoes_21,
-        "");
+        "./imagens/porta3.txt");
     
     
     opcao opcoes_24[3] = {{'#', 25}, {'#', 26}, {'#', 20}};
@@ -605,7 +611,7 @@ void cadastrar_nos(){
         luta,
         5,
         opcoes_27,
-        "");
+        "./imagens/batalhaboss3.txt");
     
     opcao opcoes_31[1] = {{'#', 32}};
     char texto_31[1][501] = {"\n-Uma escada\n-Creio que seja sua saida daqui aluno, voce derrotou o grande TC Rock, esta livre\n\nO aluno nesse momento sai livre, subindo as escadas(mesmo as odiando devido ao trauma do IMEnso instituto), a luz começa a ficar mais clara...\n"};
@@ -618,7 +624,7 @@ void cadastrar_nos(){
         saida,
         1,
         opcoes_31,
-        "");
+        "./imagens/guianu.txt");
     
     char texto_32[1][501] = {"-Dormindo na aula aluno?\n-Nao senhor-Respondeu o aluno com a baba pendurada na boca\n-TORRADO,duvidas?\n\n###Obrigado por jogar o labirinto###"};
 	cadastrar_no(
@@ -630,7 +636,7 @@ void cadastrar_nos(){
         nao_complexo,
         0,
         NULL,
-        "");
+        "./imagens/personagem.txt");
 
 
     
@@ -706,8 +712,7 @@ void imagem(char *nome_arquivo){
 
     if(arquivo==NULL){
         printf("\nERRO 07: ERRO AO ABRIR A IMAGEM.");
-        fprintf(arquivo, "\nERRO 07: ERRO AO ABRIR A IMAGEM.");
-        exit(1); 
+        fprintf(arquivo, "\nERRO 07: ERRO AO ABRIR A IMAGEM."); 
     }
 
     while(!feof(arquivo)){
@@ -720,21 +725,6 @@ void imagem(char *nome_arquivo){
     printf("\n"); 
     fprintf(arquivo_saida, "\n");
     fclose(arquivo);
-}
-
-void barra_de_vida(int vida){
-    int i=0;
-
-    printf("\n-----------------------------------\n");
-    printf("HP: "); 
-    for(i=0; i<vida/4; i++){    
-        printf("|");
-    }
-    for(int j=(vida/4); j<vida/4; j++){
-        printf(" ");
-    }
-    printf(" %d/%d\n", vida, vida); 
-    printf("-----------------------------------\n");
 }
 
 void barra_superior(){
@@ -829,7 +819,4 @@ void sala_pedras(int indice){
     }
     
 }
-
-
-
 
