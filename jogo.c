@@ -42,7 +42,7 @@ typedef struct _no {
 	tipo_no tipo;
 	int n_opcoes;
 	opcao opcoes[MAX_OPCOES];
-    char adcional_c[65];
+    char endereco_imagem[65];
 	struct _no *ant;
 	struct _no *prox;
 } no;
@@ -59,15 +59,22 @@ FILE *arquivo_saida;
 int contador_de_no = -1;
 
 //Criterios globais
-int pedras = 0;
 int vida = 100;
 int vida_MAX = 100;
+
+//pedras
+int pedras = 0;
+int ja_coletas[15];
+int topo_ja_coletas = -1;
+int XP = 0;
+int nivel = 0;
+int ataque = 14;
 
 /////////////////////////////PROTOTIPOS///////////////////////////////
 char *ler_nome_jogador(char *nome_arquivo);
 
 //Gerenciamento da lista encadeada
-void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no tipo, no_complexo compl, int n_opcoes, opcao *opcoes, char *adcional_c);
+void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no tipo, no_complexo compl, int n_opcoes, opcao *opcoes, char *endereco_imagem);
 no *buscar_no(int indice); //busa no na lista encadeada
 void apagar_lista();//freela alista encadeada
 
@@ -82,11 +89,16 @@ void barra_de_vida(int vida);
 //parte grafica
 void pausa();
 void limpar();
+void barra_superior();
+void barra_superior_inimigo();
+
 //mecanica do jogo
+void sala_pedras(int indice);
 
 
 /////////////////////////////////MAIN/////////////////////////////////
 int main(){
+    //redimensiona o terminal
     system("MODE con cols=91 lines=35 ");
 
     //Inicialização do processo de log
@@ -105,7 +117,7 @@ int main(){
     char nome_jogador[100];
     strcpy(nome_jogador, ler_nome_jogador(NOME_ARQUIVO_ENTRADA));
     printf("Bem-vindo ao LABIRINTO de IC, %s!\n", nome_jogador);
-	fprintf(arquivo_saida, "Bem-vindo ao LABIRINTO de IC, %s!\n", nome_jogador);
+    fprintf(arquivo_saida, "Bem-vindo ao LABIRINTO de IC, %s!\n", nome_jogador);
     pausa();
 
     //carregar o no zero
@@ -115,53 +127,95 @@ int main(){
     while(1) {
         limpar();
 
-        if(ptr_atual->adcional_c[0] == '.'){
-            imagem(ptr_atual->adcional_c);
-        }else{//aqui vao os adicionais de cada no
-
+        //apresneta a imagem de cada no
+        if(ptr_atual->endereco_imagem[0] == '.'){
+            imagem(ptr_atual->endereco_imagem);
         }
 
         //Se no nao eh terminal, apresentar texto e ler a opcao selecionada
-		if(ptr_atual->tipo != terminal){
-			int indice_proximo_no = -1;
-			while(indice_proximo_no == -1){
+        if(ptr_atual->tipo != terminal){
+            int code = ( ptr_atual->code % 10000)/100;
+            int indice_proximo_no = -1;
+            while(indice_proximo_no == -1){
                 switch(ptr_atual->tipo_especifico){
                     case passar:
-                        printf("%s", ptr_atual->texto);
-                        fprintf(arquivo_saida, "%s", ptr_atual->texto);
-                        indice_proximo_no = ler_indice_proximo_no('#');
-                        if(indice_proximo_no == -1){
-                            printf("OPCAO INVALIDA!\n");
-                            fprintf(arquivo_saida, "OPCAO INVALIDA!\n");
+                        switch(code){
+                            case pedra:
+                                barra_superior();
+                                sala_pedras(ptr_atual->indice);
+                                printf("%s", ptr_atual->texto);
+                                fprintf(arquivo_saida, "%s", ptr_atual->texto);
+                                indice_proximo_no = ler_indice_proximo_no('#');
+                                if(indice_proximo_no == -1){
+                                    printf("OPCAO INVALIDA!\n");
+                                    fprintf(arquivo_saida, "OPCAO INVALIDA!\n");
+                                }
+                                pausa();
+                                break;
+                            default:
+                                barra_superior();
+                                printf("%s", ptr_atual->texto);
+                                fprintf(arquivo_saida, "%s", ptr_atual->texto);
+                                indice_proximo_no = ler_indice_proximo_no('#');
+                                if(indice_proximo_no == -1){
+                                    printf("OPCAO INVALIDA!\n");
+                                    fprintf(arquivo_saida, "OPCAO INVALIDA!\n");
+                                }
+                                pausa();
+                                break;
                         }
-                        pausa();
                         break;
-                    default:;
-                        char opcao;
-                        printf("%s", ptr_atual->texto);
-                        fprintf(arquivo_saida, "%s", ptr_atual->texto);
-                        scanf(" %c", &opcao);
-                        fprintf(arquivo_saida, "%c\n", opcao);
-                        //Ler proximo no a partir da opcao
-                        indice_proximo_no = ler_indice_proximo_no(opcao);
-                        if(indice_proximo_no == -1){
-                            printf("OPCAO INVALIDA!\n");
-                            fprintf(arquivo_saida, "OPCAO INVALIDA!\n");
+                    default:
+                        switch(code){;
+                            char opcao;
+                            case fechadura:
+                                barra_superior();
+                                printf("%s", ptr_atual->texto);
+                                fprintf(arquivo_saida, "%s", ptr_atual->texto);
+                                scanf(" %c", &opcao);
+                                fprintf(arquivo_saida, "%c\n", opcao);
+
+                                //Ler proximo no a partir da opcao
+                                indice_proximo_no = ler_indice_proximo_no(opcao);
+                                if(indice_proximo_no == -1){
+                                    printf("OPCAO INVALIDA!\n");
+                                    fprintf(arquivo_saida, "OPCAO INVALIDA!\n");
+                                }
+
+                                if(indice_proximo_no/1000 == pedras){
+                                    indice_proximo_no = indice_proximo_no %1000;
+                                }else{
+                                    indice_proximo_no = indice_proximo_no %1000 + 1;
+                                }
+                                // fall through
+                            default:
+                                barra_superior();
+                                printf("%s", ptr_atual->texto);
+                                fprintf(arquivo_saida, "%s", ptr_atual->texto);
+                                scanf(" %c", &opcao);
+                                fprintf(arquivo_saida, "%c\n", opcao);
+                                //Ler proximo no a partir da opcao
+                                indice_proximo_no = ler_indice_proximo_no(opcao);
+                                if(indice_proximo_no == -1){
+                                    printf("OPCAO INVALIDA!\n");
+                                    fprintf(arquivo_saida, "OPCAO INVALIDA!\n");
+                                }
+                                break;
                         }
                     break;
                 }
-			}
+            }
             if(indice_proximo_no == 8){
                 printf("Teste");
             }
             ptr_atual= buscar_no(indice_proximo_no);
-		}
-		else{//Se no eh terminal, apresentar texto e finalizar programa
-			printf("%s", ptr_atual->texto);
-			fprintf(arquivo_saida, "%s", ptr_atual->texto);
-			break;
-		}
-	}
+        }
+        else{//Se no eh terminal, apresentar texto e finalizar programa
+            printf("%s", ptr_atual->texto);
+            fprintf(arquivo_saida, "%s", ptr_atual->texto);
+            break;
+        }
+    }
 
     //Libera o espaço utlizado pela lista encadeada
     apagar_lista();
@@ -205,7 +259,7 @@ char *ler_nome_jogador(char *nome_arquivo){
 //##########CRIACAO DE NOS E MANIPULACAO DA LISTA ENCADEADA##########//
 
 //criacao de nos e manipulacao da lista encadeada
-void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no tipo, no_complexo compl, int n_opcoes, opcao *opcoes, char adcional_c[64]){
+void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no tipo, no_complexo compl, int n_opcoes, opcao *opcoes, char endereco_imagem[64]){
 
     //alocação dinâmica da memória
     no *ptr = (no *) malloc(sizeof(no));
@@ -245,7 +299,7 @@ void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no
             ptr->ant = NULL;
             ptr->prox = NULL;
 
-            strcpy(ptr->adcional_c, adcional_c);
+            strcpy(ptr->endereco_imagem, endereco_imagem);
             
 
             if(ptr_aux != NULL){
@@ -261,48 +315,48 @@ void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no
             break;
 
         case entrada:
-            cadastrar_no(indice, -1, texto, 0, tipo, passar, n_opcoes, opcoes, adcional_c);
+            cadastrar_no(indice, -1, texto, 0, tipo, passar, n_opcoes, opcoes, endereco_imagem);
             break;
 
         case sala_item:
-            cadastrar_no(indice, codigo, texto, 0, tipo, passar, 1, opcoes, adcional_c);
-            cadastrar_no(indice+1, codigo+1, texto, 1, tipo, passar, 2, opcoes, adcional_c);
-            cadastrar_no(indice+2, codigo+2, texto, 2, tipo, passar, 3, opcoes, adcional_c);
+            cadastrar_no(indice, codigo, texto, 0, tipo, passar, 1, opcoes, endereco_imagem);
+            cadastrar_no(indice+1, codigo+1, texto, 1, tipo, passar, 2, opcoes, endereco_imagem);
+            cadastrar_no(indice+2, codigo+2, texto, 2, tipo, passar, 3, opcoes, endereco_imagem);
             break;
 
         case pedra:
-            cadastrar_no(indice, codigo, texto, 0, tipo, passar, n_opcoes, opcoes, adcional_c);
+            cadastrar_no(indice, codigo, texto, 0, tipo, passar, n_opcoes, opcoes, endereco_imagem);
             break;
 
         case saida:
-            cadastrar_no(indice, codigo, texto, 0, tipo, passar, n_opcoes, opcoes, adcional_c);
+            cadastrar_no(indice, codigo, texto, 0, tipo, passar, n_opcoes, opcoes, endereco_imagem);
             break;
 
         case fechadura:
             cadastrar_no(indice, codigo, texto, 0, tipo, nao_complexo, n_opcoes, opcoes, "G3");
-            cadastrar_no(indice+1, codigo, texto, 1, tipo, passar, n_opcoes+1, opcoes, adcional_c);
-            cadastrar_no(indice+2, codigo, texto, 2, tipo, passar, n_opcoes+2, opcoes, adcional_c);
+            cadastrar_no(indice+1, codigo, texto, 1, tipo, passar, n_opcoes+1, opcoes, endereco_imagem);
+            cadastrar_no(indice+2, codigo, texto, 2, tipo, passar, n_opcoes+2, opcoes, endereco_imagem);
             break;
 
         case enigma:
-            cadastrar_no(indice, codigo, texto, 0, tipo, nao_complexo, n_opcoes, opcoes, adcional_c);
+            cadastrar_no(indice, codigo, texto, 0, tipo, nao_complexo, n_opcoes, opcoes, endereco_imagem);
 
             for(int i=0; i<n_opcoes; i++){
-                cadastrar_no(indice+i+1, codigo+1+i, texto, i+1, tipo, passar, n_opcoes+1+i, opcoes, adcional_c);
+                cadastrar_no(indice+i+1, codigo+1+i, texto, i+1, tipo, passar, n_opcoes+1+i, opcoes, endereco_imagem);
             }
 
             break;
 
         case luta:
             if(n_opcoes==4){
-                cadastrar_no(indice, codigo, texto, 0, tipo, passar, 1, opcoes, adcional_c);
+                cadastrar_no(indice, codigo, texto, 0, tipo, passar, 1, opcoes, endereco_imagem);
                 for(int i=0; i<n_opcoes-1; i++){
-                    cadastrar_no(indice+1+i, codigo+1+i, texto, i+1, tipo, passar, 2+i, opcoes, adcional_c);
+                    cadastrar_no(indice+1+i, codigo+1+i, texto, i+1, tipo, passar, 2+i, opcoes, endereco_imagem);
                 }
             }else if(n_opcoes==5){
-                cadastrar_no(indice, codigo, texto, 0, tipo, nao_complexo, 2, opcoes, adcional_c);
+                cadastrar_no(indice, codigo, texto, 0, tipo, nao_complexo, 2, opcoes, endereco_imagem);
                 for(int i=0; i<n_opcoes-2; i++){
-                    cadastrar_no(indice+1+i, codigo+1+i, texto, i+1, tipo, passar, 3+i, opcoes, adcional_c);
+                    cadastrar_no(indice+1+i, codigo+1+i, texto, i+1, tipo, passar, 3+i, opcoes, endereco_imagem);
                 }
             }
 
@@ -332,7 +386,7 @@ void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no
             ptr->ant = NULL;
             ptr->prox = NULL;
 
-            strcpy(ptr->adcional_c, adcional_c);
+            strcpy(ptr->endereco_imagem, endereco_imagem);
 
 
             if(ptr_aux != NULL){
@@ -359,6 +413,7 @@ void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no
 void cadastrar_nos(){
     /* MODELO DE CADASTRO
         cadastrar_no(
+            indice,
             code, 
             texto[][501],
             n_textos,
@@ -366,7 +421,7 @@ void cadastrar_nos(){
             compl,
             n_opcoes,
             opcoes,
-            adcional_c)
+            endereco_imagem)
     */
     opcao opcoes_0[1] = {{'#', 1}};
     char texto_0[1][501] = {"-Que lugar eh esse? Onde eu estou?\n-Ta perdido aluno? - Disse uma voz misteriosa - Essa eh a masmorra da casa do trem, ngm nunca saiu daqui, nao vivo pelo menos. Eu sou o espirito Cerqueireanista que guia os nobres engenheiros nessa jornada. Ja vou avisando que estou com pressa, ja ja outro quadrupede vai cair aqui, entao pegue aquela faca e vamos. \n-Como assim? o que ta acontecendo?\n-Tudo sera respondido no seu tempo, mas por hora vamos em frente\n"};
@@ -511,7 +566,7 @@ void cadastrar_nos(){
         opcoes_20,
         "");
 
-    opcao opcoes_21[4] = {{'1', 22}, {'2', 20}, {'#', 24}, {'#', 21}};
+    opcao opcoes_21[4] = {{'1', 3022}, {'2', 20}, {'#', 24}, {'#', 21}};
     char texto_21[3][501] = {"-Uma porta, o que eu tenho que fazer? \n-Voce eh burro? tem 3 buracos, acho que voce precisa colocar algo la ne... \n-verdade \n-quer tentar? \n1-Tentar Abrir a passagem \n2-Voltar \nDigite a opcao: ", "-Bom, parece que voce consegui as 3 gemas.\n", "-Va procurar as gemas e volte outra hora.\n"};
 	cadastrar_no(
         21,
@@ -525,7 +580,7 @@ void cadastrar_nos(){
         "");
     
     
-    opcao opcoes_24[3] = {{'#', 25}, {'#', 26}, {'#', 27}};
+    opcao opcoes_24[3] = {{'#', 25}, {'#', 26}, {'#', 20}};
     char texto_24[3][501] = {"-Olha, que sala cool. O que eh aquilo? \n-Va la e veja.\n", "-Uau, um peitora. \n-Nao eh um peitoral qualquer, esse foi utilizado pelo proprio ricardo franco na guerra contra os australopitecos\n", "-Posso pegar? \n-Se eu fosse voce eu pegaria, vai precisar para continuar vivo hehe.\n"};
 	cadastrar_no(
         24,
@@ -682,6 +737,71 @@ void barra_de_vida(int vida){
     printf("-----------------------------------\n");
 }
 
+void barra_superior(){
+    // vida, xp, nivel, ataque, pedras
+    //parte de cima
+    printf("----------------------------- -----------------------------  -------  ---------  ---------\n");
+    
+    //vida
+    printf("HP: ");
+    int frac = vida*17/vida_MAX;
+    for(int i=0; i<frac; i++){
+        printf("\033[1;32;40m#\033[1;37;40m");
+    }
+    for(int i=0; i<17-frac; i++){
+        printf(" ");
+    }
+    printf(" %3d/%3d ", vida, vida_MAX);
+
+    //Xp
+    printf("XP: ");
+    frac = XP*17/100;
+    for(int i=0; i<frac; i++){
+        printf("\033[1;34;40m#\033[1;37;40m");
+    }
+    for(int i=0; i<17-frac; i++){
+        printf(" ");
+    }
+    printf(" %3d/%3d  ", XP, 100);
+
+    
+    //outras coisas NIVEL ATAQUE PEDRAS
+    printf("NIVEL:%1d  ATAQUE:%2d  PEDRAS:%2d", nivel, ataque, pedras);
+    //parte de baixo que eh copia da de cima
+    printf("\n----------------------------- -----------------------------  -------  ---------  ---------\n");
+}
+
+void barra_superior_luta(int vida_inimigo, int vida_inimigo_MAX, int ataque_inimigo){
+    //parte de cima
+    printf("------------------------------ ---------          --------- ------------------------------\n");
+
+    //vida
+    printf("HP: ");
+    int frac = vida*18/vida_MAX;
+    for(int i=0; i<frac; i++){
+        printf("\033[1;32;40m#\033[1;37;40m");
+    }
+    for(int i=0; i<18-frac; i++){
+        printf(" ");
+    }
+    printf(" %3d/%3d ", vida, vida_MAX);
+
+    printf("ATAQUE:%2d          ATAQUE:%2d ", ataque, ataque_inimigo);
+
+    //vida_inimigo
+    printf("HP: ");
+    frac = vida_inimigo*18/vida_inimigo_MAX;
+    for(int i=0; i<frac; i++){
+        printf("\033[1;31;40m#\033[1;37;40m");
+    }
+    for(int i=0; i<18-frac; i++){
+        printf(" ");
+    }
+    printf(" %3d/%3d", vida_inimigo, vida_inimigo_MAX);
+
+    //parte de baixo copia da de cima
+    printf("\n------------------------------ ---------          --------- ------------------------------\n");
+}
 void limpar(){
     system("cls");
 }
@@ -692,4 +812,24 @@ void pausa(){
 
 
 //#########################MECANICA DE JOGO#########################//
+
+//mecanica das pedras para abrir portas
+void sala_pedras(int indice){
+    int contador=0;
+    for(int i=0; i<topo_ja_coletas+1; i++){
+        if(indice == ja_coletas[i]){
+            contador++;
+            break;
+        }
+    }
+    if(contador == 0){
+        topo_ja_coletas++;
+        pedras++;
+        ja_coletas[topo_ja_coletas] = indice;
+    }
+    
+}
+
+
+
 
