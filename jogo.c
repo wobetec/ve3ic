@@ -1,10 +1,8 @@
 /*
 Olhar para refatorar:
-    tornar o jogo portavel
     implementar check point
     implementar morte
     implementar sistema de XP
-    implementar sistema de itens
 */
 
 ////////////////////////INCLUSAO DE BIBLIOTECAS///////////////////////
@@ -62,21 +60,21 @@ int vida = 100;
 int vida_MAX = 100;
 
 //pedras
-int pedras = 3;
+int pedras = 0;
 int ja_coletas[15];
 int topo_ja_coletas = -1;
 
 //atributos globais
-int XP = 0;
-int nivel = 0;
+int XP = 60;
+int nivel = 2;
 int ataque = 14;
 int armadura = 12;
 
 //vida e ataque do inimigo para lutas
 int vida_inimigo=-1, vida_inimigo_MAX=0, ataque_inimigo=0;
 
-//itens: peitoral
-int itens[]={0};
+//itens: item daquela fase
+int itens[2]={0, 0};
 
 //salas bloqueadas por ja terem sido acessadas
 int salas_bloqueadas[128], cont_salas = 0;
@@ -116,6 +114,8 @@ void set_luta();
 
 void bloquear_no(int indice);
 int checar_bloqueio(int indice);
+void add_item(int id);
+int check_item(int id);
 
 /////////////////////////////////MAIN/////////////////////////////////
 int main(){
@@ -155,6 +155,16 @@ int main(){
                 switch(ptr_atual->tipo_especifico){
                     case passar:
                         switch(code){
+                            case sala_item:
+                                bloquear_no(ptr_atual->indice);
+                                add_item(0);
+                                contador = 0;
+                                limpar();
+                                barra_superior();
+                                printar_imagem();
+                                printar_esperar(&indice_proximo_no);
+                                break;
+
                             case enigma:
                                 bloquear_no(ptr_atual->indice);
                                 contador = 0;
@@ -216,13 +226,21 @@ int main(){
                                 printar_imagem();
                                 printar_opcao(&opcao, &indice_proximo_no);
 
-                                if(indice_proximo_no/1000 == pedras && pedras != 0){
-                                    indice_proximo_no = indice_proximo_no %1000;
-                                    pedras=0;
-                                }else if(indice_proximo_no/1000>0){
-                                    indice_proximo_no = indice_proximo_no %1000 + 1;
+                                if(indice_proximo_no >= 10000){
+                                    int id = indice_proximo_no/10000;
+                                    if(check_item(id)){
+                                        indice_proximo_no = indice_proximo_no%1000;
+                                    }else{
+                                        indice_proximo_no = indice_proximo_no%1000 + 1;
+                                    }
+                                }else{
+                                    if(indice_proximo_no/1000 == pedras && pedras != 0){
+                                        indice_proximo_no = indice_proximo_no %1000;
+                                        pedras=0;
+                                    }else if(indice_proximo_no/1000>0){
+                                        indice_proximo_no = indice_proximo_no %1000 + 1;
+                                    }
                                 }
-
                                 break;
                             
                             case luta:
@@ -1064,5 +1082,17 @@ int checar_bloqueio(int indice){
         }
     }
     return 0;
+}
+
+void add_item(int id){
+    itens[id]++;
+}
+
+int check_item(int id){
+    if(itens[id] != 0){
+        return 1;
+    }else{
+        return 0;
+    }
 }
 
