@@ -1,6 +1,6 @@
 /*
 Olhar para refatorar:
-    bloquear salas ja passadas
+    tornar o jogo portavel
     implementar check point
     implementar morte
     implementar sistema de XP
@@ -49,9 +49,6 @@ typedef struct _no {
 	struct _no *prox;
 } no;
 
-////////////////DEFINICAO DE STRUCTS DOS NOS COMPLEXOS////////////////
-
-
 //////////////////////////VARIAVEIS GLOBAIS///////////////////////////
 //Referencia para o inicio e para a posicao atual na lista encadeada
 no *ptr_inicio, *ptr_atual;
@@ -80,6 +77,9 @@ int vida_inimigo=-1, vida_inimigo_MAX=0, ataque_inimigo=0;
 
 //itens: peitoral
 int itens[]={0};
+
+//salas bloqueadas por ja terem sido acessadas
+int salas_bloqueadas[128], cont_salas = 0;
 
 /////////////////////////////PROTOTIPOS///////////////////////////////
 char *ler_nome_jogador(char *nome_arquivo);
@@ -114,6 +114,8 @@ void atualizar_vida(int ganho, int valor);
 void dano_vida_luta();
 void set_luta();
 
+void bloquear_no(int indice);
+int checar_bloqueio(int indice);
 
 /////////////////////////////////MAIN/////////////////////////////////
 int main(){
@@ -138,6 +140,8 @@ int main(){
     fprintf(arquivo_saida, "Bem-vindo a masmorra da casa do trem, %s!\n", nome_jogador);
     pausa();
 
+    salas_bloqueadas[0]=0;
+
     //carregar o no zero
     ptr_atual = buscar_no(0);
 
@@ -151,7 +155,17 @@ int main(){
                 switch(ptr_atual->tipo_especifico){
                     case passar:
                         switch(code){
+                            case enigma:
+                                bloquear_no(ptr_atual->indice);
+                                contador = 0;
+                                limpar();
+                                barra_superior();
+                                printar_imagem();
+                                printar_esperar(&indice_proximo_no);
+                                break;
+
                             case pedra:
+                                bloquear_no(ptr_atual->indice);
                                 contador = 0;
                                 limpar();
                                 barra_superior();
@@ -161,6 +175,7 @@ int main(){
                                 break;
 
                             case luta:
+                                bloquear_no(ptr_atual->indice);
                                 if(contador == 0){
                                     set_luta();
                                     contador = 1;
@@ -233,7 +248,18 @@ int main(){
                     break;
                 }
             }
-            ptr_atual= buscar_no(indice_proximo_no);
+            if(!checar_bloqueio(indice_proximo_no)){
+                ptr_atual = buscar_no(indice_proximo_no);
+            }else{
+                ptr_atual = ptr_atual;
+                limpar();
+                barra_superior();
+                imagem("./imagens/caminho_bloqueado.txt");
+                printf("\nEste caminho esta bloqueado.\nVoce ja passou por aqui, esta perdido por acaso?\n");
+                fprintf(arquivo_saida, "\nEste caminho esta bloqueado.\nVoce ja passou por aqui, esta perdido por acaso?\n");
+                pausa();
+            }
+            
         }
         else{//Se no eh terminal, apresentar texto e finalizar programa
             printf("%s", ptr_atual->texto);
@@ -372,7 +398,7 @@ void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no
         case enigma:
             cadastrar_no(indice, codigo, texto, 0, tipo, nao_complexo, n_opcoes, opcoes, endereco_imagem);
 
-            for(int i=0; i<n_opcoes; i++){
+            for(int i=0; i<n_opcoes-1; i++){
                 cadastrar_no(indice+i+1, codigo+1+i, texto, i+1, tipo, passar, n_opcoes+1+i, opcoes, endereco_imagem);
             }
 
@@ -519,7 +545,7 @@ void cadastrar_nos(){
     */
 
     opcao opcoes_0[1] = {{'#', 1}};
-    char texto_0[1][501] = {"-Que lugar eh esse? Onde eu estou?\n-Ta perdido aluno? - Disse uma voz misteriosa - Essa eh a masmorra da casa do trem, ngm nunca saiu daqui, nao vivo pelo menos. Eu sou o espirito Cerqueireanista que guia os nobres engenheiros nessa jornada. Ja vou avisando que estou com pressa, ja ja outro quadrupede vai cair aqui, entao pegue aquela faca e vamos. \n-Como assim? o que ta acontecendo?\n-Tudo sera respondido no seu tempo, mas por hora vamos em frente\n \n\nfim\n"};
+    char texto_0[1][501] = {"-Que lugar eh esse? Onde eu estou?\n-Ta perdido aluno? - Disse uma voz misteriosa - Essa eh a masmorra da casa do trem, ngm nunca saiu daqui, nao vivo pelo menos. Eu sou o espirito Cerqueireanista que guia os nobres engenheiros nessa jornada. Ja vou avisando que estou com pressa, ja ja outro quadrupede vai cair aqui, entao pegue aquela faca e vamos. \n-Como assim? o que ta acontecendo?\n-Tudo sera respondido no seu tempo, mas por hora vamos em frente\n"};
 	cadastrar_no(
         0,
         -1, 
@@ -557,8 +583,8 @@ void cadastrar_nos(){
         opcoes_2,
         "./imagens/labirinto2.txt");
 
-    opcao opcoes_3[8] = {{'1', 4}, {'2', 5}, {'3', 6}, {'4', 7}, {'#', 3}, {'#', 8}, {'#', 3}, {'#', 3}};
-    char texto_3[5][501] = {"-Essa eh a sa salados enigmas, dizem que foi aqui que Einstein trancou e Galileu ficou maluco. Vamos ver do que voce eh capaz:\nENIGMA: Qual elemento da azul no teste de chama?\n1-Na  2-Cu  3-Mg  4-K \nDigite a opcao: ", "Qual a ideia aluno?\n", "Voce devia conhecer o tal de Lavoisier, ele tambem acertou essa.\n", "eu hein, ta perdido?\n", "kkkkkkkk\n"};
+    opcao opcoes_3[9] = {{'1', 4}, {'2', 5}, {'3', 6}, {'4', 7}, {'V', 2}, {'#', 3}, {'#', 8}, {'#', 3}, {'#', 3}};
+    char texto_3[5][501] = {"-Essa eh a sa salados enigmas, dizem que foi aqui que Einstein trancou e Galileu ficou maluco. Vamos ver do que voce eh capaz:\nENIGMA: Qual elemento da azul no teste de chama?\n1-Na  2-Cu  3-Mg  4-K \nV-Voltar\nDigite a opcao: ", "Qual a ideia aluno?\n", "Voce devia conhecer o tal de Lavoisier, ele tambem acertou essa.\n", "eu hein, ta perdido?\n", "kkkkkkkk\n"};
 	cadastrar_no(
         3,
         -1, 
@@ -566,7 +592,7 @@ void cadastrar_nos(){
         5,
 		nao_terminal,
         enigma,
-        4,
+        5,
         opcoes_3,
         "./imagens/cenario1.txt");
     
@@ -858,7 +884,7 @@ void barra_superior(){
     fprintf(arquivo_saida, "%s", "HP: ");
     int frac = vida*17/vida_MAX;
     for(int i=0; i<frac; i++){
-        printf("\033[1;32;40m#\033[1;37;40m");
+        printf("#");
         fprintf(arquivo_saida, "#");
     }
     for(int i=0; i<17-frac; i++){
@@ -873,7 +899,7 @@ void barra_superior(){
     fprintf(arquivo_saida, "%s", "XP: ");
     frac = XP*17/100;
     for(int i=0; i<frac; i++){
-        printf("\033[1;34;40m#\033[1;37;40m");
+        printf("#");
         fprintf(arquivo_saida, "#");
     }
     for(int i=0; i<17-frac; i++){
@@ -902,7 +928,7 @@ void barra_superior_luta(){
     fprintf(arquivo_saida, "HP: ");
     int frac = vida*18/vida_MAX;
     for(int i=0; i<frac; i++){
-        printf("\033[1;32;40m#\033[1;37;40m");
+        printf("#");
         fprintf(arquivo_saida, "#");
     }
     for(int i=0; i<18-frac; i++){
@@ -919,7 +945,7 @@ void barra_superior_luta(){
     printf("HP: ");
     frac = vida_inimigo*18/vida_inimigo_MAX;
     for(int i=0; i<frac; i++){
-        printf("\033[1;31;40m#\033[1;37;40m");
+        printf("#");
         fprintf(arquivo_saida, "#");
     }
     for(int i=0; i<18-frac; i++){
@@ -935,16 +961,38 @@ void barra_superior_luta(){
 }
 
 //parte gráfica do cmd
-void limpar(){
-    system("cls");
+void limpar(){//portavel
+    #ifdef LINUX
+    system ("clear");
+    #elif defined WIN32
+    system ("cls");
+    #else
+    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    #endif
 }
 
-void pausa(){
+void pausa(){//portavel
+    #ifdef WIN32
     system("pause");
+    fprintf(arquivo_saida, "Pressione qualquer tecla para continuar. . .\n");
+    #else
+    char c;
+    printf("\nPressione ENTER para continuar. . .");
+    fprintf(arquivo_saida, "\nPressione ENTER para continuar. . .");
+    scanf("%c%*c", &c);
+    #endif
+
+    
 }
 
-void resize(){
+void resize(){//portavel
+    #ifdef WIN32
     system("MODE con cols=91 lines=35 ");
+    #else
+    printf("Para uma melhor experiencia, redimencione seu terminal para 90x35\n");
+    fprintf(arquivo_saida, "Para uma melhor experiencia, redimencione seu terminal para 90x35\n");
+    pausa();
+    #endif
 }
 
 //#########################MECANICA DE JOGO#########################//
@@ -1002,3 +1050,19 @@ void dano_vida_luta(){
         vida_inimigo-=dano_aflingido;
     }
 }
+
+void bloquear_no(int indice){
+    cont_salas++;
+    salas_bloqueadas[cont_salas-1] = indice;
+}
+
+int checar_bloqueio(int indice){
+    for(int i=0; i<=cont_salas; i++){
+        if(salas_bloqueadas[i] == indice){
+            return 1;
+            break;
+        }
+    }
+    return 0;
+}
+
