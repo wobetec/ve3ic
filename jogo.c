@@ -494,60 +494,6 @@ void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no
 }
 
 
-//cadastras todos os nos na lista encadeada
-void cadastrar_nos1(){
-        opcao opcoes_0[1] = {{'#', 1}};
-    char texto_0[1][501] = {"No de entrada\n"};
-	cadastrar_no(
-        0,
-        -1, 
-        texto_0,
-        0,
-		raiz,
-        entrada,
-        1,
-        opcoes_0,
-        "./imagens/labirinto1.txt");
-
-    opcao opcoes_1[4] = {{'#', 2}, {'#', 3}, {'#', 4}, {'#', 5}};
-    char texto_1[4][501] = {"Texto 1 dialogo\n", "Texto 2 dialogo\n", "Texto 3 dialogo\n", "Texto 4 dialogo\n"};
-	cadastrar_no(
-        1,
-        -1, 
-        texto_1,
-        0,
-		nao_terminal,
-        dialogo,
-        4,
-        opcoes_1,
-        "./imagens/guianu.txt");
-    
-    opcao opcoes_5[2] = {{'#', 6}};
-    char texto_5[1][501] = {"mais vida +20\n"};
-	cadastrar_no(
-        5,
-        -1, 
-        texto_5,
-        0,
-		nao_terminal,
-        rancho,
-        1,
-        opcoes_5,
-        "./imagens/labirinto1.txt");
-    
-    char texto_6[1][501] = {"FIM - terminal"};
-	cadastrar_no(
-        6,
-        -1, 
-        texto_6,
-        0,
-		terminal,
-        nao_complexo,
-        0,
-        NULL,
-        "./imagens/personagem.txt");
-}
-
 void cadastrar_nos(){
     /* MODELO DE CADASTRO
         cadastrar_no(
@@ -561,9 +507,8 @@ void cadastrar_nos(){
             opcoes,
             endereco_imagem)
     */
-
     opcao opcoes_0[1] = {{'#', 1}};
-    char texto_0[1][501] = {"-Que lugar eh esse? Onde eu estou?\n-Ta perdido aluno? - Disse uma voz misteriosa - Essa eh a masmorra da casa do trem, ngm nunca saiu daqui, nao vivo pelo menos. Eu sou o espirito Cerqueireanista que guia os nobres engenheiros nessa jornada. Ja vou avisando que estou com pressa, ja ja outro quadrupede vai cair aqui, entao pegue aquela faca e vamos. \n-Como assim? o que ta acontecendo?\n-Tudo sera respondido no seu tempo, mas por hora vamos em frente\n"};
+    char texto_0[1][501] = {"Quinta-feira pela manha, aula de AlgLin que parece nao ter fim, e la esta o Aluno do IMEnso instituto, tentando se concentrar na aulinha enquanto nao para de pensar no Empire of Dungeons, um jogo que encontrou na internet recentemente e nao ve a hora de comprar. Essa aula esta realmente chata e o aluno esta muito concentrado em seus pensamentos, imagiando cada detalhe do jogo, quando derrepente um clarao.\n"};
 	cadastrar_no(
         0,
         -1, 
@@ -573,203 +518,87 @@ void cadastrar_nos(){
         entrada,
         1,
         opcoes_0,
-        "./imagens/labirinto1.txt");
+        "./imagens/cenario1.txt");
 
-    opcao opcoes_1[2] = {{'E', 2}, {'D', 14}};
-    char texto_1[1][501] = {"Escolha logo por onde quer ir:\nE-Esquerda\nD-Direita\nDigite a opcao: "};
+    opcao opcoes_1[3] = {{'#', 2}, {'#', 3}, {'#', 4}};
+    char texto_1[3][501] = {"-Voz misteriosa: Ola, quem vos fala eh o criador desse belo jogo. Por enquanto, voces nao saberao quem sou eu... na verdade, poucos descobrirao. O que está em jogo agora é a suas vidas.\n", "Se conseguirem chegar ao ultimo andar da torre de 5 andares que se apresenta adiante, resolvendo todos os enigmas necessarios, coletando todos os itens, tornando-se mais fortes e derrotando os BOSS de cada andar, sairao vivos.\n", "Caso contrario, vocês ja sabem. Por que estou fazendo isso? pura diversão. No mais, boa sorte!\n"};
 	cadastrar_no(
         1,
         -1, 
         texto_1,
-        0,
+        3,
 		nao_terminal,
-        nao_complexo,
-        2,
+        dialogo,
+        3,
         opcoes_1,
-        "./imagens/labirinto2.txt");
-    
-    opcao opcoes_2[3] = {{'E', 3}, {'D', 9}, {'V', 1}};
-    char texto_2[1][501] = {"-Outra bifurcacao? \n-Nao pondere aluno... \nE-Esquerda \nD-Direita \nV-Voltar \nDigite a opcao: "};
+        "./imagens/cenariofinal.txt");
+
+    opcao opcoes_4[2] = {{'E', 5}, {'D', 10}};
+    char texto_4[1][501] = {"-Voce: Uma bifurcacao, por onde devo ir? \nE-Esquerda \nD-Direita \nDigite a opcao: "};
 	cadastrar_no(
-        2,
+        4,
         -1, 
-        texto_2,
+        texto_4,
         0,
 		nao_terminal,
         nao_complexo,
-        3,
-        opcoes_2,
+        2,
+        opcoes_4,
         "./imagens/labirinto2.txt");
 
-    opcao opcoes_3[9] = {{'1', 4}, {'2', 5}, {'3', 6}, {'4', 7}, {'V', 2}, {'#', 3}, {'#', 8}, {'#', 3}, {'#', 3}};
-    char texto_3[5][501] = {"-Essa eh a sa salados enigmas, dizem que foi aqui que Einstein trancou e Galileu ficou maluco. Vamos ver do que voce eh capaz:\nENIGMA: Qual elemento da azul no teste de chama?\n1-Na  2-Cu  3-Mg  4-K \nV-Voltar\nDigite a opcao: ", "Qual a ideia aluno?\n", "Voce devia conhecer o tal de Lavoisier, ele tambem acertou essa.\n", "eu hein, ta perdido?\n", "kkkkkkkk\n"};
+    opcao opcoes_5[4] = {{'#', 6}, {'#', 7}, {'#', 8}, {'#', 9}};
+    char texto_5[4][501] = {"-Voce: O que eh aquilo, parece um goblim, ele esta dormindo.\n-Servo: Errado Aluno, nao esta mais.\n","-Goblim: lara ratu peri.\n-Voce: Seja la o que for, eu quem vou ganhar, sou treinado na arte das integrais multiplas.\n","-Goblim: baru sate lorem.-Voce: morraaaaa!\n", "-Servo: estou impressionado de que voce tenha saido dessa vivo, a maioria morre antes de virar a esquerda.\n-Voz misteriosa: Nao encoraje esse quadrupede, esse eh soh o principio das dores\n"};
 	cadastrar_no(
-        3,
-        -1, 
-        texto_3,
         5,
-		nao_terminal,
-        enigma,
-        5,
-        opcoes_3,
-        "./imagens/cenario1.txt");
-    
-    opcao opcoes_8[1] = {{'#', 2}};
-    char texto_8[1][501] = {"-Uma gema! mas pra que eu vou usar isso?\n-Calma aluno, faz parte do seu path of warrior.\n"};
-	cadastrar_no(
-        8,
         -1, 
-        texto_8,
+        texto_5,
         0,
 		nao_terminal,
-        pedra,
-        1,
-        opcoes_8,
-        "./imagens/gema.txt");
-
-    opcao opcoes_9[4] = {{'#', 10}, {'#', 11}, {'#', 12}, {'#', 13}};
-    char texto_9[4][501] = {"-Corre Cerque alguma coisa, um monstroooo! \n-Antes ate dava para fugir se voce nao tivesse acordado ele, agora eh guerra tua. \n-O que eu facooo? ele ta vindo!! \n-Tenta acertar a faca nele imbecil.\n", "-Bom, mas vai ter que fazer melhor se quiser sair dessa vivo. \n-VIVO?\n", "-Por espartaaaa\n", "-Parece que voce esta pegando o jeito, mas isso nao foi um elogio, disse a mesma coisa mara o Isack e o infeliz morreu com uma maca que caiu na cabeca.\n"};
+        luta,
+        4,
+        opcoes_5,
+        "./imagens/batalha4.txt");
+    
+    opcao opcoes_9[1] = {{'#', 4}};
+    char texto_9[1][501] = {"-Voce: Olha, parece so uma pedra, devo pegar?\n-Servo: Nao estou aqui para ser sua baba, faca o que quiser\n-Voce: vou levar comigo.\n-Voz misteriosa: Veja se nao temos um colecionador de pedras aqui, vai mesmo guardar essa pedra?\n-Voce: Vai que preciso jogar em alguem\n-Voz misteriosa: ou em algo."};
 	cadastrar_no(
         9,
         -1, 
         texto_9,
-        4,
+        0,
 		nao_terminal,
-        luta,
-        4,
+        pedra,
+        1,
         opcoes_9,
-        "./imagens/batalha1.txt");
-        
-    opcao opcoes_13[1] = {{'#', 2}};
-    char texto_13[1][501] = {"-Encontrou um gema, nem pergunte nada, so pegue.\n"};
-	cadastrar_no(
-        13,
-        -1, 
-        texto_13,
-        0,
-		nao_terminal,
-        pedra,
-        1,
-        opcoes_13,
         "./imagens/gema.txt");
 
-    opcao opcoes_14[3] = {{'E', 20}, {'D', 15}, {'V', 1}};
-    char texto_14[1][501] = {"-Vamos logo, estou com pressa, escolha por onde ir: \nE-Esquerda \nD-Direita \nV-Voltar \nDigite a opcao: "};
+    opcao opcoes_10[4] = {{'E', 3}, {'F', 9}, {'D', 1}, {'V', 4}};
+    char texto_10[1][501] = {"-Voce: 3 caminhos agora, estou começando a me perder aqui.\n-Servo: Hehe, soh continue andando aluno, quanto mais cedo voce morrer, mais cedo estou livre.\nE-Esquerda \nF-Frente \nD-Direita \nV-Voltar \nDigite a opcao: "};
 	cadastrar_no(
-        14,
+        10,
         -1, 
-        texto_14,
+        texto_10,
         0,
 		nao_terminal,
         nao_complexo,
-        3,
-        opcoes_14,
-        "./imagens/labirinto2.txt");
-
-    opcao opcoes_15[4] = {{'#', 16}, {'#', 17}, {'#', 18}, {'#', 19}};
-    char texto_15[4][501] = {"-O que eh aquilooo?? \n-Nao precisava descobir agora... mas ja que gritou n tem jeito, guerra tua. \n-Ele vai me mataaaar!! \n-Reaje aluno, a faca ai na mao nao eh para ser enfeite\n", "-Continua aluno. \n-Eu nao aguento maaais.\n", "-Thunder, thunder, thundercaaaats.\n", "-Agora o aluno ficou maluco de vez, mais um, pelo menos saiu vivo\n"};
-	cadastrar_no(
-        15,
-        -1, 
-        texto_15,
         4,
-		nao_terminal,
-        luta,
-        4,
-        opcoes_15,
-        "./imagens/batalha4.txt");
+        opcoes_10,
+        "./imagens/labirinto3.txt");
     
-    opcao opcoes_19[1] = {{'#', 14}};
-    char texto_19[1][501] = {"-OLha la, uma gema.\n-So pega logo aluno\n"};
+    /*
+    opcao opcoes_$[3] = {{'E', 3}, {'D', 9}, {'V', 1}};
+    char texto_$[1][501] = {"-Outra bifurcacao? \n-Nao pondere aluno... \nE-Esquerda \nD-Direita \nV-Voltar \nDigite a opcao: "};
 	cadastrar_no(
-        19,
+        $,
         -1, 
-        texto_19,
-        0,
-		nao_terminal,
-        pedra,
-        1,
-        opcoes_19,
-        "./imagens/gema.txt");
-    
-    opcao opcoes_20[3] = {{'E', 27}, {'D', 21}, {'V', 14}};
-    char texto_20[1][501] = {"-Por onde vamos seguir aluno? \nE-Esquerda \nD-Direita \nV-Voltar \nDigite a opcao: "};
-	cadastrar_no(
-        20,
-        -1, 
-        texto_20,
+        texto_$,
         0,
 		nao_terminal,
         nao_complexo,
         3,
-        opcoes_20,
+        opcoes_$,
         "./imagens/labirinto2.txt");
-
-    opcao opcoes_21[4] = {{'1', 3022}, {'2', 20}, {'#', 24}, {'#', 21}};
-    char texto_21[3][501] = {"-Uma porta, o que eu tenho que fazer? \n-Voce eh burro? tem 3 buracos, acho que voce precisa colocar algo la ne... \n-verdade \n-quer tentar? \n1-Tentar Abrir a passagem \n2-Voltar \nDigite a opcao: ", "-Bom, parece que voce consegui as 3 gemas.\n", "-Va procurar as gemas e volte outra hora.\n"};
-	cadastrar_no(
-        21,
-        -1, 
-        texto_21,
-        3,
-		nao_terminal,
-        fechadura,
-        2,
-        opcoes_21,
-        "./imagens/porta3.txt");
-    
-    
-    opcao opcoes_24[3] = {{'#', 25}, {'#', 26}, {'#', 20}};
-    char texto_24[3][501] = {"-Olha, que sala cool. O que eh aquilo? \n-Va la e veja.\n", "-Uau, um peitora. \n-Nao eh um peitoral qualquer, esse foi utilizado pelo proprio ricardo franco na guerra contra os australopitecos\n", "-Posso pegar? \n-Se eu fosse voce eu pegaria, vai precisar para continuar vivo hehe.\n"};
-	cadastrar_no(
-        24,
-        -1, 
-        texto_24,
-        3,
-		nao_terminal,
-        sala_item,
-        1,
-        opcoes_24,
-        "");
-    
-    
-    opcao opcoes_27[5] = {{'N', 20}, {'S', 28}, {'#', 29}, {'#', 30}, {'#', 31}};
-    char texto_27[4][501] = {"##sussurros##  \n-Olha so, parece que alguem esta sendo cauteloso - disse o cerqueireanista com tom de orgulho \n-Posso escolher lutar ou n?\n-Claro, a escolha eh sua:\nS-Acordar e lutar contra o monstro\nN-Voltar e deixar o monstro dormindo\nDigita a opcao: ", "-HAHA,SEGURA ESSA INTEGRAL TRIPLA ALUNO REPUGNANTE. \n-Aprendi isso com 14 anos seu otario.\n", "-NAAAAAOOOO.\n-Essa luta eh minha seu professor de uma figa\n", "-Muito bem aluno-disse o cerqueireanista-ha tempos que n encontrava um guerreiro tao bravo nessa masmorra.\n"};
-	cadastrar_no(
-        27,
-        -1, 
-        texto_27,
-        5,
-		nao_terminal,
-        luta,
-        5,
-        opcoes_27,
-        "./imagens/batalhaboss3.txt");
-    
-    opcao opcoes_31[1] = {{'#', 32}};
-    char texto_31[1][501] = {"\n-Uma escada\n-Creio que seja sua saida daqui aluno, voce derrotou o grande TC Rock, esta livre\n\nO aluno nesse momento sai livre, subindo as escadas(mesmo as odiando devido ao trauma do IMEnso instituto), a luz começa a ficar mais clara...\n"};
-	cadastrar_no(
-        31,
-        -1, 
-        texto_31,
-        0,
-		nao_terminal,
-        saida,
-        1,
-        opcoes_31,
-        "./imagens/guianu.txt");
-    
-    char texto_32[1][501] = {"-Dormindo na aula aluno?\n-Nao senhor-Respondeu o aluno com a baba pendurada na boca\n-TORRADO,duvidas?\n\n###Obrigado por jogar o labirinto###"};
-	cadastrar_no(
-        32,
-        -1, 
-        texto_32,
-        0,
-		terminal,
-        nao_complexo,
-        0,
-        NULL,
-        "./imagens/personagem.txt");
+    */
 
 }
 
