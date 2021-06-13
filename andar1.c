@@ -74,7 +74,7 @@ int armadura = 12;
 int vida_inimigo=-1, vida_inimigo_MAX=0, ataque_inimigo=0;
 
 //itens: item daquela fase
-int itens[2]={0, 0};
+int fechadura_boss = 0;
 
 //salas bloqueadas por ja terem sido acessadas
 int salas_bloqueadas[128], cont_salas = 0;
@@ -133,7 +133,7 @@ int main(){
 
     //Tela de boas vindas
     limpar();
-    imagem("./imagens/bemvindo.txt");
+    imagem("./imagens/ambientacao/bemvindo.txt");
     char nome_jogador[100];
     strcpy(nome_jogador, ler_nome_jogador(NOME_ARQUIVO_ENTRADA));
     printf("Bem-vindo a masmorra da casa do trem, %s!\n", nome_jogador);
@@ -157,7 +157,7 @@ int main(){
                         switch(code){
                             case sala_item:
                                 bloquear_no(ptr_atual->indice);
-                                add_item(0);
+                                fechadura_boss++;
                                 contador = 0;
                                 limpar();
                                 barra_superior();
@@ -177,6 +177,7 @@ int main(){
                             case pedra:
                                 bloquear_no(ptr_atual->indice);
                                 contador = 0;
+                                fechadura_boss++;
                                 limpar();
                                 barra_superior();
                                 printar_imagem();
@@ -200,8 +201,19 @@ int main(){
                                 break;
 
                             case rancho:
+                                contador  = 0;
                                 atualizar_vida(1, 20);
 
+                                limpar();
+                                barra_superior();
+                                printar_imagem();
+                                printar_esperar(&indice_proximo_no);
+                                break;
+                            
+                            case entrada:
+                                contador = 0;
+                                fechadura_boss = 0;
+                                
                                 limpar();
                                 barra_superior();
                                 printar_imagem();
@@ -221,22 +233,23 @@ int main(){
                         switch(code){;
                             char opcao;
                             case fechadura:
+                                contador = 0;
                                 limpar();
                                 barra_superior();
                                 printar_imagem();
                                 printar_opcao(&opcao, &indice_proximo_no);
 
                                 if(indice_proximo_no >= 10000){
-                                    int id = indice_proximo_no/10000;
-                                    if(check_item(id)){
+                                    int n = indice_proximo_no/10000;
+                                    if(pedras == n){
                                         indice_proximo_no = indice_proximo_no%1000;
                                     }else{
                                         indice_proximo_no = indice_proximo_no%1000 + 1;
                                     }
                                 }else{
-                                    if(indice_proximo_no/1000 == pedras && pedras != 0){
+                                    if(indice_proximo_no/1000 == fechadura_boss && fechadura_boss != 0){
                                         indice_proximo_no = indice_proximo_no %1000;
-                                        pedras=0;
+                                        fechadura_boss = 0;
                                     }else if(indice_proximo_no/1000>0){
                                         indice_proximo_no = indice_proximo_no %1000 + 1;
                                     }
@@ -272,7 +285,7 @@ int main(){
                 ptr_atual = ptr_atual;
                 limpar();
                 barra_superior();
-                imagem("./imagens/caminho_bloqueado.txt");
+                imagem("./imagens/ambientacao/caminho_bloqueado.txt");
                 printf("\nEste caminho esta bloqueado.\nVoce ja passou por aqui, esta perdido por acaso?\n");
                 fprintf(arquivo_saida, "\nEste caminho esta bloqueado.\nVoce ja passou por aqui, esta perdido por acaso?\n");
                 pausa();
@@ -508,7 +521,7 @@ void cadastrar_nos(){
             endereco_imagem)
     */
     opcao opcoes_0[1] = {{'#', 1}};
-    char texto_0[1][501] = {"Quinta-feira pela manha, aula de AlgLin que parece nao ter fim, e la esta o Aluno do IMEnso instituto, tentando se concentrar na aulinha enquanto nao para de pensar no Empire of Dungeons, um jogo que encontrou na internet recentemente e nao ve a hora de comprar. Essa aula esta realmente chata e o aluno esta muito concentrado em seus pensamentos, imagiando cada detalhe do jogo, quando derrepente um clarao.\n"};
+    char texto_0[1][501] = {"Quinta-feira pela manha, aula de AlgLin que parece nao ter fim, e la esta o Aluno do \nIMEnso instituto, tentando se concentrar na aulinha enquanto nao para de pensar no Empire of \nDungeons, um jogo que encontrou na internet recentemente e nao ve a hora de comprar. Essa aula esta realmente chata e o aluno esta muito concentrado em seus pensamentos, imagiando cada detalhe do jogo, quando derrepente um clarao.\n"};
 	cadastrar_no(
         0,
         -1, 
@@ -521,7 +534,7 @@ void cadastrar_nos(){
         "");
 
     opcao opcoes_1[3] = {{'#', 2}, {'#', 3}, {'#', 4}};
-    char texto_1[3][501] = {"-Voz misteriosa: Ola, quem vos fala eh o criador desse belo jogo. Por enquanto, voces nao saberao quem sou eu... na verdade, poucos descobrirao. O que está em jogo agora é a suas vidas.\n", "Se conseguirem chegar ao ultimo andar da torre de 5 andares que se apresenta adiante, resolvendo todos os enigmas necessarios, coletando todos os itens, tornando-se mais fortes e derrotando os BOSS de cada andar, sairao vivos.\n", "Caso contrario, vocês ja sabem. Por que estou fazendo isso? pura diversão. No mais, boa sorte!\n"};
+    char texto_1[3][501] = {"-Voz misteriosa: Ola, quem vos fala eh o criador desse belo jogo. Por enquanto, voces nao saberao quem sou eu... na verdade, poucos descobrirao. O que está em jogo agora é a suas vidas.\n", "Se conseguirem chegar ao ultimo andar da torre de 5 andares que se apresenta adiante, resolvendo todos os enigmas necessarios, coletando todos os itens, tornando-se mais fortes e derrotando os BOSS de cada andar, sairao vivos.\n", "Caso contrario, voces ja sabem. Por que estou fazendo isso? pura diversao. No mais, boa sorte!\n"};
 	cadastrar_no(
         1,
         -1, 
@@ -544,7 +557,7 @@ void cadastrar_nos(){
         nao_complexo,
         2,
         opcoes_4,
-        "./imagens/labirinto2.txt");
+        "./imagens/ambientacao/bifurcacao.txt");
 
     opcao opcoes_5[4] = {{'#', 6}, {'#', 7}, {'#', 8}, {'#', 9}};
     char texto_5[4][501] = {"-Voce: O que eh aquilo, parece um goblim, ele esta dormindo.\n-Servo: Errado Aluno, nao esta mais.\n","-Goblim: lara ratu peri.\n-Voce: Seja la o que for, eu quem vou ganhar, sou treinado na arte das integrais multiplas.\n","-Goblim: baru sate lorem.-Voce: morraaaaa!\n", "-Servo: estou impressionado de que voce tenha saido dessa vivo, a maioria morre antes de virar a esquerda.\n-Voz misteriosa: Nao encoraje esse quadrupede, esse eh soh o principio das dores\n"};
@@ -557,7 +570,7 @@ void cadastrar_nos(){
         luta,
         4,
         opcoes_5,
-        "./imagens/batalha4.txt");
+        "./imagens/andar1/goblim.txt");
     
     opcao opcoes_9[1] = {{'#', 4}};
     char texto_9[1][501] = {"-Voce: Olha, parece so uma pedra, devo pegar?\n-Servo: Nao estou aqui para ser sua baba, faca o que quiser\n-Voce: vou levar comigo.\n-Voz misteriosa: Veja se nao temos um colecionador de pedras aqui, vai mesmo guardar essa pedra?\n-Voce: Vai que preciso jogar em alguem\n-Voz misteriosa: ou em algo."};
@@ -570,9 +583,9 @@ void cadastrar_nos(){
         pedra,
         1,
         opcoes_9,
-        "./imagens/gema.txt");
+        "./imagens/ambientacao/gema.txt");
 
-    opcao opcoes_10[4] = {{'E', 3}, {'F', 9}, {'D', 1}, {'V', 4}};
+    opcao opcoes_10[4] = {{'E', 11}, {'F', 24}, {'D', 18}, {'V', 4}};
     char texto_10[1][501] = {"-Voce: 3 caminhos agora, estou começando a me perder aqui.\n-Servo: Hehe, soh continue andando aluno, quanto mais cedo voce morrer, mais cedo estou livre.\nE-Esquerda \nF-Frente \nD-Direita \nV-Voltar \nDigite uma opcao: "};
 	cadastrar_no(
         10,
@@ -583,7 +596,7 @@ void cadastrar_nos(){
         nao_complexo,
         4,
         opcoes_10,
-        "./imagens/labirinto3.txt");
+        "./imagens/ambientacao/trifurcacao.txt");
     
     opcao opcoes_11[4] = {{'#', 12}, {'#', 13}, {'#', 14}, {'#', 15}};
     char texto_11[4][501] = {"-Voce(sussurando): Aquilo eh um fantasma?\n-Servo(sussurando): Acorde ele e descubra.*Lutar *Voltar\n", "-Servo: agora me diga como acertar um fantasma?\n-Voce: facil, eles sao frageis contra raios, e basta gerar um pouco de atrito que consigo produzir faiscas.\n", "-Fantasma: ihhhhhhhhh.\n-Voce: Morra denovo seu infame.\n", "-Voz misteriosa: Vai ter que fazer muito melhor que isso se quiser sair vivo desse lugar.\n"};
@@ -596,10 +609,10 @@ void cadastrar_nos(){
         luta,
         4,
         opcoes_11,
-        "./imagens/batalha2.txt");
+        "./imagens/andar1/fantasma.txt");
     
-    opcao opcoes_15[3] = {{'#', 16}, {'#', 17}, {'#', 14}};
-    char texto_15[3][501] = {"-Voce: Uau, que sala incrivel, deve ter alguma armadilha aqui, parece aquelas salas do tesouro.\n-Goblim: Cala a boca aluno, so joga, voce fala demais.\n-Voce: Olha, tem mesmo um tesouro ali, o que eh aquilo?\n", "-Voz misteriosa: O elmo de Richard Franco,forjado com escama de dragoes nas profundezas da masmorra do trem. Eh um objeto indispensavel para derrotar o TC Rock.\n", "-Voce: parece pesado, mas eh muito legal.\n"};
+    opcao opcoes_15[3] = {{'#', 16}, {'#', 17}, {'#', 10}};
+    char texto_15[3][501] = {"-Voce: Uau, que sala incrivel, deve ter alguma armadilha aqui, parece aquelas salas do tesouro \n-Servo: Cala a boca aluno, so joga, voce fala demais.\n-Voce: Olha, tem mesmo um tesouro ali, o que eh aquilo?\n", "-Voz misteriosa: O elmo de Richard Franco,forjado com escama de dragoes nas profundezas da masmorra do trem. Eh um objeto indispensavel para derrotar o TC Rock.\n", "-Voce: parece pesado, mas eh muito legal.\n"};
 	cadastrar_no(
         15,
         -1, 
@@ -609,7 +622,74 @@ void cadastrar_nos(){
         sala_item,
         3,
         opcoes_15,
-        "./imagens/personagemelmo.txt");
+        "");
+    
+    opcao opcoes_18[9] = {{'A', 19}, {'B', 20}, {'C', 21}, {'D', 22}, {'V', 10}, {'#', 18}, {'#', 23}, {'#', 18}, {'#', 18}};
+    char texto_18[5][501] = {"-Enigma: Alto la, sou o Enigma, o primeiro e unico, assim como minha prima distante, Esfinge, você tem que responder para passar: \nQual destes queima azul?\n A-Na B-Cu C-Mg D-K V-Voltar \nDigite uma opcao: ", "Qual a ideia, aluno?\n", "Ate que voce sabe alguma coisa.\n", "Soh pode ser brincadeira, neh?\n", "kkkkkkkkkkkk\n"};
+	cadastrar_no(
+        18,
+        -1, 
+        texto_18,
+        5,
+		nao_terminal,
+        enigma,
+        5,
+        opcoes_18,
+        "./imagens/ambientacao/enigma.txt");
+    
+    opcao opcoes_23[1] = {{'#', 10}};
+    char texto_23[1][501] = {"-Senhor perdido: Alguem finalmente me libertou, estou preso nessa sala dos enigmas desde que comecei a sonhar."};
+	cadastrar_no(
+        23,
+        -1, 
+        texto_23,
+        0,
+		nao_terminal,
+        dialogo,
+        1,
+        opcoes_23,
+        "");
+    
+    opcao opcoes_24[2] = {{'T', 4025}, {'V', 23}};
+    char texto_24[3][501] = {"-Voce: que porta maneira.\nT-Tentar abrir V-Voltar\n", "-Porta: Eh por sua conta e risco aluno, pode passar.\n", "-Porta: Parece que voce ainda nao consegui um elmo, nao posso deixar voce passar. Apesar que querer que você morra logo o show tem que durar mais que 3s.\n"};
+	cadastrar_no(
+        24,
+        -1, 
+        texto_24,
+        0,
+		nao_terminal,
+        fechadura,
+        3,
+        opcoes_24,
+        "./imagens/ambientacao/fechadura.txt");
+    
+    opcao opcoes_27[3] = {{'#', 28}, {'#', 29}, {'#', 30}, {'#', 31}};
+    char texto_27[4][501] = {"-TC: haha, veja se nao temos uma criaturinha aqui.\n-Voce: Eh uma pedra?\n-Servo: Voce nao devia ter dito isso.\n-TC: Ninguem me chama de pedraaaa.\n", "-Voce: Entao eh para isso que serve o elmo.\n-TC: Voce nao vai sair dessa vivo seu aluno incopetente, niguem sobrevive a minha rajada diferencial.\n", "-Voce: Eu tenho o poder da integral comigo.\n-TC: grhhhhh.\n", "-Voz misteriosa: Veja soh se n temos o primeiro guerreiro nos ultimos 229 anos que consegue derrotar o TC Rock.\n"};
+	cadastrar_no(
+        27,
+        -1, 
+        texto_27,
+        4,
+		nao_terminal,
+        luta,
+        3,
+        opcoes_27,
+        "./imagens/andar1/tcrock.txt");
+    
+    opcao opcoes_31[1] = {{'#', 50},};
+    char texto_31[1][501] = {"-Voz misteriosa: Vamos, suba a escada, quero ver voce ser trucidado pelos proximos desafios. E voce, servo imundo, esta fazendo seu trabalho de forma errada, o infeliz ainda esta vivo, esta ajudando ele por acaso?-Servo: Nao, senhor, estou seguindo suas ordens."};
+	cadastrar_no(
+        31,
+        -1, 
+        texto_31,
+        0,
+		nao_terminal,
+        saida,
+        1,
+        opcoes_31,
+        "./imagens/ambientacao/escada.txt");
+
+
     
     /*
     opcao opcoes_$[3] = {{'E', 3}, {'D', 9}, {'V', 1}};
@@ -641,7 +721,7 @@ no *buscar_no(int indice){
             ptr_aux = ptr_aux->prox;
             }
         
-        printf("\nERRO 05: NO NAO ENCONTRADO NA LISTA.");
+        printf("\nERRO 05: NO NAO ENCONTRADO NA LISTA. %d", indice);
         fprintf(arquivo_saida, "\nERRO 05: NO NAO ENCONTRADO NA LISTA.");
         exit(1);
         }
@@ -938,16 +1018,3 @@ int checar_bloqueio(int indice){
     }
     return 0;
 }
-
-void add_item(int id){
-    itens[id]++;
-}
-
-int check_item(int id){
-    if(itens[id] != 0){
-        return 1;
-    }else{
-        return 0;
-    }
-}
-
