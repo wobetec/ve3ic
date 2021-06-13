@@ -133,7 +133,7 @@ int main(){
 
     //Tela de boas vindas
     limpar();
-    imagem("./imagens/bemvindo.txt");
+    imagem("./imagens/ambientacao/bemvindo.txt");
     char nome_jogador[100];
     strcpy(nome_jogador, ler_nome_jogador(NOME_ARQUIVO_ENTRADA));
     printf("Bem-vindo a masmorra da casa do trem, %s!\n", nome_jogador);
@@ -507,109 +507,132 @@ void cadastrar_nos(){
             opcoes,
             endereco_imagem)
     */
-    opcao opcoes_0[1] = {{'#', 1}};
-    char texto_0[1][501] = {"Quinta-feira pela manha, aula de AlgLin que parece nao ter fim, e la esta o Aluno do IMEnso instituto, tentando se concentrar na aulinha enquanto nao para de pensar no Empire of Dungeons, um jogo que encontrou na internet recentemente e nao ve a hora de comprar. Essa aula esta realmente chata e o aluno esta muito concentrado em seus pensamentos, imagiando cada detalhe do jogo, quando derrepente um clarao.\n"};
+    opcao opcoes_150[1] = {{'#', 151}};
+    char texto_150[1][501] = {"Servo: Eh, ate parece quevoce eh um bom jogador. Pena que soh tera essa fama por pouco tempo. Vamos ver se sobrevive a mais esse andar... "};
 	cadastrar_no(
-        0,
+        150,
         -1, 
-        texto_0,
-        0,
-		raiz,
-        entrada,
-        1,
-        opcoes_0,
-        "./imagens/cenario1.txt");
-
-    opcao opcoes_1[3] = {{'#', 2}, {'#', 3}, {'#', 4}};
-    char texto_1[3][501] = {"-Voz misteriosa: Ola, quem vos fala eh o criador desse belo jogo. Por enquanto, voces nao saberao quem sou eu... na verdade, poucos descobrirao. O que está em jogo agora é a suas vidas.\n", "Se conseguirem chegar ao ultimo andar da torre de 5 andares que se apresenta adiante, resolvendo todos os enigmas necessarios, coletando todos os itens, tornando-se mais fortes e derrotando os BOSS de cada andar, sairao vivos.\n", "Caso contrario, vocês ja sabem. Por que estou fazendo isso? pura diversão. No mais, boa sorte!\n"};
-	cadastrar_no(
-        1,
-        -1, 
-        texto_1,
-        3,
-		nao_terminal,
-        dialogo,
-        3,
-        opcoes_1,
-        "./imagens/cenariofinal.txt");
-
-    opcao opcoes_4[2] = {{'E', 5}, {'D', 10}};
-    char texto_4[1][501] = {"-Voce: Uma bifurcacao, por onde devo ir? \nE-Esquerda \nD-Direita \nDigite a opcao: "};
-	cadastrar_no(
-        4,
-        -1, 
-        texto_4,
+        texto_150,
         0,
 		nao_terminal,
         nao_complexo,
-        2,
-        opcoes_4,
-        "./imagens/labirinto2.txt");
-
-    opcao opcoes_5[4] = {{'#', 6}, {'#', 7}, {'#', 8}, {'#', 9}};
-    char texto_5[4][501] = {"-Voce: O que eh aquilo, parece um goblim, ele esta dormindo.\n-Servo: Errado Aluno, nao esta mais.\n","-Goblim: lara ratu peri.\n-Voce: Seja la o que for, eu quem vou ganhar, sou treinado na arte das integrais multiplas.\n","-Goblim: baru sate lorem.-Voce: morraaaaa!\n", "-Servo: estou impressionado de que voce tenha saido dessa vivo, a maioria morre antes de virar a esquerda.\n-Voz misteriosa: Nao encoraje esse quadrupede, esse eh soh o principio das dores\n"};
-	cadastrar_no(
-        5,
-        -1, 
-        texto_5,
-        4,
-		nao_terminal,
-        luta,
-        4,
-        opcoes_5,
-        "./imagens/batalha4.txt");
+        1,
+        opcoes_150,
+        "./imagens/ambientacao/corredor.txt");
     
-    opcao opcoes_9[1] = {{'#', 4}};
-    char texto_9[1][501] = {"-Voce: Olha, parece so uma pedra, devo pegar?\n-Servo: Nao estou aqui para ser sua baba, faca o que quiser\n-Voce: vou levar comigo.\n-Voz misteriosa: Veja se nao temos um colecionador de pedras aqui, vai mesmo guardar essa pedra?\n-Voce: Vai que preciso jogar em alguem\n-Voz misteriosa: ou em algo."};
+    opcao opcoes_151[3] = {{'E', 152}, {'D', 158}, {'F', 164}};
+    char texto_151[1][501] = {"-Voce: Uma nova trifurcacao? nunca sei para onde devo ir. Vou escolher na sorte \ndessa vez. -Servo: Nao importa qual dos 3 caminhos voce escolha, a morte eh certa, eh ape\nnas questao de tempo Ela tem te acompanhado desde o inicio do jogo, a espera do momento\nperfeito. E-Esquerda F-Frente D-Direita"};
 	cadastrar_no(
-        9,
+        151,
         -1, 
-        texto_9,
+        texto_151,
+        0,
+		nao_terminal,
+        nao_complexo,
+        3,
+        opcoes_151,
+        "./imagens/ambientacao/trifurcacao.txt");
+    
+    opcao opcoes_152[9] = {{'A', 153}, {'B', 154}, {'C', 155}, {'D', 156}, {'V',151}, {'#',152}, {'#',152},  {'#',152}, {'#',157}};
+    char texto_152[1][501] = {"-Enigma: Talvez voce ate tenha sobrevivido a ele la embaixo,\nmas agora tera que saber uma das figuras mais poderosas que ja existiu e que nao se manteve\nintacta lutando com esse monstro. Qual dos deuses listados abaixo perdeu o braco direito para\no lobo Fenris? A-Thor B-Loki C-Frea D-Tyr \nDigite uma opcao: "};
+	cadastrar_no(
+        152,
+        -1,
+        texto_152,
+        0,
+		nao_terminal,
+        nao_complexo,
+        9,
+        opcoes_152,
+        "./imagens/ambientacao/enigma.txt");
+
+    char texto_153[1][501] = {"Aquele loiro forte com uma martelo? nao."};
+	cadastrar_no(
+        153,
+        -1, 
+        texto_153,
+        0,
+		nao_terminal,
+        nao_complexo,
+        0,
+        NULL,
+        "./imagens/ambientacao/enigma.txt");
+    
+    char texto_154[1][501] = {"O irmao do loiro bonitao? definitivamente nao."};
+	cadastrar_no(
+        154,
+        -1, 
+        texto_154,
+        0,
+		nao_terminal,
+        nao_complexo,
+        0,
+        NULL,
+        "./imagens/ambientacao/enigma.txt");
+    
+    char texto_155[1][501] = {"Freya não perderia o braço para um lobo qualquer"};
+	cadastrar_no(
+        155,
+        -1, 
+        texto_155,
+        0,
+		nao_terminal,
+        nao_complexo,
+        0,
+        NULL,
+        "./imagens/ambientacao/enigma.txt");
+
+    opcao opcoes_156[1]={{'#', 157}}; 
+    char texto_156[1][501] = {"Muito bem! Anda estudando mitologia nordica aluno? Agora que acertou teras acesso a um pre\ncioso tesouro..."};
+	cadastrar_no(
+        156,
+        -1, 
+        texto_156,
+        0,
+		nao_terminal,
+        nao_complexo,
+        1,
+        opcoes_156,
+        "./imagens/ambientacao/enigma.txt");
+    
+    opcao opcoes_157[1]={{'#', 151}}; 
+    char texto_157[1][501] = {"Voce: Olha la, outra daquelas pedras, essa brilha mais que as outras.\nServo: Eu ja disse que voce fala demais?"};
+	cadastrar_no(
+        157,
+        -1, 
+        texto_157,
         0,
 		nao_terminal,
         pedra,
         1,
-        opcoes_9,
-        "./imagens/gema.txt");
+        opcoes_157,
+        "./imagens/ambientacao/gema.txt");
 
-    opcao opcoes_10[4] = {{'E', 3}, {'F', 9}, {'D', 1}, {'V', 4}};
-    char texto_10[1][501] = {"-Voce: 3 caminhos agora, estou começando a me perder aqui.\n-Servo: Hehe, soh continue andando aluno, quanto mais cedo voce morrer, mais cedo estou livre.\nE-Esquerda \nF-Frente \nD-Direita \nV-Voltar \nDigite a opcao: "};
+    opcao opcoes_158[1]={{'#', 159}}; 
+    char texto_158[1][501] = {"-Voce: Que cheiro bom, de onde estah vindo?\n-Taberneiro: Bem-vindo a Taberna! Recupere suas forcas com alguns petiscos e um bom vinho!"};
 	cadastrar_no(
-        10,
+        158,
         -1, 
-        texto_10,
+        texto_158,
         0,
 		nao_terminal,
         nao_complexo,
-        4,
-        opcoes_10,
-        "./imagens/labirinto3.txt");
-    
-    opcao opcoes_11[4] = {{'#', 12}, {'#', 13}, {'#', 14}, {'#', 15}};
-    char texto_11[4][501] = {"-Voce(sussurando): Aquilo eh um fantasma?\n-Servo(sussurando): Acorde ele e descubra.*Lutar *Voltar\n", "-Servo: agora me diga como acertar um fantasma?\n-Voce: facil, eles sao frageis contra raios, e basta gerar um pouco de atrito que consigo produzir faiscas.\n", "-Fantasma: ihhhhhhhhh.\n-Voce: Morra denovo seu infame.\n", "-Voz misteriosa: Vai ter que fazer muito melhor que isso se quiser sair vivo desse lugar.\n"};
+        1,
+        opcoes_158,
+        "./imagens/ambientacao/taverna.txt");
+
+    opcao opcoes_159[5]={{'A', 160}, {"#", 161}, {'#', 162},{'#',163}, {'B', 158}};
+    char texto_159[4][501] = {"-Voce(sussurando): Algo com uma forma arredondada estranha estah aproximando... espere, mas\n ele tem uma boca gigante.\n-Servo(sussurando): Pela sua cara, parece que voce o conhece, nao eh mesmo? Para prosse\nguir tera que enfrenta-lo. Deseja seguir em frente e lutar com ele? A-Lutar B-Voltar\n Digite sua escolha:", "Zumbi: \"Aaaahhh!!\"\n-Voce: Ele quer me devorar mas nao vai conseguir!!!", "-Zumbi: \"Aaahhh!!\"\n-Voce: Seu ser malditoooooo! Eu vou te matar!.","-Voz misteriosa: Vai ter que fazer muito melhor que isso se nao quiser morrer agora!"};
 	cadastrar_no(
-        11,
+        159,
         -1, 
-        texto_11,
+        texto_159,
         4,
 		nao_terminal,
         luta,
-        4,
-        opcoes_11,
-        "./imagens/batalha2.txt");
-    
-    opcao opcoes_15[3] = {{'#', 16}, {'#', 17}, {'#', 14}};
-    char texto_15[3][501] = {"-Voce: Uau, que sala incrivel, deve ter alguma armadilha aqui, parece aquelas salas do tesouro.\n-Goblim: Cala a boca aluno, so joga, voce fala demais.\n-Voce: Olha, tem mesmo um tesouro ali, o que eh aquilo?\n", "-Voz misteriosa: O elmo de Richard Franco,forjado com escama de dragoes nas profundezas da masmorra do trem. Eh um objeto indispensavel para derrotar o TC Rock.\n", "-Voce: parece pesado, mas eh muito legal.\n"};
-	cadastrar_no(
-        15,
-        -1, 
-        texto_15,
-        3,
-		nao_terminal,
-        sala_item,
-        3,
-        opcoes_15,
-        "./imagens/personagemelmo.txt");
+        5,
+        opcoes_159,
+        "./imagens/ambientacao/taverna.txt");
     
     /*
     opcao opcoes_$[3] = {{'E', 3}, {'D', 9}, {'V', 1}};
