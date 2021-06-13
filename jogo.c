@@ -552,7 +552,7 @@ void cadastrar_nos(){
         5,
         -1, 
         texto_5,
-        0,
+        4,
 		nao_terminal,
         luta,
         4,
@@ -584,6 +584,32 @@ void cadastrar_nos(){
         4,
         opcoes_10,
         "./imagens/labirinto3.txt");
+    
+    opcao opcoes_11[4] = {{'#', 12}, {'#', 13}, {'#', 14}, {'#', 15}};
+    char texto_11[4][501] = {"-Voce(sussurando): Aquilo eh um fantasma?\n-Servo(sussurando): Acorde ele e descubra.*Lutar *Voltar\n", "-Servo: agora me diga como acertar um fantasma?\n-Voce: facil, eles sao frageis contra raios, e basta gerar um pouco de atrito que consigo produzir faiscas.\n", "-Fantasma: ihhhhhhhhh.\n-Voce: Morra denovo seu infame.\n", "-Voz misteriosa: Vai ter que fazer muito melhor que isso se quiser sair vivo desse lugar.\n"};
+	cadastrar_no(
+        11,
+        -1, 
+        texto_11,
+        4,
+		nao_terminal,
+        luta,
+        4,
+        opcoes_11,
+        "./imagens/batalha2.txt");
+    
+    opcao opcoes_15[3] = {{'#', 16}, {'#', 17}, {'#', 14}};
+    char texto_15[3][501] = {"-Voce: Uau, que sala incrivel, deve ter alguma armadilha aqui, parece aquelas salas do tesouro.\n-Goblim: Cala a boca aluno, so joga, voce fala demais.\n-Voce: Olha, tem mesmo um tesouro ali, o que eh aquilo?\n", "-Voz misteriosa: O elmo de Richard Franco,forjado com escama de dragoes nas profundezas da masmorra do trem. Eh um objeto indispensavel para derrotar o TC Rock.\n", "-Voce: parece pesado, mas eh muito legal.\n"};
+	cadastrar_no(
+        15,
+        -1, 
+        texto_15,
+        3,
+		nao_terminal,
+        sala_item,
+        3,
+        opcoes_15,
+        "./imagens/personagemelmo.txt");
     
     /*
     opcao opcoes_$[3] = {{'E', 3}, {'D', 9}, {'V', 1}};
