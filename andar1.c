@@ -518,7 +518,7 @@ void cadastrar_nos(){
         entrada,
         1,
         opcoes_0,
-        "./imagens/cenario1.txt");
+        "");
 
     opcao opcoes_1[3] = {{'#', 2}, {'#', 3}, {'#', 4}};
     char texto_1[3][501] = {"-Voz misteriosa: Ola, quem vos fala eh o criador desse belo jogo. Por enquanto, voces nao saberao quem sou eu... na verdade, poucos descobrirao. O que está em jogo agora é a suas vidas.\n", "Se conseguirem chegar ao ultimo andar da torre de 5 andares que se apresenta adiante, resolvendo todos os enigmas necessarios, coletando todos os itens, tornando-se mais fortes e derrotando os BOSS de cada andar, sairao vivos.\n", "Caso contrario, vocês ja sabem. Por que estou fazendo isso? pura diversão. No mais, boa sorte!\n"};
@@ -531,10 +531,10 @@ void cadastrar_nos(){
         dialogo,
         3,
         opcoes_1,
-        "./imagens/cenariofinal.txt");
+        "./imagens/andar1/guianu.txt");
 
     opcao opcoes_4[2] = {{'E', 5}, {'D', 10}};
-    char texto_4[1][501] = {"-Voce: Uma bifurcacao, por onde devo ir? \nE-Esquerda \nD-Direita \nDigite a opcao: "};
+    char texto_4[1][501] = {"-Voce: Uma bifurcacao, por onde devo ir? \nE-Esquerda \nD-Direita \nDigite uma opcao: "};
 	cadastrar_no(
         4,
         -1, 
@@ -573,7 +573,7 @@ void cadastrar_nos(){
         "./imagens/gema.txt");
 
     opcao opcoes_10[4] = {{'E', 3}, {'F', 9}, {'D', 1}, {'V', 4}};
-    char texto_10[1][501] = {"-Voce: 3 caminhos agora, estou começando a me perder aqui.\n-Servo: Hehe, soh continue andando aluno, quanto mais cedo voce morrer, mais cedo estou livre.\nE-Esquerda \nF-Frente \nD-Direita \nV-Voltar \nDigite a opcao: "};
+    char texto_10[1][501] = {"-Voce: 3 caminhos agora, estou começando a me perder aqui.\n-Servo: Hehe, soh continue andando aluno, quanto mais cedo voce morrer, mais cedo estou livre.\nE-Esquerda \nF-Frente \nD-Direita \nV-Voltar \nDigite uma opcao: "};
 	cadastrar_no(
         10,
         -1, 
