@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
        _.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._.-=-._
     .-'---      - ---     --     ---   -----   - --       ----  ----   -     ---`-.
      )                                                                           (
@@ -251,6 +253,7 @@ HP: ##############      82/100 ATAQUE:14          ATAQUE:15                     
 
 -Servo: estou impressionado de que voce tenha saido dessa vivo, a maioria morre antes de
 virar a esquerda.
+<<<<<<< HEAD
 -Voz misteriosa: Nao encoraje esse quadrupede, esse eh soh o principio das dores.
 Pressione qualquer tecla para continuar. . .
 ----------------------------- -----------------------------  -------  ---------  ---------
@@ -1313,3 +1316,7 @@ Pressione qualquer tecla para continuar. . .
 ----------------------------- -----------------------------  -------  ---------  ---------
 HP:                     -8/100 XP: ##########         60/100  NIVEL:2  ATAQUE:14  PEDRAS: 2
 ----------------------------- ----------------------------- 
+=======
+-Voz misteriosa: Nao encoraje esse quadrupede, esse eh soh o principio da
+>>>>>>> 630f64c60ae992e833c22f98d50252639ad2c6c3
+>>>>>>> 23922fe461f98239ce0f91f13b7104832f208cef
