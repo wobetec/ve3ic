@@ -83,6 +83,7 @@ void sala_pedras(int indice);
 void atualizar_vida(int ganho, int valor);
 void dano_vida_luta();
 void set_luta();
+void morrer();
 
 void bloquear_no(int indice);
 int checar_bloqueio(int indice);
@@ -260,7 +261,8 @@ int main(){
                 fprintf(arquivo_saida, "\nEste caminho esta bloqueado.\nVoce ja passou por aqui, esta perdido por acaso?\n");
                 pausa();
             }
-            
+
+            morrer();
         }
         else{//Se no eh terminal, apresentar texto e finalizar programa
             printf("%s", ptr_atual->texto);
@@ -553,7 +555,7 @@ void cadastrar_nos(){//contem os nos da historia e executa o cadastrar_no varias
         "./imagens/ambientacao/gema.txt");
 
     opcao opcoes_10[4] = {{'E', 11}, {'F', 24}, {'D', 18}, {'V', 4}};
-    char texto_10[1][501] = {"-Voce: 3 caminhos agora, estou comecando a me perder aqui.\n-Servo: Hehe, soh continue andando aluno, quanto mais cedo voce morrer, mais cedo estou livre.\nE-Esquerda F-Frente D-Direita V-Voltar \nDigite uma opcao: "};
+    char texto_10[1][501] = {"-Voce: 3 caminhos agora, estou comecando a me perder aqui.\n-Servo: Hehe, soh continue andando aluno, quanto mais cedo voce morrer, mais cedo estou\nlivre.\nE-Esquerda F-Frente D-Direita V-Voltar \nDigite uma opcao: "};
 	cadastrar_no(
         10,
         -1, 
@@ -618,11 +620,7 @@ void cadastrar_nos(){//contem os nos da historia e executa o cadastrar_no varias
         "./imagens/ambientacao/velho.txt");
     
     opcao opcoes_24[4] = {{'T', 4025}, {'V', 10}, {'#', 27}, {'#', 24}};
-<<<<<<< HEAD
-    char texto_24[3][501] = {"-Voce: que porta maneira.\nT-Tentar abrir V-Voltar\n", "-Porta: Eh por sua conta e risco aluno, pode passar.\n", "-Porta: Parece que voce ainda nao consegui um elmo, nao posso deixar voce passar. Apesar\nde querer que voce morra logo o show tem que durar mais que 3s.\n"};
-=======
     char texto_24[3][501] = {"-Voce: que porta maneira.\nT-Tentar abrir V-Voltar\n", "-Porta: Eh por sua conta e risco aluno, pode passar.\n", "-Porta: Parece que voce ainda nao conseguiu um elmo, nao posso deixar voce passar. Apesar\nde querer que voce morra logo o show tem que durar mais que 3s.\n"};
->>>>>>> bfa5caf8224151eb517aa41671db61bfe1823deb
 	cadastrar_no(
         24,
         -1, 
@@ -712,7 +710,7 @@ opcao opcoes_50[1] = {{'#', 51}};
         dialogo,
         1,
         opcoes_56,
-        "./imagens/ambientacao/beco_diagona.txt");
+        "./imagens/ambientacao/beco_diagonal.txt");
 
     opcao opcoes_57[1] = {{'#', 51}};
     char texto_57[1][501] = {"-Voce: Hmmm. Uma pedra esquisita com um encaixe atras e um saco com Essencia Solar? Isso\nestava escondido atras desses tijolos!? Nao consigo nem acreditar que itens raros desses\nestavam escondidos nesse buraco. Vou guardar.\n-Voz misteriosa: Eu sabia que tinhamos um colecionador de pedras."};
@@ -1664,6 +1662,19 @@ void dano_vida_luta(){//da e recebe dano(altera direto nas globais) plausivel de
     }
 }
 
+void morrer(){
+    if(vida==0){
+        ptr_atual = ptr_inicio;
+        vida=vida_MAX;
+        limpar();
+        barra_superior();
+        //imagem("");
+        printf("\nVoce perdeu! Os poderes da dungeon sao superiores a voce! Vou dar-lhe mais uma chance!\n");
+        fprintf(arquivo_saida, "\nVoce perdeu! Os poderes da dungeon sao superiores a voce! Vou dar-lhe mais uma chance!\n");
+        pausa();
+    }
+}
+
 
 //#########################CONTROLE DE NOS JA ACESSADOS#########################//
 void bloquear_no(int indice){
@@ -1683,7 +1694,6 @@ int checar_bloqueio(int indice){
 
 
 //#########################CONTROLE DE XP E NIVEIS#########################//
-
 void atualizar_XP(int valor){
     if(XP + valor >= 100){
         XP = 0;
