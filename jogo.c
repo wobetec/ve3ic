@@ -696,7 +696,7 @@ opcao opcoes_50[1] = {{'#', 51}};
         luta,
         5,
         opcoes_52,
-        "./imagens/batalha3.txt");
+        "./imagens/andar2/morcego.txt");
     
     opcao opcoes_56[1] = {{'#', 57}};
     char texto_56[1][501] = {"-Voce: Mas o que e isso? Um caminho sem saida? O que eh esse muro engracado? E o que eh\nessa placa escrita... Beco Diagonal??\n-Servo: Parece que voce nasceu ontem? Voce eh muito burro. Esse eh um muro magico, deixe\nque eu abro ele.\n"};
