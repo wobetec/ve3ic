@@ -51,7 +51,7 @@ int vida = 100, vida_MAX = 100;//vida do personagem principal
 
 int pedras = 0, ja_coletas[15], topo_ja_coletas = -1;//controle de pedras
 
-int XP = 60, nivel = 2, ataque = 14, armadura = 12;//nivel e criterios de dano
+int XP = 0, nivel = 0, ataque = 14, armadura = 20;//nivel e criterios de dano
 
 int vida_inimigo=-1, vida_inimigo_MAX=0, ataque_inimigo=0;//criterios dos monstros
 
@@ -88,6 +88,7 @@ void set_luta();
 void bloquear_no(int indice);
 int checar_bloqueio(int indice);
 
+void atualizar_XP(int valor);
 
 /////////////////////////////////MAIN/////////////////////////////////
 int main(){
@@ -154,6 +155,7 @@ int main(){
                                 break;
 
                             case luta:
+                                atualizar_XP(10);
                                 bloquear_no(ptr_atual->indice);
                                 if(contador == 0){
                                     set_luta();
@@ -170,7 +172,7 @@ int main(){
 
                             case rancho:
                                 contador  = 0;
-                                atualizar_vida(1, 20);
+                                atualizar_vida(1, 60);
 
                                 limpar();
                                 barra_superior();
@@ -497,7 +499,7 @@ void cadastrar_nos(){//contem os nos da historia e executa o cadastrar_no varias
         entrada,
         1,
         opcoes_0,
-        "");
+        "./imagens/ambientacao/sala.txt");
 
     opcao opcoes_1[3] = {{'#', 2}, {'#', 3}, {'#', 4}};
     char texto_1[3][501] = {"-Voz misteriosa: Ola, quem vos fala eh o proprio jogo. Por enquanto, voces nao\nsaberao quem sou eu... na verdade, poucos descobrirao. O que esta em jogo agora eh a sua\nvida.\n", "Se conseguir chegar ao ultimo andar da torre de 5 andares que se apresenta adiante,\nresolvendo todos os enigmas necessarios, coletando todos os itens, tornando-se mais forte\ne derrotando os BOSSs de cada andar, saira vivo.\n", "Caso contrario, voce ja sabe. Por que estou fazendo isso? pura diversao. No mais, boa\nsorte!\n"};
@@ -588,7 +590,7 @@ void cadastrar_nos(){//contem os nos da historia e executa o cadastrar_no varias
         sala_item,
         3,
         opcoes_15,
-        "");
+        "./imagens/ambientacao/tesouro.txt");
     
     opcao opcoes_18[9] = {{'A', 19}, {'B', 20}, {'C', 21}, {'D', 22}, {'V', 10}, {'#', 18}, {'#', 23}, {'#', 18}, {'#', 18}};
     char texto_18[5][501] = {"-Enigma: Alto la, sou o Enigma, o primeiro e unico, assim como minha prima distante,\nEsfinge, voce tem que responder para passar: \nQual destes queima azul?\n A-Na B-Cu C-Mg D-K\nV-Voltar \nDigite uma opcao: ", "Qual a ideia, aluno?\n", "Ate que voce sabe alguma coisa.\n", "Soh pode ser brincadeira, neh?\n", "kkkkkkkkkkkk\n"};
@@ -614,7 +616,7 @@ void cadastrar_nos(){//contem os nos da historia e executa o cadastrar_no varias
         dialogo,
         1,
         opcoes_23,
-        "");
+        "./imagens/ambientacao/velho.txt");
     
     opcao opcoes_24[4] = {{'T', 4025}, {'V', 10}, {'#', 27}, {'#', 24}};
     char texto_24[3][501] = {"-Voce: que porta maneira.\nT-Tentar abrir V-Voltar\n", "-Porta: Eh por sua conta e risco aluno, pode passar.\n", "-Porta: Parece que voce ainda nao consegui um elmo, nao posso deixar voce passar. Apesar\nde querer que você morra logo o show tem que durar mais que 3s.\n"};
@@ -707,7 +709,7 @@ opcao opcoes_50[1] = {{'#', 51}};
         dialogo,
         1,
         opcoes_56,
-        "");
+        "./imagens/ambientacao/beco_diagona.txt");
 
     opcao opcoes_57[1] = {{'#', 51}};
     char texto_57[1][501] = {"-Voce: Hmmm. Uma pedra esquisita com um encaixe atras e um saco com Essencia Solar? Isso\nestava escondido atras desses tijolos!? Nao consigo nem acreditar que itens raros desses\nestavam escondidos nesse buraco. Vou guardar.\n-Voz misteriosa: Eu sabia que tinhamos um colecionador de pedras."};
@@ -746,7 +748,7 @@ opcao opcoes_50[1] = {{'#', 51}};
         sala_item,
         3,
         opcoes_62,
-        "");
+        "./imagens/ambientacao/tesouro.txt");
     
     opcao opcoes_65[3] = {{'E', 72}, {'D', 66}, {'V', 51}};
     char texto_65[1][501] = {"-Voce: E ca estamos em mais uma decisao de caminho.\nE-Esquerda D-Direita V-Voltar\nDigite uma opcao: "};
@@ -782,10 +784,10 @@ opcao opcoes_50[1] = {{'#', 51}};
         texto_71,
         0,
 		nao_terminal,
-        dialogo,
+        rancho,
         1,
         opcoes_71,
-        "");
+        "./imagens/ambientacao/velho_morto.txt");
     
     opcao opcoes_72[4] = {{'T', 4073}, {'V', 65}, {'#', 75}, {'#', 72}};
     char texto_72[3][501] = {"-Voce: Essa porta emana algo diferete\nT-Tentar abrir V-Voltar\nDigite uma opcao: ", "-Porta: Boa sorte, mortal.\n", "-Porta: Ha perigos inimaginaveis a frente. Acho bom voce se preparar melhor.\n"};
@@ -842,7 +844,7 @@ opcao opcoes_100[3] = {{'#', 101}};
         "./imagens/ambientacao/corredor.txt");
 
     opcao opcoes_101[3] = {{'E', 102}, {'F', 115}, {'D', 108}};
-    char texto_101[1][501] = {"-Voce: Uma trifurcacao, que caminho sera o melhor…? Sinto um bom chiero vindo da esquerda,\nsera que eh alguma armadilha? Vamos decidir isso logo.\nE-Esquerda F-Frente D-Direita\nDigite uma opcao: "};
+    char texto_101[1][501] = {"-Voce: Uma trifurcacao, que caminho sera o melhor? Sinto um bom chiero vindo da esquerda,\nsera que eh alguma armadilha? Vamos decidir isso logo.\nE-Esquerda F-Frente D-Direita\nDigite uma opcao: "};
 	cadastrar_no(
         101,
         -1, 
@@ -855,7 +857,7 @@ opcao opcoes_100[3] = {{'#', 101}};
         "./imagens/ambientacao/trifurcacao.txt");
 
     opcao opcoes_102[5] = {{'L', 103}, {'V', 101}, {'#', 104}, {'#', 105}, {'#', 106}};
-    char texto_102[4][501] = {"-Voce: O que eh aquilo? Parece um virus… mas como pode ser tao grande?\n-Voz misteriosa: Esta com medo? Deseja seguir em frente e lutar com ele?\nL-Lutar V-Voltar\nDigite uma opcao: ", "-Voce: Pode vir bicho esquisito. Nao eh uma gripezinha que vai me matar.\n-Virus: Voce acha que sou apenas um virus qualquer? Eu ja matei varios aventureiros\nigual a voce. Os humanos sao tao fracos, e, em se tratando do sistema imunologico  sao\nmais fracos ainda. Mua hahahahaha! :p\n", "-Voce: Pare de brincadeira seu virus.\n-Virus: Gosta de uma tosse? Entao vem pra cima!\n", "-Voce: Eh esse aqui nao aguentou meus socos. Talvez seja por que tomo vitamina C todos\nos dias kkkkk.\n-Servo: Nao seja tolo, seu burro. Isso foi apenas sorte\n"};
+    char texto_102[4][501] = {"-Voce: O que eh aquilo? Parece um virus mas como pode ser tao grande?\n-Voz misteriosa: Esta com medo? Deseja seguir em frente e lutar com ele?\nL-Lutar V-Voltar\nDigite uma opcao: ", "-Voce: Pode vir bicho esquisito. Nao eh uma gripezinha que vai me matar.\n-Virus: Voce acha que sou apenas um virus qualquer? Eu ja matei varios aventureiros\nigual a voce. Os humanos sao tao fracos, e, em se tratando do sistema imunologico  sao\nmais fracos ainda. Mua hahahahaha! :p\n", "-Voce: Pare de brincadeira seu virus.\n-Virus: Gosta de uma tosse? Entao vem pra cima!\n", "-Voce: Eh esse aqui nao aguentou meus socos. Talvez seja por que tomo vitamina C todos\nos dias kkkkk.\n-Servo: Nao seja tolo, seu burro. Isso foi apenas sorte\n"};
 	cadastrar_no(
         102,
         -1, 
@@ -878,7 +880,7 @@ opcao opcoes_100[3] = {{'#', 101}};
         dialogo,
         1,
         opcoes_106,
-        "");
+        "./imagens/ambientacao/tesouro.txt");
 
     opcao opcoes_107[1] = {{'#', 101}};
     char texto_107[1][501] = {"-Senhor perdido: Pelas barbas de Odin, que dor de cabeça. Parece que dormi faz tanto tem-\npo, as agora nao me lembro de nada. Preciso dar uma caminhada para me lembrar dos fatos.\n-Voce(susurro): Que homem estranho."};
@@ -969,7 +971,7 @@ opcao opcoes_100[3] = {{'#', 101}};
         pedra,
         1,
         opcoes_122,
-        "./imagens/labirinto2.txt");
+        "./imagens/ambientacao/gema.txt");
 
     opcao opcoes_123[4] = {{'T', 4124}, {'V', 115}, {'#', 126}, {'#', 123}};
     char texto_123[3][501] = {"-Voce: Outra porta, vamos ver...\nT-Tentar abrir V-Voltar\nDigite uma opcao: ", "-Porta: Espero que goste do inferno.\n", "-Porta: Se prepare melhor antes de embarcar na Highway to Hell"};
@@ -985,7 +987,7 @@ opcao opcoes_100[3] = {{'#', 101}};
         "./imagens/ambientacao/fechadura.txt");
 
     opcao opcoes_126[4] = {{'#', 127}, {'#', 128}, {'#', 129}, {'#', 130}};
-    char texto_126[4][501] = {"-Voce: Pelas barbas de Odin, que calor eh esse? Parece que estamos chegando no inferno.\n-Servo: Voce continua falando demais, melhor voce se proteger, olha aquela figura com\ncara de diabo te esperando.\n", "\n-Demonio: Morraaaaa!\n-Voce: Calma la, mal cheguei e o anfitriao me recebe assim? Saudades de quando as pessoas\nainda possuiam respeito pelas outras.\n-Demonio: Eu vivo nesse labirinto a anos, e nunca deixei nem um humano passar. Sou mais\nantigo que qualquer ser que voce viu ate agora. Meus poderes superam tudo, meu corpo eh\ntao poderoso e resistente que nem uma armadura chega a ter a mesma resistencia. Um mero\nhumano nao chega a nem fazer cocegas em mim. Isso nunca vai acontecer.\n", "-Voce: Aaaaaaaaaaaaaahhhhh! Se liga nesse anel! O anel expansivo vai me dar o poder\nmagico que preciso para acabar com esse monstro.\n-Demonio: Ta legal, esse anel nao fara nem cocegas em mim, ja te avisei.\n-Voce: -voce colocou o anel no dedo e apontou para o demonio-.\n-Demonio: Nao pode ser, esse anel esta encantado com propriedades sagradas! Saia ja\ndaqui. Seu verme, quem te deu isso?!\n-Voce: Entao isso te afeta, esse eh o seu fim!\n", "-Voz misteriosa: Como foi possivel!? O Demonio foi derrotado? Isso nao vai sair barato,\nos inimigos a frente vao te dar uma licao… Soh espere...\n-Voce: Esse bicho foi dificil de matar, mas por pouco consegui. E essa espada que ele\nusava... parecia interessante.\n"};
+    char texto_126[4][501] = {"-Voce: Pelas barbas de Odin, que calor eh esse? Parece que estamos chegando no inferno.\n-Servo: Voce continua falando demais, melhor voce se proteger, olha aquela figura com\ncara de diabo te esperando.\n", "\n-Demonio: Morraaaaa!\n-Voce: Calma la, mal cheguei e o anfitriao me recebe assim? Saudades de quando as pessoas\nainda possuiam respeito pelas outras.\n-Demonio: Eu vivo nesse labirinto a anos, e nunca deixei nem um humano passar. Sou mais\nantigo que qualquer ser que voce viu ate agora. Meus poderes superam tudo, meu corpo eh\ntao poderoso e resistente que nem uma armadura chega a ter a mesma resistencia. Um mero\nhumano nao chega a nem fazer cocegas em mim. Isso nunca vai acontecer.\n", "-Voce: Aaaaaaaaaaaaaahhhhh! Se liga nesse anel! O anel expansivo vai me dar o poder\nmagico que preciso para acabar com esse monstro.\n-Demonio: Ta legal, esse anel nao fara nem cocegas em mim, ja te avisei.\n-Voce: -voce colocou o anel no dedo e apontou para o demonio-.\n-Demonio: Nao pode ser, esse anel esta encantado com propriedades sagradas! Saia ja\ndaqui. Seu verme, quem te deu isso?!\n-Voce: Entao isso te afeta, esse eh o seu fim!\n", "-Voz misteriosa: Como foi possivel!? O Demonio foi derrotado? Isso nao vai sair barato,\nos inimigos a frente vao te dar uma licao Soh espere...\n-Voce: Esse bicho foi dificil de matar, mas por pouco consegui. E essa espada que ele\nusava... parecia interessante.\n"};
 	cadastrar_no(
         126,
         -1, 
@@ -1622,7 +1624,11 @@ void sala_pedras(int indice){//mecanica das pedras para abrir portas
 //#########################CONTROLE DE VIDA E LUTAS#########################//
 void atualizar_vida(int ganho, int valor){//adiciona o remove vida do personagem principal( ganho = 0 --> perda)
     if(ganho == 0){
-        vida-=valor;
+        if(vida-valor <= 0){
+            vida=0;
+        }else{
+            vida-=valor;
+        }
     }else{
         if(vida + valor >= vida_MAX){
             vida = vida_MAX;
@@ -1645,7 +1651,7 @@ void dano_vida_luta(){//da e recebe dano(altera direto nas globais) plausivel de
     int dano_recebido, dano_aflingido;
 
     dano_recebido = (100 - armadura)*ataque_inimigo/200;
-    dano_aflingido = ataque * (rand()% 100 + 200)/100;
+    dano_aflingido = ataque * (rand()% 100 + 250)/100;
 
     atualizar_vida(0, dano_recebido);
     if(vida_inimigo-dano_aflingido <= 0){
@@ -1672,3 +1678,14 @@ int checar_bloqueio(int indice){
     return 0;
 }
 
+
+//#########################CONTROLE DE XP E NIVEIS#########################//
+
+void atualizar_XP(int valor){
+    if(XP + valor >= 100){
+        XP = 0;
+        nivel++;
+    }else{
+        XP+=valor;
+    }
+}
