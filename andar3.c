@@ -143,7 +143,7 @@ int main(){
     salas_bloqueadas[0]=0;
 
     //carregar o no zero
-    ptr_atual = buscar_no(50);
+    ptr_atual = buscar_no(100);
 
     //Laco principal
     while(1) {
@@ -508,21 +508,202 @@ void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no
 
 
 void cadastrar_nos(){
-    
-    /*
-    opcao opcoes_$[3] = {{'E', 3}, {'D', 9}, {'V', 1}};
-    char texto_$[1][501] = {"-Outra bifurcacao? \n-Nao pondere aluno... \nE-Esquerda \nD-Direita \nV-Voltar \nDigite a opcao: "};
+    opcao opcoes_100[3] = {{'#', 101}};
+    char texto_100[1][501] = {"-Servo: Acho que meu senhor esta certo, desse voce nao sai, nao com vida pelo menos.\n"};
 	cadastrar_no(
-        $,
+        100,
         -1, 
-        texto_$,
+        texto_100,
+        0,
+		nao_terminal,
+        entrada,
+        1,
+        opcoes_100,
+        "./imagens/ambientacao/corredor.txt");
+
+    opcao opcoes_101[3] = {{'E', 102}, {'F', 115}, {'D', 108}};
+    char texto_101[1][501] = {"-Voce: Uma trifurcacao, que caminho sera o melhor…? Sinto um bom chiero vindo da esquerda,\nsera que eh alguma armadilha? Vamos decidir isso logo.\nE-Esquerda F-Frente D-Direita\nDigite uma opcao: "};
+	cadastrar_no(
+        101,
+        -1, 
+        texto_101,
         0,
 		nao_terminal,
         nao_complexo,
         3,
-        opcoes_$,
+        opcoes_101,
+        "./imagens/ambientacao/trifurcacao.txt");
+
+    opcao opcoes_102[5] = {{'L', 103}, {'V', 101}, {'#', 104}, {'#', 105}, {'#', 106}};
+    char texto_102[4][501] = {"-Voce: O que eh aquilo? Parece um virus… mas como pode ser tao grande?\n-Voz misteriosa: Esta com medo? Deseja seguir em frente e lutar com ele?\nL-Lutar V-Voltar\nDigite uma opcao: ", "-Voce: Pode vir bicho esquisito. Nao eh uma gripezinha que vai me matar.\n-Virus: Voce acha que sou apenas um virus qualquer? Eu ja matei varios aventureiros\nigual a voce. Os humanos sao tao fracos, e, em se tratando do sistema imunologico  sao\nmais fracos ainda. Mua hahahahaha! :p\n", "-Voce: Pare de brincadeira seu virus.\n-Virus: Gosta de uma tosse? Entao vem pra cima!\n", "-Voce: Eh esse aqui nao aguentou meus socos. Talvez seja por que tomo vitamina C todos\nos dias kkkkk.\n-Servo: Nao seja tolo, seu burro. Isso foi apenas sorte\n"};
+	cadastrar_no(
+        102,
+        -1, 
+        texto_102,
+        4,
+		nao_terminal,
+        luta,
+        5,
+        opcoes_102,
+        "./imagens/andar3/virus.txt");
+
+    opcao opcoes_106[1] = {{'#', 107}};
+    char texto_106[1][501] = {"-Voce: Uma caixa de pratas! Vou estar rico quando sair daqui! Sao dez moedas.\n-Servo: Esse dinheiro soh pode estar amaldicoado, aluno idiota."};
+	cadastrar_no(
+        106,
+        -1, 
+        texto_106,
+        0,
+		nao_terminal,
+        dialogo,
+        1,
+        opcoes_106,
+        "");
+
+    opcao opcoes_107[1] = {{'#', 101}};
+    char texto_107[1][501] = {"-Senhor perdido: Pelas barbas de Odin, que dor de cabeça. Parece que dormi faz tanto tem-\npo, as agora nao me lembro de nada. Preciso dar uma caminhada para me lembrar dos fatos.\n-Voce(susurro): Que homem estranho."};
+	cadastrar_no(
+        107,
+        -1, 
+        texto_107,
+        0,
+		nao_terminal,
+        dialogo,
+        1,
+        opcoes_107,
+        "");
+
+    opcao opcoes_108[4] = {{'#', 109}, {'#', 110}, {'#', 111}, {'#', 112}};
+    char texto_108[4][501] = {"-Você: Eh um lobo com aura verde, so pode ser o Wolf-Champion.\n-Servo: Agora eh o fim da linha para sua historia de heroi, duvido que voce o derrote.\n", "-Voce: Indentifique-se lobo maldito!\n-Fenrir: Humano, acha que um mero humano pode me tratar assim? Eu sou Fenrir, sou o lendario\nFenrir, aquele que arrancou a mao de um deus, sou filho de Loki!\n", "-Voce: Acha que isso me assusta? Com ajuda do elmo de escamas de um dragao, com essa\nforca insana que recebi experimente meu soco melhorado. Haia!!!\n-Lobo: Minha mordida vai te dilacerar raca inferior.\n", "-Voce: -rapidamente se esquivou da tentativa da mordida, e logo desfere um golpe\ncerteiro-.\n-Lobo: Como isso aconteceu? Meu nivel eh muito superior. Hm, o que te espera a frente faz\nparte da minha colecao de trofeus. Essa batalha, nao se engane, isso foi apenas um\ndeslize da minha atencao.\n"};
+	cadastrar_no(
+        108,
+        -1, 
+        texto_108,
+        4,
+		nao_terminal,
+        luta,
+        4,
+        opcoes_108,
+        "./imagens/andar2/lobo.txt");
+
+    opcao opcoes_112[3] = {{'#', 113}, {'#', 114}, {'#', 115}};
+    char texto_112[3][501] = {"-Voce: outra sala do tesouro, o que sera que tem aqui?\n", "-Voce: Um anel, o que eh esse anel sera?\n-Servo: E eu vou saber? Pare de falar sozinho seu humano burro.\n", "-Voz misteriosa: Esse eh um anel que emana poder magico, expandindo as capacidades de\nquem o equipa. Dizem que o preco a ser pago por tanto poder afeta diretamente a alma."};
+	cadastrar_no(
+        112,
+        -1, 
+        texto_112,
+        3,
+		nao_terminal,
+        sala_item,
+        3,
+        opcoes_112,
+        "");
+
+    opcao opcoes_115[3] = {{'E', 116}, {'D', 123}, {'V', 101}};
+    char texto_115[1][501] = {"-Voce: Uma bifurcacao, que caminho sera o melhor?\n-Servo: arggggg, voce me da nos nervos.\nF-Frente E-Esquerda\nDigite uma opcao: "};
+	cadastrar_no(
+        115,
+        -1, 
+        texto_115,
+        0,
+		nao_terminal,
+        nao_complexo,
+        3,
+        opcoes_115,
+        "./imagens/ambientacao/bifurcacao.txt");
+
+    opcao opcoes_116[9] = {{'A', 117}, {'B', 118}, {'C', 119}, {'D', 120}, {'V', 115}, {'#', 116}, {'#', 121}, {'#', 116}, {'#', 116}};
+    char texto_116[5][501] = {"-Enigma: Vejo que chegou ate esse andar, porem lamento te informar que a partir daqui sua\naventura so vai ficar mais e mais dificil. Sem mais delongas, vamos ao enigma:\nTres resistores de 33 ohms sao ligados em paralelo a um cofre. Qual eh o nome do filme?\nA-Titanic B-11 ohms e um segredo C-Missao Impossivel D-Jogos Vorazes\nV-Voltar\nDigite uma opcao: ", "-Enigma: Acho que esse eh aquele do barco.\n", "-Enigma: hahahaha, essa foi boa, nao?\n", "-Enigma: Essa dai passou longe, aluno.\n", "-Enigma: Os resistores sao assassinos agora?\n"};
+	cadastrar_no(
+        116,
+        -1, 
+        texto_116,
+        5,
+		nao_terminal,
+        enigma,
+        5,
+        opcoes_116,
+        "./imagens/ambientacao/enigma.txt");
+
+    opcao opcoes_121[1] = {{'#', 122}};
+    char texto_121[1][501] = {"-Taberneiro sagaz: Bem-vindo a Taberna! Hoje temos um otimo ensopado de peixe e uma\nsalada especial, feita com ingredientes coletados no bosque imperial, cultivado por\naldeoes elficos.-Voce: Nossa, agora meu poder parece estar recuperado!"};
+	cadastrar_no(
+        121,
+        -1, 
+        texto_121,
+        0,
+		nao_terminal,
+        rancho,
+        1,
+        opcoes_121,
+        "./imagens/ambientacao/taverna.txt");
+
+    opcao opcoes_122[1] = {{'#', 115}};
+    char texto_122[1][501] = {"-Voce: Mais uma pedra, essa ja eh a terceira, acho que vou sair daqui com muitas."};
+	cadastrar_no(
+        122,
+        -1, 
+        texto_122,
+        0,
+		nao_terminal,
+        pedra,
+        1,
+        opcoes_122,
         "./imagens/labirinto2.txt");
-    */
+
+    opcao opcoes_123[4] = {{'T', 4124}, {'V', 115}, {'#', 126}, {'#', 123}};
+    char texto_123[3][501] = {"-Voce: Outra porta, vamos ver...\nT-Tentar abrir V-Voltar\nDigite uma opcao: ", "-Porta: Espero que goste do inferno.\n", "-Porta: Se prepare melhor antes de embarcar na Highway to Hell"};
+	cadastrar_no(
+        123,
+        -1, 
+        texto_123,
+        3,
+		nao_terminal,
+        fechadura,
+        2,
+        opcoes_123,
+        "./imagens/ambientacao/fechadura.txt");
+
+    opcao opcoes_126[4] = {{'#', 127}, {'#', 128}, {'#', 129}, {'#', 130}};
+    char texto_126[4][501] = {"-Voce: Pelas barbas de Odin, que calor eh esse? Parece que estamos chegando no inferno.\n-Servo: Voce continua falando demais, melhor voce se proteger, olha aquela figura com\ncara de diabo te esperando.\n", "\n-Demonio: Morraaaaa!\n-Voce: Calma la, mal cheguei e o anfitriao me recebe assim? Saudades de quando as pessoas\nainda possuiam respeito pelas outras.\n-Demonio: Eu vivo nesse labirinto a anos, e nunca deixei nem um humano passar. Sou mais\nantigo que qualquer ser que voce viu ate agora. Meus poderes superam tudo, meu corpo eh\ntao poderoso e resistente que nem uma armadura chega a ter a mesma resistencia. Um mero\nhumano nao chega a nem fazer cocegas em mim. Isso nunca vai acontecer.\n", "-Voce: Aaaaaaaaaaaaaahhhhh! Se liga nesse anel! O anel expansivo vai me dar o poder\nmagico que preciso para acabar com esse monstro.\n-Demonio: Ta legal, esse anel nao fara nem cocegas em mim, ja te avisei.\n-Voce: -voce colocou o anel no dedo e apontou para o demonio-.\n-Demonio: Nao pode ser, esse anel esta encantado com propriedades sagradas! Saia ja\ndaqui. Seu verme, quem te deu isso?!\n-Voce: Entao isso te afeta, esse eh o seu fim!\n", "-Voz misteriosa: Como foi possivel!? O Demonio foi derrotado? Isso nao vai sair barato,\nos inimigos a frente vao te dar uma licao… Soh espere...\n-Voce: Esse bicho foi dificil de matar, mas por pouco consegui. E essa espada que ele\nusava... parecia interessante.\n"};
+	cadastrar_no(
+        126,
+        -1, 
+        texto_126,
+        4,
+		nao_terminal,
+        luta,
+        4,
+        opcoes_126,
+        "./imagens/andar3/batalhaboss3.txt");
+    
+    opcao opcoes_130[3] = {{'#', 131}, {'#', 132}, {'#', 133}};
+    char texto_130[3][501] = {"-Voce: Caramba, ele deixou cair a espada.\n-Voz misteriosa: Vamos-la, vai deixa-la para tras?\n", "-Voce: Ele eh muit quente.\n-Voz misteriosa: Obvio, esse eh o pau de fogo, a arma mais poderosa do submundo. Nao sei\nnem explicar como voce, um mero mortal conseguiu sobreviver ao implacavel poder dela\n", "-Voce: Agora ninguem consegue me parar.\n"};
+	cadastrar_no(
+        130,
+        -1, 
+        texto_130,
+        3,
+		nao_terminal,
+        sala_item,
+        3,
+        opcoes_130,
+        "./imagens/andar3/paudefogo.txt");
+
+    opcao opcoes_133[1] = {{'E', 3}};
+    char texto_133[1][501] = {"-Servo: Nao acredito que voce ainda esta vivo, ser repugnante.Vamos suba logo, voce tem que morrer."};
+	cadastrar_no(
+        133,
+        -1, 
+        texto_133,
+        0,
+		nao_terminal,
+        saida,
+        1,
+        opcoes_133,
+        "./imagens/ambientacao/escada.txt");
+
+
 
 }
 
