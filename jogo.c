@@ -528,7 +528,7 @@ void cadastrar_nos(){//contem os nos da historia e executa o cadastrar_no varias
         "./imagens/ambientacao/bifurcacao.txt");
 
     opcao opcoes_5[4] = {{'#', 6}, {'#', 7}, {'#', 8}, {'#', 9}};
-    char texto_5[4][501] = {"-Voce: O que eh aquilo, parece um goblim, ele esta dormindo.\n-Servo: Errado Aluno, nao esta mais.\n","-Goblim: lara ratu peri.\n-Voce: Seja la o que for, eu quem vou ganhar, sou treinado na arte das integrais.\n","-Goblim: baru sate lorem.-Voce: morraaaaa!\n", "-Servo: estou impressionado de que voce tenha saido dessa vivo, a maioria morre antes de\nvirar a esquerda.\n-Voz misteriosa: Nao encoraje esse quadrupede, esse eh soh o principio das dores.\n"};
+    char texto_5[4][501] = {"-Voce: O que eh aquilo, parece um goblim, ele esta dormindo.\n-Servo: Errado Aluno, nao esta mais.\n","-Goblim: lara ratu peri.\n-Voce: Seja la o que for, eu quem vou ganhar, sou treinado na arte das integrais.\n","-Goblim: baru sate lorem.\n-Voce: morraaaaa!\n", "-Servo: estou impressionado de que voce tenha saido dessa vivo, a maioria morre antes de\nvirar a esquerda.\n-Voz misteriosa: Nao encoraje esse quadrupede, esse eh soh o principio das dores.\n"};
 	cadastrar_no(
         5,
         -1, 
@@ -619,7 +619,7 @@ void cadastrar_nos(){//contem os nos da historia e executa o cadastrar_no varias
         "./imagens/ambientacao/velho.txt");
     
     opcao opcoes_24[4] = {{'T', 4025}, {'V', 10}, {'#', 27}, {'#', 24}};
-    char texto_24[3][501] = {"-Voce: que porta maneira.\nT-Tentar abrir V-Voltar\n", "-Porta: Eh por sua conta e risco aluno, pode passar.\n", "-Porta: Parece que voce ainda nao consegui um elmo, nao posso deixar voce passar. Apesar\nde querer que você morra logo o show tem que durar mais que 3s.\n"};
+    char texto_24[3][501] = {"-Voce: que porta maneira.\nT-Tentar abrir V-Voltar\n", "-Porta: Eh por sua conta e risco aluno, pode passar.\n", "-Porta: Parece que voce ainda nao consegui um elmo, nao posso deixar voce passar. Apesar\nde querer que voce morra logo o show tem que durar mais que 3s.\n"};
 	cadastrar_no(
         24,
         -1, 
@@ -696,7 +696,7 @@ opcao opcoes_50[1] = {{'#', 51}};
         luta,
         5,
         opcoes_52,
-        "./imagens/batalha3.txt");
+        "./imagens/andar2/morcego.txt");
     
     opcao opcoes_56[1] = {{'#', 57}};
     char texto_56[1][501] = {"-Voce: Mas o que e isso? Um caminho sem saida? O que eh esse muro engracado? E o que eh\nessa placa escrita... Beco Diagonal??\n-Servo: Parece que voce nasceu ontem? Voce eh muito burro. Esse eh um muro magico, deixe\nque eu abro ele.\n"};
@@ -893,7 +893,7 @@ opcao opcoes_100[3] = {{'#', 101}};
         dialogo,
         1,
         opcoes_107,
-        "");
+        "./imagens/ambientacao/velho.txt");
 
     opcao opcoes_108[4] = {{'#', 109}, {'#', 110}, {'#', 111}, {'#', 112}};
     char texto_108[4][501] = {"-Você: Eh um lobo com aura verde, so pode ser o Wolf-Champion.\n-Servo: Agora eh o fim da linha para sua historia de heroi, duvido que voce o derrote.\n", "-Voce: Indentifique-se lobo maldito!\n-Fenrir: Humano, acha que um mero humano pode me tratar assim? Eu sou Fenrir, sou o lendario\nFenrir, aquele que arrancou a mao de um deus, sou filho de Loki!\n", "-Voce: Acha que isso me assusta? Com ajuda do elmo de escamas de um dragao, com essa\nforca insana que recebi experimente meu soco melhorado. Haia!!!\n-Lobo: Minha mordida vai te dilacerar raca inferior.\n", "-Voce: -rapidamente se esquivou da tentativa da mordida, e logo desfere um golpe\ncerteiro-.\n-Lobo: Como isso aconteceu? Meu nivel eh muito superior. Hm, o que te espera a frente faz\nparte da minha colecao de trofeus. Essa batalha, nao se engane, isso foi apenas um\ndeslize da minha atencao.\n"};
@@ -919,7 +919,7 @@ opcao opcoes_100[3] = {{'#', 101}};
         sala_item,
         3,
         opcoes_112,
-        "");
+        "./imagens/ambientacao/tesouro.txt");
 
     opcao opcoes_115[3] = {{'E', 116}, {'D', 123}, {'V', 101}};
     char texto_115[1][501] = {"-Voce: Uma bifurcacao, que caminho sera o melhor?\n-Servo: arggggg, voce me da nos nervos.\nE-Esquerda D-Direita V-Voltar\nDigite uma opcao: "};
@@ -1106,7 +1106,7 @@ opcao opcoes_150[1] = {{'#', 151}};
         "./imagens/andar4/pac_man.txt");
 
     opcao opcoes_163[1]={{'#', 151}}; 
-    char texto_163[1][501] = {"Voce: O senhor parece onipresente nesse jogo\nSenhor perdido: Enquanto o peao continuar girando, eu estarei aqui.\n"};
+    char texto_163[1][501] = {"-Voce: O senhor parece onipresente nesse jogo\n-Senhor perdido: Enquanto o peao continuar girando, eu estarei aqui.\n"};
 	cadastrar_no(
         163,
         -1, 
@@ -1116,7 +1116,7 @@ opcao opcoes_150[1] = {{'#', 151}};
         dialogo,
         1,
         opcoes_163,
-        "");
+        "./imagens/ambientacao/velho.txt");
 
     opcao opcoes_164[3]={{'E', 165}, {'D', 172}, {'V', 151}}; 
     char texto_164[1][501] = {"-Voce: Agora uma bifurcacao, por onde devo ir?\nD-Direita E-Esquerda V-Voltar\nDigite uma opcao: "};
@@ -1326,7 +1326,7 @@ opcao opcoes_200[1] = {{'#', 201}};
         luta,
         4,
         opcoes_221,
-        "");
+        "./imagens/andar5/gabiqueen.txt");
     
     opcao opcoes_225[1] = {{'#', 226}};
     char texto_225[1][501] = {"\n-Voz misteriosa: Primeiramente, morra servo imundo, nao consegue nem matar um aluno.\n-Servo: Naaaaaaao - e morreu.\n-Voz misteriosa: Em segundo lugar, parabens aluno, nunca vi ninguem derrotar minha\ncriadora, nem sei o que acontecera comigo, mas sei que voce esta livre, pode atravessar o portal para seu mundo de novo.\n-Voce: Nunca vou me esquecer do que aconteceu aqui\n-assim o aluno corre em direcao ao portal-\n"};
@@ -1354,7 +1354,7 @@ opcao opcoes_200[1] = {{'#', 201}};
         opcoes_226,
         "");
     
-    char texto_227[1][501] = {"Duvidas?"};
+    char texto_227[1][501] = {"                                         Duvidas?                                         \nOBRIGADO POR TER JOGADO CodeDungeon!\n"};
 	cadastrar_no(
         227,
         -1, 
@@ -1380,7 +1380,7 @@ no *buscar_no(int indice){//funcao para buscar no a partir do indice
             ptr_aux = ptr_aux->prox;
             }
         
-        printf("\nERRO 05: NO NAO ENCONTRADO NA LISTA. %d", indice);
+        printf("\nERRO 05: NO NAO ENCONTRADO NA LISTA.");
         fprintf(arquivo_saida, "\nERRO 05: NO NAO ENCONTRADO NA LISTA.");
         exit(1);
         }
