@@ -118,7 +118,7 @@ int main(){
         if(ptr_atual->tipo != terminal){//Se no nao eh terminal, apresentar texto e ler a opcao selecionada
             int code = ( ptr_atual->code % 10000)/100;
             int indice_proximo_no = -1;
-            
+
             while(indice_proximo_no == -1){
                 switch(ptr_atual->tipo_especifico){
                     case passar:
@@ -247,6 +247,7 @@ int main(){
                     break;
                 }
             }
+            
             if(!checar_bloqueio(indice_proximo_no)){
                 ptr_atual = buscar_no(indice_proximo_no);
             }else{
@@ -512,7 +513,7 @@ void cadastrar_nos(){//contem os nos da historia e executa o cadastrar_no varias
         "./imagens/andar1/guianu.txt");
 
     opcao opcoes_4[2] = {{'E', 5}, {'D', 10}};
-    char texto_4[1][501] = {"-Voce: Uma bifurcacao, por onde devo ir? \nE-Esquerda \nD-Direita \nDigite uma opcao: "};
+    char texto_4[1][501] = {"-Voce: Uma bifurcacao, por onde devo ir? \nE-Esquerda D-Direita \nDigite uma opcao: "};
 	cadastrar_no(
         4,
         -1, 
@@ -551,7 +552,7 @@ void cadastrar_nos(){//contem os nos da historia e executa o cadastrar_no varias
         "./imagens/ambientacao/gema.txt");
 
     opcao opcoes_10[4] = {{'E', 11}, {'F', 24}, {'D', 18}, {'V', 4}};
-    char texto_10[1][501] = {"-Voce: 3 caminhos agora, estou começando a me perder aqui.\n-Servo: Hehe, soh continue andando aluno, quanto mais cedo voce morrer, mais cedo estou livre.\nE-Esquerda \nF-Frente \nD-Direita \nV-Voltar \nDigite uma opcao: "};
+    char texto_10[1][501] = {"-Voce: 3 caminhos agora, estou comecando a me perder aqui.\n-Servo: Hehe, soh continue andando aluno, quanto mais cedo voce morrer, mais cedo estou livre.\nE-Esquerda F-Frente D-Direita V-Voltar \nDigite uma opcao: "};
 	cadastrar_no(
         10,
         -1, 
@@ -577,7 +578,7 @@ void cadastrar_nos(){//contem os nos da historia e executa o cadastrar_no varias
         "./imagens/andar1/fantasma.txt");
     
     opcao opcoes_15[3] = {{'#', 16}, {'#', 17}, {'#', 10}};
-    char texto_15[3][501] = {"-Voce: Uau, que sala incrivel, deve ter alguma armadilha aqui, parece aquelas salas do\ntesouro.\n-Servo: Cala a boca aluno, so joga, voce fala demais.\n-Voce: Olha, tem mesmo um tesouro ali, o que eh aquilo?\n", "-Voz misteriosa: O elmo de Richard Franco,forjado com escama de dragoes nas profundezas\nmasmorra do trem. Eh um objeto indispensavel para derrotar o TC Rock.\n", "-Voce: parece pesado, mas eh muito legal.\n"};
+    char texto_15[3][501] = {"-Voce: Uau, que sala incrivel, deve ter alguma armadilha aqui, parece aquelas salas do\ntesouro.\n-Servo: Cala a boca aluno, so joga, voce fala demais.\n-Voce: Olha, tem mesmo um tesouro ali, o que eh aquilo?\n", "-Voz misteriosa: O elmo de Richard Franco, forjado com escama de dragoes nas profundezas\nmasmorra do trem. Eh um objeto indispensavel para derrotar o TC Rock.\n", "-Voce: parece pesado, mas eh muito legal.\n"};
 	cadastrar_no(
         15,
         -1, 
@@ -642,7 +643,7 @@ void cadastrar_nos(){//contem os nos da historia e executa o cadastrar_no varias
         "./imagens/andar1/tcrock.txt");
     
     opcao opcoes_31[1] = {{'#', 50},};
-    char texto_31[1][501] = {"-Voz misteriosa: Vamos, suba a escada, quero ver voce ser trucidado pelos proximos\ndesafios. E voce, servo imundo, esta fazendo seu trabalho de forma errada, o infeliz\nainda esta vivo, esta ajudando ele por acaso?-Servo: Nao, senhor, estou seguindo suas\nordens."};
+    char texto_31[1][501] = {"-Voz misteriosa: Vamos, suba a escada, quero ver voce ser trucidado pelos proximos\ndesafios. E voce, servo imundo, esta fazendo seu trabalho de forma errada, o infeliz\nainda esta vivo, esta ajudando ele por acaso?\n-Servo: Nao, senhor, estou seguindo suas\nordens.\n"};
 	cadastrar_no(
         31,
         -1, 
@@ -696,7 +697,7 @@ opcao opcoes_50[1] = {{'#', 51}};
         "./imagens/batalha3.txt");
     
     opcao opcoes_56[1] = {{'#', 57}};
-    char texto_56[1][501] = {"-Voce: Mas o que e isso? Um caminho sem saida? O que eh esse muro engracado? E o que eh\nessa placa escrita... Beco Diagonal??\n-Servo: Parece que voce nasceu ontem? Voce eh muito burro. Esse eh um muro magico, deixe\nque eu abro ele."};
+    char texto_56[1][501] = {"-Voce: Mas o que e isso? Um caminho sem saida? O que eh esse muro engracado? E o que eh\nessa placa escrita... Beco Diagonal??\n-Servo: Parece que voce nasceu ontem? Voce eh muito burro. Esse eh um muro magico, deixe\nque eu abro ele.\n"};
 	cadastrar_no(
         56,
         -1, 
@@ -919,7 +920,7 @@ opcao opcoes_100[3] = {{'#', 101}};
         "");
 
     opcao opcoes_115[3] = {{'E', 116}, {'D', 123}, {'V', 101}};
-    char texto_115[1][501] = {"-Voce: Uma bifurcacao, que caminho sera o melhor?\n-Servo: arggggg, voce me da nos nervos.\nF-Frente E-Esquerda\nDigite uma opcao: "};
+    char texto_115[1][501] = {"-Voce: Uma bifurcacao, que caminho sera o melhor?\n-Servo: arggggg, voce me da nos nervos.\nE-Esquerda D-Direita V-Voltar\nDigite uma opcao: "};
 	cadastrar_no(
         115,
         -1, 
@@ -1209,7 +1210,7 @@ opcao opcoes_200[1] = {{'#', 201}};
         "./imagens/ambientacao/corredor.txt");
     
     opcao opcoes_201[3] = {{'E', 202}, {'D', 210},{'F',211}};
-    char texto_201[1][501] ={"-Voce: Uma nova trifurcacao? Sera essa a ultima?\n-Servo: Nao importa aluno, pare de fazer perguntas retoricas o tempo todo. Escolha que\ncaminho deseja seguir:\nE-Esquerda D-Direita F-Frente\nDigite uma opcao:"};
+    char texto_201[1][501] ={"-Voce: Uma nova trifurcacao? Sera essa a ultima?\n-Servo: Nao importa aluno, pare de fazer perguntas retoricas o tempo todo. Escolha que\ncaminho deseja seguir:\nE-Esquerda D-Direita F-Frente\nDigite uma opcao: "};
 	cadastrar_no(
         201,
         -1, 
@@ -1261,7 +1262,7 @@ opcao opcoes_200[1] = {{'#', 201}};
         "./imagens/ambientacao/taverna.txt");
     
     opcao opcoes_211[3] = {{'E', 212}, {'D', 219}, {'V', 201}};
-    char texto_211[1][501] = {"-Servo: Como voce eh insuportavel, eu vou falar! Se voce fizer a escolha certa, essa sera\na ultima bifurcacao desse jogo. Escolha que caminho deseja seguir:\nE-Esquerda D-Direita V-Voltar\nDigite uma opcao:"};
+    char texto_211[1][501] = {"-Servo: Como voce eh insuportavel, eu vou falar! Se voce fizer a escolha certa, essa sera\na ultima bifurcacao desse jogo. Escolha que caminho deseja seguir:\nE-Esquerda D-Direita V-Voltar\nDigite uma opcao: "};
 	cadastrar_no(
         211,
         -1, 
@@ -1326,14 +1327,14 @@ opcao opcoes_200[1] = {{'#', 201}};
         "");
     
     opcao opcoes_225[1] = {{'#', 226}};
-    char texto_225[1][501] = {"\nVoz misteriosa: Primeiramente, morra servo imundo, nao consegue nem matar um aluno.\n-Servo: Naaaaaaao - e morreu.\n-Voz misteriosa: Em segundo lugar, parabens aluno, nunca vi ninguem derrotar minha\ncriadora, nem sei o que acontecera comigo, mas sei que voce esta livre, pode atravessar o portal para seu mundo de novo.\n-Voce: Nunca vou me esquecer do que aconteceu aqui\n-assim o aluno corre em direcao ao portal-\n"};
+    char texto_225[1][501] = {"\n-Voz misteriosa: Primeiramente, morra servo imundo, nao consegue nem matar um aluno.\n-Servo: Naaaaaaao - e morreu.\n-Voz misteriosa: Em segundo lugar, parabens aluno, nunca vi ninguem derrotar minha\ncriadora, nem sei o que acontecera comigo, mas sei que voce esta livre, pode atravessar o portal para seu mundo de novo.\n-Voce: Nunca vou me esquecer do que aconteceu aqui\n-assim o aluno corre em direcao ao portal-\n"};
 	cadastrar_no(
         225,
         -1, 
         texto_225,
         0,
 		nao_terminal,
-        nao_complexo,
+        passar,
         1,
         opcoes_225,
         "./imagens/ambientacao/cenariofinal.txt");
