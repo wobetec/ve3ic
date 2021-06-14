@@ -10,7 +10,6 @@
 #define NOME_ARQUIVO_SAIDA "saida.txt"
 #define MAX_OPCOES 10
 
-
 //////////////////////////DEFINICAO DE ENUMS//////////////////////////
 typedef enum _tipo_no {//enum exigido pelo professor
 	raiz, nao_terminal, terminal
@@ -619,7 +618,11 @@ void cadastrar_nos(){//contem os nos da historia e executa o cadastrar_no varias
         "./imagens/ambientacao/velho.txt");
     
     opcao opcoes_24[4] = {{'T', 4025}, {'V', 10}, {'#', 27}, {'#', 24}};
+<<<<<<< HEAD
     char texto_24[3][501] = {"-Voce: que porta maneira.\nT-Tentar abrir V-Voltar\n", "-Porta: Eh por sua conta e risco aluno, pode passar.\n", "-Porta: Parece que voce ainda nao consegui um elmo, nao posso deixar voce passar. Apesar\nde querer que voce morra logo o show tem que durar mais que 3s.\n"};
+=======
+    char texto_24[3][501] = {"-Voce: que porta maneira.\nT-Tentar abrir V-Voltar\n", "-Porta: Eh por sua conta e risco aluno, pode passar.\n", "-Porta: Parece que voce ainda nao conseguiu um elmo, nao posso deixar voce passar. Apesar\nde querer que voce morra logo o show tem que durar mais que 3s.\n"};
+>>>>>>> bfa5caf8224151eb517aa41671db61bfe1823deb
 	cadastrar_no(
         24,
         -1, 
