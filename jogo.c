@@ -1301,7 +1301,7 @@ opcao opcoes_200[1] = {{'#', 201}};
         sala_item,
         3,
         opcoes_216,
-        "");
+        "./imagens/andar4/chifre.txt");
 
     opcao opcoes_219[4] = {{'A', 4220}, {'V', 211}, {'#', 221}, {'#', 211}};
     char texto_219[3][501] = {"-Voce: Nossa! Que hall legal! Nunca vi um corredor tao longo, para onde sera que ele leva?\n Uma porta sem fechadura? Mas como posso abri-la?\nA-Tentar abrir V-Voltar\nDigite uma opcao: ", "-Porta: Voce possui todas as joias que pertencem a poderosa deusa, idealizadora desta\ntorre, pode passar!\n", "-Porta: Acho que esta faltando alguma joia, ache-as e podera passar.\n"};
@@ -1353,7 +1353,7 @@ opcao opcoes_200[1] = {{'#', 201}};
         saida,
         1,
         opcoes_226,
-        "");
+        "./imagens/andar5/salacap.txt");
     
     char texto_227[1][501] = {"                                         Duvidas?                                         \nOBRIGADO POR TER JOGADO CodeDungeon!\n"};
 	cadastrar_no(
@@ -1365,7 +1365,7 @@ opcao opcoes_200[1] = {{'#', 201}};
         nao_complexo,
         0,
         NULL,
-        "");
+        "./imagens/ambientacao/TORRADO.txt");
 
 }
 
@@ -1668,7 +1668,7 @@ void morrer(){
         vida=vida_MAX;
         limpar();
         barra_superior();
-        //imagem("");
+        imagem("./imagens/ambientacao/morte.txt");
         printf("\nVoce perdeu! Os poderes da dungeon sao superiores a voce! Vou dar-lhe mais uma chance!\n");
         fprintf(arquivo_saida, "\nVoce perdeu! Os poderes da dungeon sao superiores a voce! Vou dar-lhe mais uma chance!\n");
         pausa();
