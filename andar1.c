@@ -521,8 +521,8 @@ void cadastrar_nos(){
             endereco_imagem)
     */
     opcao opcoes_0[1] = {{'#', 1}};
-    char texto_0[1][501] = {"Quinta-feira pela manha, aula de AlgLin que parece nao ter fim, e la esta o Aluno do \nIMEnso instituto, tentando se concentrar na aulinha enquanto nao para de pensar no Empire of \nDungeons, um jogo que encontrou na internet recentemente e nao ve a hora de comprar. Essa aula esta realmente chata e o aluno esta muito concentrado em seus pensamentos, imagiando cada detalhe do jogo, quando derrepente um clarao.\n"};
-	cadastrar_no(
+    char texto_0[1][501] = {"Quinta-feira pela manha, aula de AlgLin que parece nao ter fim, e la esta o Aluno do \nIMEnso instituto, tentando se concentrar na aulinha enquanto nao para de pensar no Empire\nof Dungeons, um jogo que encontrou na internet recentemente e nao ve a hora de comprar.\nEssa aula esta realmente chata e o aluno esta muito concentrado em seus pensamentos,\nimagiando cada detalhe do jogo, quando derrepente um clarao.\n"};
+    cadastrar_no(
         0,
         -1, 
         texto_0,
@@ -534,7 +534,7 @@ void cadastrar_nos(){
         "");
 
     opcao opcoes_1[3] = {{'#', 2}, {'#', 3}, {'#', 4}};
-    char texto_1[3][501] = {"-Voz misteriosa: Ola, quem vos fala eh o criador desse belo jogo. Por enquanto, voces nao saberao quem sou eu... na verdade, poucos descobrirao. O que está em jogo agora é a suas vidas.\n", "Se conseguirem chegar ao ultimo andar da torre de 5 andares que se apresenta adiante, resolvendo todos os enigmas necessarios, coletando todos os itens, tornando-se mais fortes e derrotando os BOSS de cada andar, sairao vivos.\n", "Caso contrario, voces ja sabem. Por que estou fazendo isso? pura diversao. No mais, boa sorte!\n"};
+    char texto_1[3][501] = {"-Voz misteriosa: Ola, quem vos fala eh o criador desse belo jogo. Por enquanto, voces nao\nsaberao quem sou eu... na verdade, poucos descobrirao. O que esta em jogo agora eh a sua\nvidas.\n", "Se conseguirem chegar ao ultimo andar da torre de 5 andares que se apresenta adiante,\nresolvendo todos os enigmas necessarios, coletando todos os itens, tornando-se mais fortes\ne derrotando os BOSS de cada andar, sairao vivos.\n", "Caso contrario, voces ja sabem. Por que estou fazendo isso? pura diversao. No mais, boa\nsorte!\n"};
 	cadastrar_no(
         1,
         -1, 
@@ -560,7 +560,7 @@ void cadastrar_nos(){
         "./imagens/ambientacao/bifurcacao.txt");
 
     opcao opcoes_5[4] = {{'#', 6}, {'#', 7}, {'#', 8}, {'#', 9}};
-    char texto_5[4][501] = {"-Voce: O que eh aquilo, parece um goblim, ele esta dormindo.\n-Servo: Errado Aluno, nao esta mais.\n","-Goblim: lara ratu peri.\n-Voce: Seja la o que for, eu quem vou ganhar, sou treinado na arte das integrais multiplas.\n","-Goblim: baru sate lorem.-Voce: morraaaaa!\n", "-Servo: estou impressionado de que voce tenha saido dessa vivo, a maioria morre antes de virar a esquerda.\n-Voz misteriosa: Nao encoraje esse quadrupede, esse eh soh o principio das dores\n"};
+    char texto_5[4][501] = {"-Voce: O que eh aquilo, parece um goblim, ele esta dormindo.\n-Servo: Errado Aluno, nao esta mais.\n","-Goblim: lara ratu peri.\n-Voce: Seja la o que for, eu quem vou ganhar, sou treinado na arte das integrais.\n","-Goblim: baru sate lorem.-Voce: morraaaaa!\n", "-Servo: estou impressionado de que voce tenha saido dessa vivo, a maioria morre antes de\nvirar a esquerda.\n-Voz misteriosa: Nao encoraje esse quadrupede, esse eh soh o principio das dores.\n"};
 	cadastrar_no(
         5,
         -1, 
@@ -573,7 +573,7 @@ void cadastrar_nos(){
         "./imagens/andar1/goblim.txt");
     
     opcao opcoes_9[1] = {{'#', 4}};
-    char texto_9[1][501] = {"-Voce: Olha, parece so uma pedra, devo pegar?\n-Servo: Nao estou aqui para ser sua baba, faca o que quiser\n-Voce: vou levar comigo.\n-Voz misteriosa: Veja se nao temos um colecionador de pedras aqui, vai mesmo guardar essa pedra?\n-Voce: Vai que preciso jogar em alguem\n-Voz misteriosa: ou em algo."};
+    char texto_9[1][501] = {"-Voce: Olha, parece so uma pedra, devo pegar?\n-Servo: Nao estou aqui para ser sua baba, faca o que quiser\n-Voce: vou levar comigo.\n-Voz misteriosa: Veja se nao temos um colecionador de pedras aqui, vai mesmo guardar essa\npedra?\n-Voce: Vai que preciso jogar em alguem\n-Voz misteriosa: ou em algo."};
 	cadastrar_no(
         9,
         -1, 
@@ -598,8 +598,8 @@ void cadastrar_nos(){
         opcoes_10,
         "./imagens/ambientacao/trifurcacao.txt");
     
-    opcao opcoes_11[4] = {{'#', 12}, {'#', 13}, {'#', 14}, {'#', 15}};
-    char texto_11[4][501] = {"-Voce(sussurando): Aquilo eh um fantasma?\n-Servo(sussurando): Acorde ele e descubra.*Lutar *Voltar\n", "-Servo: agora me diga como acertar um fantasma?\n-Voce: facil, eles sao frageis contra raios, e basta gerar um pouco de atrito que consigo produzir faiscas.\n", "-Fantasma: ihhhhhhhhh.\n-Voce: Morra denovo seu infame.\n", "-Voz misteriosa: Vai ter que fazer muito melhor que isso se quiser sair vivo desse lugar.\n"};
+    opcao opcoes_11[5] = {{'L', 12}, {'V', 10}, {'#', 13}, {'#', 14}, {'#', 15}};
+    char texto_11[4][501] = {"-Voce(sussurando): Aquilo eh um fantasma?\n-Servo(sussurando): Acorde ele e descubra.\n L-Lutar V-Voltar\nDigite uma opcao: ", "-Servo: agora me diga como acertar um fantasma?\n-Voce: facil, eles sao frageis contra raios, e basta gerar um pouco de atrito que consigo\nproduzir faiscas.\n", "-Fantasma: ihhhhhhhhh.\n-Voce: Morra denovo seu infame.\n", "-Voz misteriosa: Vai ter que fazer muito melhor que isso se quiser sair vivo desse lugar.\n"};
 	cadastrar_no(
         11,
         -1, 
@@ -607,12 +607,12 @@ void cadastrar_nos(){
         4,
 		nao_terminal,
         luta,
-        4,
+        5,
         opcoes_11,
         "./imagens/andar1/fantasma.txt");
     
     opcao opcoes_15[3] = {{'#', 16}, {'#', 17}, {'#', 10}};
-    char texto_15[3][501] = {"-Voce: Uau, que sala incrivel, deve ter alguma armadilha aqui, parece aquelas salas do tesouro \n-Servo: Cala a boca aluno, so joga, voce fala demais.\n-Voce: Olha, tem mesmo um tesouro ali, o que eh aquilo?\n", "-Voz misteriosa: O elmo de Richard Franco,forjado com escama de dragoes nas profundezas da masmorra do trem. Eh um objeto indispensavel para derrotar o TC Rock.\n", "-Voce: parece pesado, mas eh muito legal.\n"};
+    char texto_15[3][501] = {"-Voce: Uau, que sala incrivel, deve ter alguma armadilha aqui, parece aquelas salas do\ntesouro.\n-Servo: Cala a boca aluno, so joga, voce fala demais.\n-Voce: Olha, tem mesmo um tesouro ali, o que eh aquilo?\n", "-Voz misteriosa: O elmo de Richard Franco,forjado com escama de dragoes nas profundezas\nmasmorra do trem. Eh um objeto indispensavel para derrotar o TC Rock.\n", "-Voce: parece pesado, mas eh muito legal.\n"};
 	cadastrar_no(
         15,
         -1, 
@@ -625,7 +625,7 @@ void cadastrar_nos(){
         "");
     
     opcao opcoes_18[9] = {{'A', 19}, {'B', 20}, {'C', 21}, {'D', 22}, {'V', 10}, {'#', 18}, {'#', 23}, {'#', 18}, {'#', 18}};
-    char texto_18[5][501] = {"-Enigma: Alto la, sou o Enigma, o primeiro e unico, assim como minha prima distante, Esfinge, você tem que responder para passar: \nQual destes queima azul?\n A-Na B-Cu C-Mg D-K V-Voltar \nDigite uma opcao: ", "Qual a ideia, aluno?\n", "Ate que voce sabe alguma coisa.\n", "Soh pode ser brincadeira, neh?\n", "kkkkkkkkkkkk\n"};
+    char texto_18[5][501] = {"-Enigma: Alto la, sou o Enigma, o primeiro e unico, assim como minha prima distante,\nEsfinge, voce tem que responder para passar: \nQual destes queima azul?\n A-Na B-Cu C-Mg D-K\nV-Voltar \nDigite uma opcao: ", "Qual a ideia, aluno?\n", "Ate que voce sabe alguma coisa.\n", "Soh pode ser brincadeira, neh?\n", "kkkkkkkkkkkk\n"};
 	cadastrar_no(
         18,
         -1, 
@@ -638,7 +638,7 @@ void cadastrar_nos(){
         "./imagens/ambientacao/enigma.txt");
     
     opcao opcoes_23[1] = {{'#', 10}};
-    char texto_23[1][501] = {"-Senhor perdido: Alguem finalmente me libertou, estou preso nessa sala dos enigmas desde que comecei a sonhar."};
+    char texto_23[1][501] = {"-Senhor perdido: Alguem finalmente me libertou, estou preso nessa sala dos enigmas desde\nque comecei a sonhar.\n"};
 	cadastrar_no(
         23,
         -1, 
@@ -650,21 +650,21 @@ void cadastrar_nos(){
         opcoes_23,
         "");
     
-    opcao opcoes_24[2] = {{'T', 4025}, {'V', 23}};
-    char texto_24[3][501] = {"-Voce: que porta maneira.\nT-Tentar abrir V-Voltar\n", "-Porta: Eh por sua conta e risco aluno, pode passar.\n", "-Porta: Parece que voce ainda nao consegui um elmo, nao posso deixar voce passar. Apesar que querer que você morra logo o show tem que durar mais que 3s.\n"};
+    opcao opcoes_24[4] = {{'T', 4025}, {'V', 10}, {'#', 27}, {'#', 24}};
+    char texto_24[3][501] = {"-Voce: que porta maneira.\nT-Tentar abrir V-Voltar\n", "-Porta: Eh por sua conta e risco aluno, pode passar.\n", "-Porta: Parece que voce ainda nao consegui um elmo, nao posso deixar voce passar. Apesar\nde querer que você morra logo o show tem que durar mais que 3s.\n"};
 	cadastrar_no(
         24,
         -1, 
         texto_24,
-        0,
+        3,
 		nao_terminal,
         fechadura,
-        3,
+        2,
         opcoes_24,
         "./imagens/ambientacao/fechadura.txt");
     
-    opcao opcoes_27[3] = {{'#', 28}, {'#', 29}, {'#', 30}, {'#', 31}};
-    char texto_27[4][501] = {"-TC: haha, veja se nao temos uma criaturinha aqui.\n-Voce: Eh uma pedra?\n-Servo: Voce nao devia ter dito isso.\n-TC: Ninguem me chama de pedraaaa.\n", "-Voce: Entao eh para isso que serve o elmo.\n-TC: Voce nao vai sair dessa vivo seu aluno incopetente, niguem sobrevive a minha rajada diferencial.\n", "-Voce: Eu tenho o poder da integral comigo.\n-TC: grhhhhh.\n", "-Voz misteriosa: Veja soh se n temos o primeiro guerreiro nos ultimos 229 anos que consegue derrotar o TC Rock.\n"};
+    opcao opcoes_27[4] = {{'#', 28}, {'#', 29}, {'#', 30}, {'#', 31}};
+    char texto_27[4][501] = {"-TC: haha, veja se nao temos uma criaturinha aqui.\n-Voce: Eh uma pedra?\n-Servo: Voce nao devia ter dito isso.\n-TC: Ninguem me chama de pedraaaa.\n", "-Voce: Entao eh para isso que serve o elmo.\n-TC: Voce nao vai sair dessa vivo seu aluno incopetente, ninguem sobrevive a minha rajada\ndiferencial.\n", "-Voce: Eu tenho o poder da integral comigo.\n-TC: grhhhhh.\n", "-Voz misteriosa: Veja soh se n temos o primeiro guerreiro nos ultimos 229 anos que consegue\nderrotar o TC Rock.\n"};
 	cadastrar_no(
         27,
         -1, 
@@ -672,12 +672,12 @@ void cadastrar_nos(){
         4,
 		nao_terminal,
         luta,
-        3,
+        4,
         opcoes_27,
         "./imagens/andar1/tcrock.txt");
     
     opcao opcoes_31[1] = {{'#', 50},};
-    char texto_31[1][501] = {"-Voz misteriosa: Vamos, suba a escada, quero ver voce ser trucidado pelos proximos desafios. E voce, servo imundo, esta fazendo seu trabalho de forma errada, o infeliz ainda esta vivo, esta ajudando ele por acaso?-Servo: Nao, senhor, estou seguindo suas ordens."};
+    char texto_31[1][501] = {"-Voz misteriosa: Vamos, suba a escada, quero ver voce ser trucidado pelos proximos\ndesafios. E voce, servo imundo, esta fazendo seu trabalho de forma errada, o infeliz\nainda esta vivo, esta ajudando ele por acaso?-Servo: Nao, senhor, estou seguindo suas\nordens."};
 	cadastrar_no(
         31,
         -1, 
