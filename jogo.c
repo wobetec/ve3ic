@@ -48,13 +48,13 @@ int contador = 0;//luta
 
 int vida = 100, vida_MAX = 100;//vida do personagem principal
 
-int pedras = 0, ja_coletas[15], topo_ja_coletas = -1;//controle de pedras
+int pedras = 4, ja_coletas[15], topo_ja_coletas = -1;//controle de pedras
 
 int XP = 0, nivel = 0, ataque = 14, armadura = 20;//nivel e criterios de dano
 
 int vida_inimigo=-1, vida_inimigo_MAX=0, ataque_inimigo=0;//criterios dos monstros
 
-int fechadura_boss = 0;//controle de passagem de andar
+int fechadura_boss = 10;//controle de passagem de andar
 
 int salas_bloqueadas[128], cont_salas = 0;//controle para nao acessar salas ja vistas
 
@@ -103,7 +103,7 @@ int main(){
     //inicializacoes necessarias
     cadastrar_nos();
     salas_bloqueadas[0]=0;
-    ptr_atual = buscar_no(0);
+    ptr_atual = buscar_no(200);
 
     //Tela de boas vindas
     limpar();
@@ -217,7 +217,7 @@ int main(){
                                         indice_proximo_no = indice_proximo_no%1000 + 1;
                                     }
                                 }else{
-                                    if(indice_proximo_no/1000 == fechadura_boss && fechadura_boss != 0){
+                                    if(indice_proximo_no/1000 <= fechadura_boss && fechadura_boss != 0){
                                         indice_proximo_no = indice_proximo_no %1000;
                                         fechadura_boss = 0;
                                     }else if(indice_proximo_no/1000>0){
@@ -265,8 +265,11 @@ int main(){
             morrer();
         }
         else{//Se no eh terminal, apresentar texto e finalizar programa
+            limpar();
+            printar_imagem();
             printf("%s", ptr_atual->texto);
             fprintf(arquivo_saida, "%s", ptr_atual->texto);
+            pausa();
             break;
         }
     }
@@ -897,7 +900,7 @@ opcao opcoes_100[3] = {{'#', 101}};
         "./imagens/ambientacao/velho.txt");
 
     opcao opcoes_108[4] = {{'#', 109}, {'#', 110}, {'#', 111}, {'#', 112}};
-    char texto_108[4][501] = {"-Você: Eh um lobo com aura verde, so pode ser o Wolf-Champion.\n-Servo: Agora eh o fim da linha para sua historia de heroi, duvido que voce o derrote.\n", "-Voce: Indentifique-se lobo maldito!\n-Fenrir: Humano, acha que um mero humano pode me tratar assim? Eu sou Fenrir, sou o lendario\nFenrir, aquele que arrancou a mao de um deus, sou filho de Loki!\n", "-Voce: Acha que isso me assusta? Com ajuda do elmo de escamas de um dragao, com essa\nforca insana que recebi experimente meu soco melhorado. Haia!!!\n-Lobo: Minha mordida vai te dilacerar raca inferior.\n", "-Voce: -rapidamente se esquivou da tentativa da mordida, e logo desfere um golpe\ncerteiro-.\n-Lobo: Como isso aconteceu? Meu nivel eh muito superior. Hm, o que te espera a frente faz\nparte da minha colecao de trofeus. Essa batalha, nao se engane, isso foi apenas um\ndeslize da minha atencao.\n"};
+    char texto_108[4][501] = {"-Voce: Eh um lobo com aura verde, so pode ser o Wolf-Champion.\n-Servo: Agora eh o fim da linha para sua historia de heroi, duvido que voce o derrote.\n", "-Voce: Indentifique-se lobo maldito!\n-Fenrir: Humano, acha que um mero humano pode me tratar assim? Eu sou Fenrir, sou o lendario\nFenrir, aquele que arrancou a mao de um deus, sou filho de Loki!\n", "-Voce: Acha que isso me assusta? Com ajuda do elmo de escamas de um dragao, com essa\nforca insana que recebi experimente meu soco melhorado. Haia!!!\n-Lobo: Minha mordida vai te dilacerar raca inferior.\n", "-Voce: -rapidamente se esquivou da tentativa da mordida, e logo desfere um golpe\ncerteiro-.\n-Lobo: Como isso aconteceu? Meu nivel eh muito superior. Hm, o que te espera a frente faz\nparte da minha colecao de trofeus. Essa batalha, nao se engane, isso foi apenas um\ndeslize da minha atencao.\n"};
 	cadastrar_no(
         108,
         -1, 
@@ -1001,7 +1004,7 @@ opcao opcoes_100[3] = {{'#', 101}};
         "./imagens/andar3/batalhaboss3.txt");
     
     opcao opcoes_130[3] = {{'#', 131}, {'#', 132}, {'#', 133}};
-    char texto_130[3][501] = {"-Voce: Caramba, ele deixou cair a espada.\n-Voz misteriosa: Vamos-la, vai deixa-la para tras?\n", "-Voce: Ele eh muit quente.\n-Voz misteriosa: Obvio, esse eh o pau de fogo, a arma mais poderosa do submundo. Nao sei\nnem explicar como voce, um mero mortal conseguiu sobreviver ao implacavel poder dela\n", "-Voce: Agora ninguem consegue me parar.\n"};
+    char texto_130[3][501] = {"-Voce: Caramba, ele deixou cair a espada.\n-Voz misteriosa: Vamos-la, vai deixa-la para tras?\n", "-Voce: Ele eh muito quente.\n-Voz misteriosa: Obvio, esse eh o pau de fogo, a arma mais poderosa do submundo. Nao sei\nnem explicar como voce, um mero mortal conseguiu sobreviver ao implacavel poder dela.\n", "-Voce: Agora ninguem consegue me parar.\n"};
 	cadastrar_no(
         130,
         -1, 
@@ -1014,7 +1017,7 @@ opcao opcoes_100[3] = {{'#', 101}};
         "./imagens/andar3/paudefogo.txt");
 
     opcao opcoes_133[1] = {{'#', 150}};
-    char texto_133[1][501] = {"-Servo: Nao acredito que voce ainda esta vivo, ser repugnante.Vamos suba logo, voce tem que morrer."};
+    char texto_133[1][501] = {"-Servo: Nao acredito que voce ainda esta vivo, ser repugnante. Vamos suba logo, voce tem que morrer."};
 	cadastrar_no(
         133,
         -1, 
@@ -1029,7 +1032,7 @@ opcao opcoes_100[3] = {{'#', 101}};
 //##################################ANDAR 4#####################################//
 
 opcao opcoes_150[1] = {{'#', 151}};
-    char texto_150[1][501] = {"Servo: Eh, ate parece que voce eh um bom jogador. Pena que soh tera essa fama por pouco tempo. Vamos ver se sobrevive a mais esse andar... \n"};
+    char texto_150[1][501] = {"-Servo: Eh, ate parece que voce eh um bom jogador. Pena que soh tera essa fama por pouco\ntempo. Vamos ver se sobrevive a mais esse andar... \n"};
 	cadastrar_no(
         150,
         -1, 
@@ -1042,7 +1045,7 @@ opcao opcoes_150[1] = {{'#', 151}};
         "./imagens/ambientacao/corredor.txt");
     
     opcao opcoes_151[3] = {{'E', 152}, {'D', 158}, {'F', 164}};
-    char texto_151[1][501] = {"-Voce: Uma nova trifurcacao? nunca sei para onde devo ir. Vou escolher na sorte dessa vez.\n-Servo: Nao importa qual dos 3 caminhos voce escolha, a morte eh certa, eh apenas questao\nde tempo. Ela tem te acompanhado desde o inicio do jogo, a espera do momento\nperfeito.\nE-Esquerda F-Frente D-Direita\nDigite uma opcao: "};
+    char texto_151[1][501] = {"-Voce: Uma nova trifurcacao? nunca sei para onde devo ir. Vou escolher na sorte dessa vez.\n-Servo: Nao importa qual dos 3 caminhos voce escolha, a morte eh certa, eh apenas questao\nde tempo. Ela tem te acompanhado desde o inicio do jogo, a espera do momento perfeito.\nE-Esquerda F-Frente D-Direita\nDigite uma opcao: "};
 	cadastrar_no(
         151,
         -1, 
@@ -1156,9 +1159,9 @@ opcao opcoes_150[1] = {{'#', 151}};
         sala_item,
         3,
         opcoes_169,
-        "./imagens/ambientacao/bifurcacao.txt");
+        "./imagens/ambientacao/tesouro.txt");
 
-    opcao opcoes_172[4]={{'A', 4173}, {'B', 164}, {'#', 174}, {'#', 164}}; 
+    opcao opcoes_172[4]={{'A', 4173}, {'B', 164}, {'#', 175}, {'#', 164}}; 
     char texto_172[3][501] = {"-Voce: Outra porta, essa parece emanar uma aura estranha.\nA-Tentar abrir B-Voltar\nDigite uma opcao: ", "-Porta: Eh por sua conta em risco aluno, pode passar.\n","-Porta: So queria te dizer que talvez voce possa estar deixando algo de muito precioso\npara a sua sobrevivencia nesse jogo.\n" };
 	cadastrar_no(
         172,
@@ -1169,38 +1172,38 @@ opcao opcoes_150[1] = {{'#', 151}};
         fechadura,
         2,
         opcoes_172,
-        "./imagens/ambientacao/porta.txt");
+        "./imagens/ambientacao/fechadura.txt");
 
-    opcao opcoes_174[4]={{'#', 175}, {'#', 176}, {'#',177}, {'#', 178}}; 
-    char texto_174[4][501] = {"-Cerquinha: Lembra de mim? O senhor do enigma engracadinho. hahaha. Nao sou um piadista\nqualquer. Te derrotarei com o poder da matemagica!\n-Voce: Outro que acha que vai me derrotar com umas integrais quaisquer!.\n", "-Voce: Vou honrar as joias que coletei!\n-Cerquinha: Mais um que se acha diferente. Voce eh igual aos outros, aluno!\n","-Voce: Ninguem pode me parar!.\n-Cerquinha: hahahah!\n" ,"-Voz misteriosa: Veja soh. Resistiu ao poderoso Cerquinha. Sua morte ja eh certa aluno,\nnao resistira na proxima. Se chegar la, neh?\n"};
+    opcao opcoes_175[4]={{'#', 176}, {'#', 177}, {'#',178}, {'#', 179}}; 
+    char texto_175[4][501] = {"-Cerquinha: Nao sou um piadista\nqualquer. Te derrotarei com o poder da matemagica!\n-Voce: Outro que acha que vai me derrotar com umas integrais quaisquer!.\n", "-Voce: Vou honrar as joias que coletei!\n-Cerquinha: Mais um que se acha diferente. Voce eh igual aos outros, aluno!\n","-Voce: Ninguem pode me parar!.\n-Cerquinha: hahahah!\n" ,"-Voz misteriosa: Veja soh. Resistiu ao poderoso Cerquinha. Sua morte ja eh certa aluno,\nnao resistira na proxima. Se chegar la, neh?\n"};
 	cadastrar_no(
-        174,
+        175,
         -1, 
-        texto_174,
+        texto_175,
         4,
 		nao_terminal,
         luta,
         4,
-        opcoes_174,
-        "./imagens/ambientacao/cerqueira.txt");
+        opcoes_175,
+        "./imagens/andar4/cerqueira.txt");
     
-    opcao opcoes_178[1]={{'#',200}}; 
-    char texto_178[1][501] = {"-Voz misteriosa: Vamos, suba! essa eh a ultima escada. Depois disso, vem a queda hahaha.\n"};
+    opcao opcoes_179[1]={{'#',200}}; 
+    char texto_179[1][501] = {"-Voz misteriosa: Vamos, suba! essa eh a ultima escada. Depois disso, vem a queda hahaha.\n"};
 	cadastrar_no(
-        178,
+        179,
         -1, 
-        texto_178,
+        texto_179,
         1,
 		nao_terminal,
         sala_item,
         1,
-        opcoes_178,
-        "./imagens/ambientacao/porta.txt");
+        opcoes_179,
+        "./imagens/ambientacao/escada.txt");
 
 //##################################ANDAR 5#####################################//
 
 opcao opcoes_200[1] = {{'#', 201}};
-    char texto_200[1][501] = {"-Servo: Eh, eu ate poderia te deixar seguir nesse ultimo andar sozinho... mas quem iria te\nenterrar? Precisa ter um inutil como eu ao seu lado para fazer esse servico sujo..."};
+    char texto_200[1][501] = {"-Servo: Eh, eu ate poderia te deixar seguir nesse ultimo andar sozinho... mas quem iria te\nenterrar? Precisa ter um inutil como eu ao seu lado para fazer esse servico sujo...\n"};
 	cadastrar_no(
         200,
         -1, 
@@ -1226,7 +1229,7 @@ opcao opcoes_200[1] = {{'#', 201}};
         "./imagens/ambientacao/trifurcacao.txt");
     
     opcao opcoes_202[9] = {{'A', 203}, {'B', 204}, {'C', 205},{'E',206},{'V',201}, {'#',202},{'#',207},{'#',202},{'#',202}};
-    char texto_202[1][501] = {"-Enigma: Eh aluno. Esse eh o ultimo enigma que tera que resolver para sobreviver nessa\ntorre. Talvez voce se considere um genio, mas esse enigma foi escrito a milhares de anos \natras pelo criador desse jogo, Duvido que conseguira acertar.\nint x=10;\nint y=10;\nreturn x+y Qual o nome do filme?\nA-Missao impossivel B-O Codigo da Vinte C-Indiana Jones D-Dez eh pouco, vinte eh demais \nV-Voltar\nDigite uma opcao: "};
+    char texto_202[1][501] = {"-Enigma: Eh aluno. Esse eh o ultimo enigma que tera que resolver para sobreviver nessa\ntorre. Talvez voce se considere um genio, mas esse enigma foi escrito a milhares de anos \natras pelo criador desse jogo, Duvido que conseguira acertar.\nint x=10;\nint y=10;\nreturn x+y Qual o nome do filme?\nA-Missao impossivel B-O Codigo da Vinte\nC-Indiana Jones D-Dez eh pouco, vinte eh demais \nV-Voltar\nDigite uma opcao: "};
 	cadastrar_no(
         202,
         -1, 
@@ -1301,9 +1304,9 @@ opcao opcoes_200[1] = {{'#', 201}};
         sala_item,
         3,
         opcoes_216,
-        "./imagens/andar4/chifre.txt");
+        "./imagens/ambientacao/chifre.txt");
 
-    opcao opcoes_219[4] = {{'A', 4220}, {'V', 211}, {'#', 221}, {'#', 211}};
+    opcao opcoes_219[4] = {{'A', 50220}, {'V', 211}, {'#', 222}, {'#', 211}};
     char texto_219[3][501] = {"-Voce: Nossa! Que hall legal! Nunca vi um corredor tao longo, para onde sera que ele leva?\n Uma porta sem fechadura? Mas como posso abri-la?\nA-Tentar abrir V-Voltar\nDigite uma opcao: ", "-Porta: Voce possui todas as joias que pertencem a poderosa deusa, idealizadora desta\ntorre, pode passar!\n", "-Porta: Acho que esta faltando alguma joia, ache-as e podera passar.\n"};
 	cadastrar_no(
         219,
@@ -1312,54 +1315,54 @@ opcao opcoes_200[1] = {{'#', 201}};
         3,
 		nao_terminal,
         fechadura,
-        3,
+        2,
         opcoes_219,
-        "./imagens/ambientacao/porta");
+        "./imagens/ambientacao/porta.txt");
     
-    opcao opcoes_221[4] = {{'#', 222}, {'#', 223}, {'#', 224}, {'#', 225}};
-    char texto_221[4][501] = {"Gabiqueen:Uau, pensei que nunca me conheceria. Que privilegio aluno! Agora voce sabe que\nnao foi um Deus que criou esse mundo,mas sim uma deusa.Como me diverti com voces colocando\nsuas vidas em risco apenas porque eu quis assim. Vamos direto ao ponto...Te derrotarei de\numa vez por todas com o poder da computacao!\n-Voce: Lutei bastante para chegar ate aqui! Nao vou deixar uma deusa sequer me derrotar!.\n", "-Voce: Vou honrar as joias que coletei!\n-Gabiqueen: Mais um que se acha diferente. Todas as joias sempre foram minhas, aluno!\n", "\n-Voce: NInguem pode me parar!.\n-Gabiqueen: Ninguem nunca passou por mim!\n","-Servo: Eh, voce nao era qualquer um...\n"};
+    opcao opcoes_222[4] = {{'#', 223}, {'#', 224}, {'#', 225}, {'#', 226}};
+    char texto_222[4][501] = {"-Gabiqueen: Uau, pensei que nunca me conheceria. Que privilegio aluno! Agora voce sabe que\nnao foi um Deus que criou esse mundo,mas sim uma deusa.Como me diverti com voces colocando\nsuas vidas em risco apenas porque eu quis assim. Vamos direto ao ponto...Te derrotarei de\numa vez por todas com o poder da computacao!\n-Voce: Lutei bastante para chegar ate aqui! Nao vou deixar uma deusa sequer me derrotar!.\n", "-Voce: Vou honrar as joias que coletei!\n-Gabiqueen: Mais um que se acha diferente. Todas as joias sempre foram minhas, aluno!\n", "\n-Voce: NInguem pode me parar!.\n-Gabiqueen: Ninguem nunca passou por mim!\n","-Servo: Eh, voce nao era qualquer um...\n"};
 	cadastrar_no(
-        221,
+        222,
         -1, 
-        texto_221,
+        texto_222,
         4,
 		nao_terminal,
         luta,
         4,
-        opcoes_221,
+        opcoes_222,
         "./imagens/andar5/gabiqueen.txt");
     
-    opcao opcoes_225[1] = {{'#', 226}};
-    char texto_225[1][501] = {"\n-Voz misteriosa: Primeiramente, morra servo imundo, nao consegue nem matar um aluno.\n-Servo: Naaaaaaao - e morreu.\n-Voz misteriosa: Em segundo lugar, parabens aluno, nunca vi ninguem derrotar minha\ncriadora, nem sei o que acontecera comigo, mas sei que voce esta livre, pode atravessar o portal para seu mundo de novo.\n-Voce: Nunca vou me esquecer do que aconteceu aqui\n-assim o aluno corre em direcao ao portal-\n"};
-	cadastrar_no(
-        225,
-        -1, 
-        texto_225,
-        0,
-		nao_terminal,
-        passar,
-        1,
-        opcoes_225,
-        "./imagens/ambientacao/cenariofinal.txt");
-
     opcao opcoes_226[1] = {{'#', 227}};
-    char texto_226[1][501] = {"Cap: Dormindo em aula, aluno?"};
+    char texto_226[1][501] = {"\n-Voz misteriosa: Primeiramente, morra servo imundo, nao consegue nem matar um aluno.\n-Servo: Naaaaaaao - e morreu.\n-Voz misteriosa: Em segundo lugar, parabens aluno, nunca vi ninguem derrotar minha\ncriadora, nem sei o que acontecera comigo, mas sei que voce esta livre, pode atravessar o portal para seu mundo de novo.\n-Voce: Nunca vou me esquecer do que aconteceu aqui\n-assim o aluno corre em direcao ao portal-\n"};
 	cadastrar_no(
         226,
         -1, 
         texto_226,
         0,
 		nao_terminal,
-        saida,
+        passar,
         1,
         opcoes_226,
-        "./imagens/andar5/salacap.txt");
-    
-    char texto_227[1][501] = {"                                         Duvidas?                                         \nOBRIGADO POR TER JOGADO CodeDungeon!\n"};
+        "./imagens/ambientacao/cenariofinal.txt");
+
+    opcao opcoes_227[1] = {{'#', 228}};
+    char texto_227[1][501] = {"-Cap: Dormindo em aula, aluno?\n"};
 	cadastrar_no(
         227,
         -1, 
         texto_227,
+        0,
+		nao_terminal,
+        saida,
+        1,
+        opcoes_227,
+        "./imagens/andar5/salacap.txt");
+    
+    char texto_228[1][501] = {"                                         Duvidas?                                         \nOBRIGADO POR TER JOGADO CodeDungeon!\n"};
+	cadastrar_no(
+        228,
+        -1, 
+        texto_228,
         0,
 		terminal,
         nao_complexo,
