@@ -143,7 +143,7 @@ int main(){
     salas_bloqueadas[0]=0;
 
     //carregar o no zero
-    ptr_atual = buscar_no(0);
+    ptr_atual = buscar_no(150);
 
     //Laco principal
     while(1) {
@@ -508,7 +508,7 @@ void cadastrar_nos(){
             endereco_imagem)
     */
     opcao opcoes_150[1] = {{'#', 151}};
-    char texto_150[1][501] = {"Servo: Eh, ate parece quevoce eh um bom jogador. Pena que soh tera essa fama por pouco tempo. Vamos ver se sobrevive a mais esse andar... "};
+    char texto_150[1][501] = {"Servo: Eh, ate parece que voce eh um bom jogador. Pena que soh tera essa fama por pouco tempo. Vamos ver se sobrevive a mais esse andar... "};
 	cadastrar_no(
         150,
         -1, 
@@ -534,65 +534,16 @@ void cadastrar_nos(){
         "./imagens/ambientacao/trifurcacao.txt");
     
     opcao opcoes_152[9] = {{'A', 153}, {'B', 154}, {'C', 155}, {'D', 156}, {'V',151}, {'#',152}, {'#',152},  {'#',152}, {'#',157}};
-    char texto_152[1][501] = {"-Enigma: Talvez voce ate tenha sobrevivido a ele la embaixo,\nmas agora tera que saber uma das figuras mais poderosas que ja existiu e que nao se manteve\nintacta lutando com esse monstro. Qual dos deuses listados abaixo perdeu o braco direito para\no lobo Fenris? A-Thor B-Loki C-Frea D-Tyr \nDigite uma opcao: "};
+    char texto_152[5][501] = {"-Enigma: Talvez voce ate tenha sobrevivido a ele la embaixo,\nmas agora tera que saber uma das figuras mais poderosas que ja existiu e que nao se manteve\nintacta lutando com esse monstro. Qual dos deuses listados abaixo perdeu o braco direito para\no lobo Fenris? A-Thor B-Loki C-Frea D-Tyr \nDigite uma opcao: ", "Aquele loiro forte com uma martelo? nao.", "O irmao do loiro bonitao? definitivamente nao.", "Freya não perderia o braço para um lobo qualquer", "Muito bem! Andou estudando mitologia nordica aluno? Agora que acertou teras acesso a um pre\ncioso tesouro..."};
 	cadastrar_no(
         152,
         -1,
         texto_152,
-        0,
+        5,
 		nao_terminal,
         nao_complexo,
         9,
         opcoes_152,
-        "./imagens/ambientacao/enigma.txt");
-
-    char texto_153[1][501] = {"Aquele loiro forte com uma martelo? nao."};
-	cadastrar_no(
-        153,
-        -1, 
-        texto_153,
-        0,
-		nao_terminal,
-        nao_complexo,
-        0,
-        NULL,
-        "./imagens/ambientacao/enigma.txt");
-    
-    char texto_154[1][501] = {"O irmao do loiro bonitao? definitivamente nao."};
-	cadastrar_no(
-        154,
-        -1, 
-        texto_154,
-        0,
-		nao_terminal,
-        nao_complexo,
-        0,
-        NULL,
-        "./imagens/ambientacao/enigma.txt");
-    
-    char texto_155[1][501] = {"Freya não perderia o braço para um lobo qualquer"};
-	cadastrar_no(
-        155,
-        -1, 
-        texto_155,
-        0,
-		nao_terminal,
-        nao_complexo,
-        0,
-        NULL,
-        "./imagens/ambientacao/enigma.txt");
-
-    opcao opcoes_156[1]={{'#', 157}}; 
-    char texto_156[1][501] = {"Muito bem! Anda estudando mitologia nordica aluno? Agora que acertou teras acesso a um pre\ncioso tesouro..."};
-	cadastrar_no(
-        156,
-        -1, 
-        texto_156,
-        0,
-		nao_terminal,
-        nao_complexo,
-        1,
-        opcoes_156,
         "./imagens/ambientacao/enigma.txt");
     
     opcao opcoes_157[1]={{'#', 151}}; 
@@ -616,13 +567,13 @@ void cadastrar_nos(){
         texto_158,
         0,
 		nao_terminal,
-        nao_complexo,
+        rancho,
         1,
         opcoes_158,
         "./imagens/ambientacao/taverna.txt");
 
-    opcao opcoes_159[5]={{'A', 160}, {"#", 161}, {'#', 162},{'#',163}, {'B', 158}};
-    char texto_159[4][501] = {"-Voce(sussurando): Algo com uma forma arredondada estranha estah aproximando... espere, mas\n ele tem uma boca gigante.\n-Servo(sussurando): Pela sua cara, parece que voce o conhece, nao eh mesmo? Para prosse\nguir tera que enfrenta-lo. Deseja seguir em frente e lutar com ele? A-Lutar B-Voltar\n Digite sua escolha:", "Zumbi: \"Aaaahhh!!\"\n-Voce: Ele quer me devorar mas nao vai conseguir!!!", "-Zumbi: \"Aaahhh!!\"\n-Voce: Seu ser malditoooooo! Eu vou te matar!.","-Voz misteriosa: Vai ter que fazer muito melhor que isso se nao quiser morrer agora!"};
+    opcao opcoes_159[5]={{'A', 160}, {'B', 158}, {"#", 161}, {'#', 162},{'#',163}};
+    char texto_159[4][501] = {"-Voce(sussurando): Algo com uma forma arredondada estranha estah aproximando... espere, mas\n ele tem uma boca gigante.\n-Servo(sussurando): Pela sua cara, parece que voce o conhece, nao eh mesmo? Para prosse\nguir tera que enfrenta-lo. Deseja seguir em frente e lutar com ele? A-Lutar B-Voltar\n Digite sua escolha:", "-PACMAN: Croc! Croc! Crunch! -Voce: Ele quer me comer mas nao vai conseguir de modo algum!", "--PACMAN: Croc! Croc! Crunch! -Voce: Voce nao cansa seu bicho maldito!? Eu vou te matar!","-Voz misteriosa: Quase que ele te transformava num fantasminha, vai ter que melhorar\nainda, aluno..."};
 	cadastrar_no(
         159,
         -1, 
@@ -632,8 +583,99 @@ void cadastrar_nos(){
         luta,
         5,
         opcoes_159,
-        "./imagens/ambientacao/taverna.txt");
+        "./imagens/ambientacao/pac_man.txt");
+
+    opcao opcoes_163[1]={{'#', 151}}; 
+    char texto_163[1][501] = {"Voce: O senhor parece onipresente nesse jogo\n Senhor perdido: Enquanto o piao continuar girando, eu estarei aqui. "};
+	cadastrar_no(
+        163,
+        -1, 
+        texto_163,
+        0,
+		nao_terminal,
+        nao_complexo,
+        1,
+        opcoes_163,
+        "./imagens/ambientacao/senhor.txt");
+
+    opcao opcoes_164[3]={{'E', 165}, {'D', 170}, {'V', 151}}; 
+    char texto_164[1][501] = {"-Voce: Agora uma bifurcacao, por ondedevo ir? D-Direita E-Esquerda\nDigite uma opcao:"};
+	cadastrar_no(
+        164,
+        -1, 
+        texto_164,
+        0,
+		nao_terminal,
+        nao_complexo,
+        3,
+        opcoes_164,
+        "./imagens/ambientacao/bifurcacao.txt");
     
+    opcao opcoes_165[4]={{'#', 166}, {"#", 167}, {'#', 168},{'#',169}};
+    char texto_165[4][501] = {"-Voz misteriosa: Entre mortos e feridos, um morto-vivo se apresenta diante de voce. Para\nnao perecer como os demais jogadores que passaram por aqui, tera que enfrentar aquele que\nanda apos a morte, um zumbi Draugr. Para prosseguir tera que enfrenta-lo. Vamos ver se\nsobrevivera?\n-Voce(gritando): Eu vou mata-lo de qualquer jeitooooo!.", "Zumbi: \"Aaaahhh!!\"\n-Voce: Ele quer me devorar mas nao vai conseguir!!!", "-Zumbi: \"Aaahhh!!\"\n-Voce: Seu ser malditoooooo! Eu vou te matar!.","-Voz misteriosa: Vai ter que fazer muito melhor que isso se nao quiser morrer agora!"};
+	cadastrar_no(
+        165,
+        -1, 
+        texto_165,
+        4,
+		nao_terminal,
+        luta,
+        4,
+        opcoes_165,
+        "./imagens/ambientacao/zumbi.txt");
+    
+    opcao opcoes_169[1]={{'#', 164}}; 
+    char texto_169[1][501] = {"Voce acabou de ganhar um anel de esmeralda. O anel carrega uma gigantesca e rara joia, a\nqual serviu de adorno para as mais belas deusas, incluindo a Deusa Freyja. Cuidado para\nnao perde-la!"};
+	cadastrar_no(
+        169,
+        -1, 
+        texto_169,
+        0,
+		nao_terminal,
+        sala_item,
+        1,
+        opcoes_169,
+        "./imagens/ambientacao/bifurcacao.txt");
+
+    opcao opcoes_170[4]={{'A', 4171}, {'B', 164}, {'#', 172}, {'#', 170}}; 
+    char texto_170[3][501] = {"-Voce: Outra porta, essa parece emanar uma aura estranha. A-Tentar abrir B-Voltar", "-Porta: Eh por sua conta em risco aluno, pode passar.","-Porta: So queria te dizer que talvez voce possa estar deixando algo de muito precioso\npara a sua sobrevivencia nesse jogo." };
+	cadastrar_no(
+        170,
+        -1, 
+        texto_170,
+        3,
+		nao_terminal,
+        sala_item,
+        4,
+        opcoes_170,
+        "./imagens/ambientacao/porta.txt");
+
+    opcao opcoes_172[4]={{'#', 173}, {'#', 174}, {'#',175}, {'#', 176}}; 
+    char texto_172[4][501] = {"-Cerquinha: Lembra de mim? O senhor do enigma engracadinho. hahaha. Nao sou um piadista\nqualquer. Te derrotarei com o poder da matemagica!\n-Voce: Outro que acha que vai me derrotar com umas integrais quaisquer!.", "-Voce: Vou honrar as joias que coletei!\n-Cerquinha: Mais um que se acha diferente. Voce eh igual aos outros, aluno!","-Voce: Ninguem pode me parar!.\n-Cerquinha: hahahah!" ,"-Voz misteriosa: Veja soh. Resistiu ao poderoso Cerquinha. Sua morte ja eh certa aluno,\nnao resistira na proxima. Se chegar la, neh?"};
+	cadastrar_no(
+        172,
+        -1, 
+        texto_172,
+        4,
+		nao_terminal,
+        luta,
+        4,
+        opcoes_172,
+        "./imagens/ambientacao/cerqueira.txt");
+    
+    opcao opcoes_176[1]={{'#',200}}; 
+    char texto_176[1][501] = {"-Voz misteriosa: Vamos, suba! essa eh a ultima escada. Depois disso, vem a queda hahaha."};
+	cadastrar_no(
+        176,
+        -1, 
+        texto_176,
+        1,
+		nao_terminal,
+        sala_item,
+        1,
+        opcoes_176,
+        "./imagens/ambientacao/porta.txt");
+
     /*
     opcao opcoes_$[3] = {{'E', 3}, {'D', 9}, {'V', 1}};
     char texto_$[1][501] = {"-Outra bifurcacao? \n-Nao pondere aluno... \nE-Esquerda \nD-Direita \nV-Voltar \nDigite a opcao: "};
