@@ -177,7 +177,7 @@ int main(){
 
                             case rancho:
                                 contador  = 0;
-                                atualizar_vida(1, 60);
+                                atualizar_vida(1, 100);
 
                                 limpar();
                                 barra_superior();
@@ -943,7 +943,7 @@ opcao opcoes_100[3] = {{'#', 101}};
         "./imagens/ambientacao/bifurcacao.txt");
 
     opcao opcoes_116[9] = {{'A', 117}, {'B', 118}, {'C', 119}, {'D', 120}, {'V', 115}, {'#', 116}, {'#', 121}, {'#', 116}, {'#', 116}};
-    char texto_116[5][501] = {"-Enigma: Vejo que chegou ate esse andar, porem lamento te informar que a partir daqui sua\naventura so vai ficar mais e mais dificil. Sem mais delongas, vamos ao enigma:\nTres resistores de 33 ohms sao ligados em paralelo a um cofre. Qual eh o nome do filme?\nA-Titanic B-11 ohms e um segredo C-Missao Impossivel D-Jogos Vorazes\nV-Voltar\nDigite uma opcao: ", "-Enigma: Acho que esse eh aquele do barco.\n", "-Enigma: hahahaha, essa foi boa, nao?\n", "-Enigma: Essa dai passou longe, aluno.\n", "-Enigma: Os resistores sao assassinos agora?\n"};
+    char texto_116[5][501] = {"-Enigma: Vejo que chegou ate esse andar, porem lamento te informar que a partir daqui sua\naventura so vai ficar mais e mais dificil. Sem mais delongas, vamos ao enigma:\nTres resistores de 33 ohms sao ligados em paralelo a um cofre. Qual eh o nome do filme?\nA-Titanic           B-11 ohms e um segredo\nC-Missao Impossivel D-Jogos Vorazes\nV-Voltar\nDigite uma opcao: ", "-Enigma: Acho que esse eh aquele do barco.\n", "-Enigma: hahahaha, essa foi boa, nao?\n", "-Enigma: Essa dai passou longe, aluno.\n", "-Enigma: Os resistores sao assassinos agora?\n"};
 	cadastrar_no(
         116,
         -1, 
@@ -1008,7 +1008,7 @@ opcao opcoes_100[3] = {{'#', 101}};
         "./imagens/andar3/batalhaboss3.txt");
     
     opcao opcoes_130[3] = {{'#', 131}, {'#', 132}, {'#', 133}};
-    char texto_130[3][501] = {"-Voce: Caramba, ele deixou cair a espada.\n-Voz misteriosa: Vamos-la, vai deixa-la para tras?\n", "-Voce: Ele eh muito quente.\n-Voz misteriosa: Obvio, esse eh o pau de fogo, a arma mais poderosa do submundo. Nao sei\nnem explicar como voce, um mero mortal conseguiu sobreviver ao implacavel poder dela.\n", "-Voce: Agora ninguem consegue me parar.\n"};
+    char texto_130[3][501] = {"-Voce: Caramba, ele deixou cair a espada.\n-Voz misteriosa: Vamos-la, vai deixa-la para tras?\n", "-Voce: Ele eh muito quente.\n-Voz misteriosa: Obvio, esse eh o pau de fogo, a arma mais poderosa do submundo. Nao sei\nnem explicar como voce, um mero mortal conseguiu sobreviver ao implacavel poder dela.\n", "-Voce: Agora ninguem consegue me parar.\n\n"};
 	cadastrar_no(
         130,
         -1, 
@@ -1021,7 +1021,7 @@ opcao opcoes_100[3] = {{'#', 101}};
         "./imagens/andar3/paudefogo.txt");
 
     opcao opcoes_133[1] = {{'#', 150}};
-    char texto_133[1][501] = {"-Servo: Nao acredito que voce ainda esta vivo, ser repugnante. Vamos suba logo, voce tem que morrer."};
+    char texto_133[1][501] = {"-Servo: Nao acredito que voce ainda esta vivo, ser repugnante. Vamos suba logo, voce tem\nque morrer.\n"};
 	cadastrar_no(
         133,
         -1, 
@@ -1165,8 +1165,8 @@ opcao opcoes_150[1] = {{'#', 151}};
         opcoes_169,
         "./imagens/ambientacao/tesouro.txt");
 
-    opcao opcoes_172[4]={{'A', 16173}, {'B', 164}, {'#', 175}, {'#', 164}}; 
-    char texto_172[3][501] = {"-Voce: Outra porta, essa parece emanar uma aura estranha.\nA-Tentar abrir B-Voltar\nDigite uma opcao: ", "-Porta: Eh por sua conta em risco aluno, pode passar.\n","-Porta: So queria te dizer que talvez voce possa estar deixando algo de muito precioso\npara a sua sobrevivencia nesse jogo.\n" };
+    opcao opcoes_172[4]={{'T', 16173}, {'V', 164}, {'#', 175}, {'#', 164}}; 
+    char texto_172[3][501] = {"-Voce: Outra porta, essa parece emanar uma aura estranha.\nT-Tentar abrir V-Voltar\nDigite uma opcao: ", "-Porta: Eh por sua conta em risco aluno, pode passar.\n","-Porta: So queria te dizer que talvez voce possa estar deixando algo de muito precioso\npara a sua sobrevivencia nesse jogo.\n" };
 	cadastrar_no(
         172,
         -1, 
@@ -1219,7 +1219,7 @@ opcao opcoes_200[1] = {{'#', 201}};
         opcoes_200,
         "./imagens/ambientacao/corredor.txt");
     
-    opcao opcoes_201[3] = {{'E', 202}, {'D', 210},{'F',211}};
+    opcao opcoes_201[3] = {{'E', 202}, {'D', 208},{'F', 209}};
     char texto_201[1][501] ={"-Voce: Uma nova trifurcacao? Sera essa a ultima?\n-Servo: Nao importa aluno, pare de fazer perguntas retoricas o tempo todo. Escolha que\ncaminho deseja seguir:\nE-Esquerda F-Frente D-Direita\nDigite uma opcao: "};
 	cadastrar_no(
         201,
@@ -1245,16 +1245,16 @@ opcao opcoes_200[1] = {{'#', 201}};
         opcoes_202,
         "./imagens/ambientacao/enigma.txt");
 
-    opcao opcoes_207[1] = {{'#', 208}};
-    char texto_207[1][501] = {"-Voce: Parece que essas pedras tem algo de importante, eu sinto isso\n-Servo: Vamos logo aluno, soh pegue essa pedra, nao precisa falar muito.-Voce: Agora que eu percebi, essa daqui parece ter algum numero, parece um V.\n-Voz misteriosa: Voce eh muito lento aluno.\n"};
+    opcao opcoes_207[1] = {{'#', 201}};
+    char texto_207[1][501] = {"-Voce: Parece que essas pedras tem algo de importante, eu sinto isso\n-Servo: Vamos logo aluno, soh pegue essa pedra, nao precisa falar muito.\n-Voce: Agora que eu percebi, essa daqui parece ter algum numero, parece um V.\n-Voz misteriosa: Voce eh muito lento aluno.\n"};
 	cadastrar_no(
         207,
         -1, 
         texto_207,
-        3,
+        0,
 		nao_terminal,
         pedra,
-        3,
+        1,
         opcoes_207,
         "./imagens/ambientacao/gema.txt");
 
@@ -1284,8 +1284,8 @@ opcao opcoes_200[1] = {{'#', 201}};
         opcoes_209,
         "./imagens/ambientacao/bifurcacao.txt");
 
-    opcao opcoes_210[5] = {{'A', 211},{'B', 209}, {'#', 212}, {'#', 213},{'#', 214}};
-    char texto_210[4][501] = {"-Voz misteriosa: Sera esse o ultimo monstro desse andar? Tem porte para isso? the Gleam\nEyes eh um monstro demoniaco parecendo um touro,com musculos tao tensos quanto as cordas\nondulando sua forma onipotente. sua pele tem um tom azul profundo e seus olhos tem essa\nchama ardente que envolve essa sala. Gostou dessa descricao? pena que sua morte nao sera\ntao bela assim. Para prosseguir tera que enfrenta-lo. Deseja lutar com ele?\nA-Lutar B-Voltar\nDigite uma opcao: ", "-Voce(gritando): Eu vou mata-lo! nem que essa seja a ultima coisa que eu faca!\n","-Touro: \"Aaahhh!!\"\n-Voce: Seu ser malditoooooo! Eu vou te matar!.\n","-Voz misteriosa: Vai morrer agora nos acrescimos do segundo tempo? no ultimo andar?\n"};
+    opcao opcoes_210[5] = {{'L', 211},{'V', 209}, {'#', 212}, {'#', 213},{'#', 214}};
+    char texto_210[4][501] = {"-Voz misteriosa: Sera esse o ultimo monstro desse andar? Tem porte para isso? the Gleam\nEyes eh um monstro demoniaco parecendo um touro,com musculos tao tensos quanto as cordas\nondulando sua forma onipotente. sua pele tem um tom azul profundo e seus olhos tem essa\nchama ardente que envolve essa sala. Gostou dessa descricao? pena que sua morte nao sera\ntao bela assim. Para prosseguir tera que enfrenta-lo. Deseja lutar com ele?\nL-Lutar V-Voltar\nDigite uma opcao: ", "-Voce(gritando): Eu vou mata-lo! nem que essa seja a ultima coisa que eu faca!\n","-Touro: \"Aaahhh!!\"\n-Voce: Seu ser malditoooooo! Eu vou te matar!.\n","-Voz misteriosa: Vai morrer agora nos acrescimos do segundo tempo? no ultimo andar?\n"};
 	cadastrar_no(
         210,
         -1, 
@@ -1308,10 +1308,10 @@ opcao opcoes_200[1] = {{'#', 201}};
         sala_item,
         3,
         opcoes_214,
-        "./imagens/ambientacao/chifre.txt");
+        "./imagens/andar5/chifre.txt");
 
-    opcao opcoes_217[4] = {{'A', 500218}, {'V', 209}, {'#', 220}, {'#', 211}};
-    char texto_217[3][501] = {"-Voce: Nossa! Que hall legal! Nunca vi um corredor tao longo, para onde sera que ele leva?\n Uma porta sem fechadura? Mas como posso abri-la?\nA-Tentar abrir V-Voltar\nDigite uma opcao: ", "-Porta: Voce possui todas as joias que pertencem a poderosa deusa, idealizadora desta\ntorre, pode passar!\n", "-Porta: Acho que esta faltando alguma joia, ache-as e podera passar.\n"};
+    opcao opcoes_217[4] = {{'T', 500218}, {'V', 209}, {'#', 220}, {'#', 211}};
+    char texto_217[3][501] = {"-Voce: Nossa! Que hall legal! Nunca vi um corredor tao longo, para onde sera que ele leva?\n Uma porta sem fechadura? Mas como posso abri-la?\nT-Tentar abrir V-Voltar\nDigite uma opcao: ", "-Porta: Voce possui todas as joias que pertencem a poderosa deusa, idealizadora desta\ntorre, pode passar!\n", "-Porta: Acho que esta faltando alguma joia, ache-as e podera passar.\n"};
 	cadastrar_no(
         217,
         -1, 
