@@ -633,7 +633,7 @@ void cadastrar_nos(){//contem os nos da historia e executa o cadastrar_no varias
         opcoes_23,
         "./imagens/ambientacao/velho.txt");
     
-    opcao opcoes_24[4] = {{'T', 4025}, {'V', 10}, {'#', 27}, {'#', 24}};
+    opcao opcoes_24[4] = {{'T', 3025}, {'V', 10}, {'#', 27}, {'#', 24}};
     char texto_24[3][501] = {"-Voce: que porta maneira.\nT-Tentar abrir V-Voltar\nDigite uma opcao: ", "-Porta: Eh por sua conta e risco aluno, pode passar.\n", "-Porta: Parece que voce ainda nao conseguiu um elmo, nao posso deixar voce passar. Apesar\nde querer que voce morra logo o show tem que durar mais que 3s.\n"};
 	cadastrar_no(
         24,
@@ -817,7 +817,7 @@ opcao opcoes_50[1] = {{'#', 51}};
         opcoes_71,
         "./imagens/ambientacao/velho_morto.txt");
     
-    opcao opcoes_72[4] = {{'T', 8073}, {'V', 65}, {'#', 75}, {'#', 72}};
+    opcao opcoes_72[4] = {{'T', 6073}, {'V', 65}, {'#', 75}, {'#', 72}};
     char texto_72[3][501] = {"-Voce: Essa porta emana algo diferete\nT-Tentar abrir V-Voltar\nDigite uma opcao: ", "-Porta: Boa sorte, mortal.\n", "-Porta: Ha perigos inimaginaveis a frente. Acho bom voce se preparar melhor.\n"};
 	cadastrar_no(
         72,
@@ -1014,7 +1014,7 @@ opcao opcoes_100[3] = {{'#', 101}};
         opcoes_122,
         "./imagens/ambientacao/gema.txt");
 
-    opcao opcoes_123[4] = {{'T', 12124}, {'V', 115}, {'#', 126}, {'#', 123}};
+    opcao opcoes_123[4] = {{'T', 9124}, {'V', 115}, {'#', 126}, {'#', 123}};
     char texto_123[3][501] = {"-Voce: Outra porta, vamos ver...\nT-Tentar abrir V-Voltar\nDigite uma opcao: ", "-Porta: Espero que goste do inferno.\n", "-Porta: Se prepare melhor antes de embarcar na Highway to Hell\n"};
 	cadastrar_no(
         123,
@@ -1211,7 +1211,7 @@ opcao opcoes_150[1] = {{'#', 151}};
         opcoes_171,
         "./imagens/andar4/amuleto.txt");
 
-    opcao opcoes_172[4]={{'T', 16173}, {'V', 164}, {'#', 175}, {'#', 164}}; 
+    opcao opcoes_172[4]={{'T', 12173}, {'V', 164}, {'#', 175}, {'#', 164}}; 
     char texto_172[3][501] = {"-Voce: Outra porta, essa parece emanar uma aura estranha.\nT-Tentar abrir V-Voltar\nDigite uma opcao: ", "-Porta: Eh por sua conta em risco aluno, pode passar.\n","-Porta: So queria te dizer que talvez voce possa estar deixando algo de muito precioso\npara a sua sobrevivencia nesse jogo.\n" };
 	cadastrar_no(
         172,
