@@ -601,7 +601,7 @@ void cadastrar_nos(){//contem os nos da historia e executa o cadastrar_no varias
         "./imagens/ambientacao/tesouro.txt");
     
     opcao opcoes_18[9] = {{'A', 19}, {'B', 20}, {'C', 21}, {'D', 22}, {'V', 10}, {'#', 18}, {'#', 23}, {'#', 18}, {'#', 18}};
-    char texto_18[5][501] = {"-Enigma: Alto la, sou o Enigma, o primeiro e unico, assim como minha prima distante,\nEsfinge, voce tem que responder para passar: \nQual destes queima azul?\n A-Na B-Cu C-Mg D-K\nV-Voltar \nDigite uma opcao: ", "Qual a ideia, aluno?\n", "Ate que voce sabe alguma coisa.\n", "Soh pode ser brincadeira, neh?\n", "kkkkkkkkkkkk\n"};
+    char texto_18[5][501] = {"-Enigma: Alto la, sou o Enigma, o primeiro e unico, assim como minha prima distante,\nEsfinge, voce tem que responder para passar: \nQual destes queima azul?\nA-Na B-Cu C-Mg D-K\nV-Voltar \nDigite uma opcao: ", "Qual a ideia, aluno?\n", "Ate que voce sabe alguma coisa.\n", "Soh pode ser brincadeira, neh?\n", "kkkkkkkkkkkk\n"};
 	cadastrar_no(
         18,
         -1, 
@@ -1526,7 +1526,7 @@ void barra_superior(){// vida, xp, nivel, ataque, pedras
 
     
     //outras coisas NIVEL ATAQUE PEDRAS
-    printf("NIVEL:%1d  ATAQUE:%2d  PEDRAS:%2d", nivel, fechadura_boss, pedras);
+    printf("NIVEL:%1d  ATAQUE:%2d  PEDRAS:%2d", nivel, ataque, pedras);
     fprintf(arquivo_saida, "NIVEL:%1d  ATAQUE:%2d  PEDRAS:%2d", nivel, ataque, pedras);
 
     //parte de baixo que eh copia da de cima
