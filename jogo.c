@@ -934,7 +934,7 @@ opcao opcoes_100[3] = {{'#', 101}};
         luta,
         4,
         opcoes_108,
-        "./imagens/andar2/lobo.txt");
+        "./imagens/andar3/lobo.txt");
 
     opcao opcoes_112[2] = {{'#', 113}, {'#', 114}};
     char texto_112[2][501] = {"-Voce: outra sala do tesouro, o que sera que tem aqui?\n", "-Voce: Um anel, o que eh esse anel sera?\n-Servo: E eu vou saber? Pare de falar sozinho seu humano burro.\n"};
