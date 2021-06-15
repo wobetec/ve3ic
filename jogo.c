@@ -1228,13 +1228,13 @@ opcao opcoes_200[1] = {{'#', 201}};
         opcoes_201,
         "./imagens/ambientacao/trifurcacao.txt");
     
-    opcao opcoes_202[9] = {{'A', 203}, {'B', 204}, {'C', 205},{'E',206},{'V',201}, {'#',202},{'#',207},{'#',202},{'#',202}};
-    char texto_202[1][501] = {"-Enigma: Eh aluno. Esse eh o ultimo enigma que tera que resolver para sobreviver nessa\ntorre. Talvez voce se considere um genio, mas esse enigma foi escrito a milhares de anos \natras pelo criador desse jogo, Duvido que conseguira acertar.\nint x=10;\nint y=10;\nreturn x+y Qual o nome do filme?\nA-Missao impossivel B-O Codigo da Vinte\nC-Indiana Jones D-Dez eh pouco, vinte eh demais \nV-Voltar\nDigite uma opcao: "};
+    opcao opcoes_202[9] = {{'A', 203}, {'B', 204}, {'C', 205},{'D',206},{'V',201}, {'#',202},{'#',207},{'#',202},{'#',202}};
+    char texto_202[5][501] = {"-Enigma: Eh aluno. Esse eh o ultimo enigma que tera que resolver para sobreviver nessa\ntorre. Talvez voce se considere um genio, mas esse enigma foi escrito a milhares de anos \natras pelo criador desse jogo, Duvido que conseguira acertar.\nint x=10;\nint y=10;\nreturn x+y Qual o nome do filme?\nA-Missao impossivel B-O Codigo da Vinte\nC-Indiana Jones D-Dez eh pouco, vinte eh demais \nV-Voltar\nDigite uma opcao: ", "Programacao nao eh impossivel aluno! tenta denovo\n", "Essa tava na cara! voce eh espertinho mesmo\n", "Ta viajando aluno? acorda!\n", "Ta quente! tenta denovo\n"};
 	cadastrar_no(
         202,
         -1, 
         texto_202,
-        0,
+        5,
 		nao_terminal,
         enigma,
         5,
