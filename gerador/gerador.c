@@ -15,7 +15,7 @@ typedef enum _tipo_no {//enum exigido pelo professor
 } tipo_no;
 
 typedef enum _no_complexo {//enum dos superNOS
-    passar, entrada, sala_item, pedra, saida, fechadura, enigma, luta, rancho, dialogo, caminhos,
+    passar, entrada, sala_item, pedra, saida, fechadura, enigma, luta, rancho, dialogo, nao_complexo,
 } no_complexo;
 
 
@@ -55,7 +55,8 @@ void imagem(char *nome_arquivo);
 
 
 char *retornar_tipo1(){
-    switch(ptr_atual->tipo_especifico){
+    int code = ( ptr_atual->code % 10000)/100;
+    switch(code){
         case passar:
             return "passar";
             break;
@@ -86,8 +87,8 @@ char *retornar_tipo1(){
         case dialogo:
             return "dialogo";
             break;
-        case caminhos:
-            return "caminhos";
+        case nao_complexo:
+            return "nao_complexo";
             break;
         default:
             return "ERRO";
@@ -110,6 +111,7 @@ char *retornar_tipo2(){
         default:
             break;
     }
+    return NULL;
 }
 
 /////////////////////////////////MAIN/////////////////////////////////
@@ -132,14 +134,14 @@ int main(){
         fprintf(arquivo_saida, "%s\n", ptr_atual->endereco_imagem);
         fprintf(arquivo_saida, "%s\n", ptr_atual->texto);
         for(int j=0; j<ptr_atual->n_opcoes; j++){
-            if(ptr_atual->opcoes[j].opcao_selecionada != ' '){
+            if(ptr_atual->opcoes[j].opcao_selecionada != NULL){
                 fprintf(arquivo_saida, "%c vai para no de indice: %3d\n", ptr_atual->opcoes[j].opcao_selecionada, ptr_atual->opcoes[j].indice_proximo_no);
             }else{
                 break;
             }
             
         }
-        fprintf(arquivo_saida, "##########################################################################################\n");
+        fprintf(arquivo_saida, "\n#########################################################################################\n\n");
         ptr_atual = ptr_atual->prox;
     }
 
@@ -222,7 +224,6 @@ void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no
         case sala_item:
             cadastrar_no(indice, codigo, texto, 0, tipo, passar, 1, opcoes, endereco_imagem);
             cadastrar_no(indice+1, codigo+1, texto, 1, tipo, passar, 2, opcoes, endereco_imagem);
-            cadastrar_no(indice+2, codigo+2, texto, 2, tipo, passar, 3, opcoes, endereco_imagem);
             break;
 
         case pedra:
@@ -234,13 +235,13 @@ void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no
             break;
 
         case fechadura:
-            cadastrar_no(indice, codigo, texto, 0, tipo, caminhos, n_opcoes, opcoes, endereco_imagem);
+            cadastrar_no(indice, codigo, texto, 0, tipo, nao_complexo, n_opcoes, opcoes, endereco_imagem);
             cadastrar_no(indice+1, codigo+1, texto, 1, tipo, passar, n_opcoes+1, opcoes, endereco_imagem);
             cadastrar_no(indice+2, codigo+1, texto, 2, tipo, passar, n_opcoes+2, opcoes, endereco_imagem);
             break;
 
         case enigma:
-            cadastrar_no(indice, codigo, texto, 0, tipo, caminhos, n_opcoes, opcoes, endereco_imagem);
+            cadastrar_no(indice, codigo, texto, 0, tipo, nao_complexo, n_opcoes, opcoes, endereco_imagem);
 
             for(int i=0; i<n_opcoes-1; i++){
                 cadastrar_no(indice+i+1, codigo+1+i, texto, i+1, tipo, passar, n_opcoes+1+i, opcoes, endereco_imagem);
@@ -255,7 +256,7 @@ void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no
                     cadastrar_no(indice+1+i, codigo+1+i, texto, i+1, tipo, passar, 2+i, opcoes, endereco_imagem);
                 }
             }else if(n_opcoes==5){
-                cadastrar_no(indice, codigo, texto, 0, tipo, caminhos, 2, opcoes, endereco_imagem);
+                cadastrar_no(indice, codigo, texto, 0, tipo, nao_complexo, 2, opcoes, endereco_imagem);
                 for(int i=0; i<n_opcoes-2; i++){
                     cadastrar_no(indice+1+i, codigo+1+i, texto, i+1, tipo, passar, 3+i, opcoes, endereco_imagem);
                 }
@@ -273,7 +274,7 @@ void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no
             }
             break;
 
-        case caminhos:
+        case nao_complexo:
 
             ptr->indice = indice;
             
@@ -286,7 +287,7 @@ void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no
             ptr->code = make;
 
             strcpy(ptr->texto, texto[n_textos]);
-            ptr->tipo_especifico = caminhos;
+            ptr->tipo_especifico = nao_complexo;
             ptr->tipo = tipo;
             ptr->n_opcoes = n_opcoes;
 
@@ -320,7 +321,8 @@ void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no
 }
 
 void cadastrar_nos(){//contem os nos da historia e executa o cadastrar_no varias vezes
-    
+
+
 }
 
 no *buscar_no(int indice){//funcao para buscar no a partir do indice

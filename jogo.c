@@ -1,8 +1,3 @@
-/*
-Alterar a funcao barra superior fechadura_boss -> ataque
-*/
-
-
 ////////////////////////INCLUSAO DE BIBLIOTECAS///////////////////////
 #include<stdio.h>
 #include<stdlib.h>
@@ -384,7 +379,6 @@ void cadastrar_no(int indice, int code, char texto[][501], int n_textos, tipo_no
         case sala_item:
             cadastrar_no(indice, codigo, texto, 0, tipo, passar, 1, opcoes, endereco_imagem);
             cadastrar_no(indice+1, codigo+1, texto, 1, tipo, passar, 2, opcoes, endereco_imagem);
-            cadastrar_no(indice+2, codigo+2, texto, 2, tipo, passar, 3, opcoes, endereco_imagem);
             break;
 
         case pedra:
@@ -520,7 +514,7 @@ void cadastrar_nos(){//contem os nos da historia e executa o cadastrar_no varias
         dialogo,
         3,
         opcoes_1,
-        "./imagens/andar1/guianu.txt");
+        "./imagens/andar1/personagem.txt");
 
     opcao opcoes_4[2] = {{'E', 5}, {'D', 10}};
     char texto_4[1][501] = {"-Voce: Uma bifurcacao, por onde devo ir? \nE-Esquerda D-Direita \nDigite uma opcao: "};
@@ -587,8 +581,8 @@ void cadastrar_nos(){//contem os nos da historia e executa o cadastrar_no varias
         opcoes_11,
         "./imagens/andar1/fantasma.txt");
     
-    opcao opcoes_15[3] = {{'#', 16}, {'#', 17}, {'#', 10}};
-    char texto_15[3][501] = {"-Voce: Uau, que sala incrivel, deve ter alguma armadilha aqui, parece aquelas salas do\ntesouro.\n-Servo: Cala a boca aluno, so joga, voce fala demais.\n-Voce: Olha, tem mesmo um tesouro ali, o que eh aquilo?\n", "-Voz misteriosa: O elmo de Richard Franco, forjado com escama de dragoes nas profundezas\nmasmorra do trem. Eh um objeto indispensavel para derrotar o TC Rock.\n", "-Voce: parece pesado, mas eh muito legal.\n"};
+    opcao opcoes_15[2] = {{'#', 16}, {'#', 17}};
+    char texto_15[2][501] = {"-Voce: Uau, que sala incrivel, deve ter alguma armadilha aqui, parece aquelas salas do\ntesouro.\n-Servo: Cala a boca aluno, so joga, voce fala demais.\n-Voce: Olha, tem mesmo um tesouro ali, o que eh aquilo?\n", "-Voz misteriosa: O elmo de Richard Franco, forjado com escama de dragoes nas profundezas\nmasmorra do trem. Eh um objeto indispensavel para derrotar o TC Rock.\n"};
 	cadastrar_no(
         15,
         -1, 
@@ -599,6 +593,19 @@ void cadastrar_nos(){//contem os nos da historia e executa o cadastrar_no varias
         3,
         opcoes_15,
         "./imagens/ambientacao/tesouro.txt");
+    
+    opcao opcoes_17[3] = {{'#', 10}};
+    char texto_17[3][501] = {"-Voce: parece pesado, mas eh muito legal.\n"};
+	cadastrar_no(
+        17,
+        -1, 
+        texto_17,
+        0,
+		nao_terminal,
+        dialogo,
+        1,
+        opcoes_17,
+        "./imagens/andar1/personagemelmo.txt");
     
     opcao opcoes_18[9] = {{'A', 19}, {'B', 20}, {'C', 21}, {'D', 22}, {'V', 10}, {'#', 18}, {'#', 23}, {'#', 18}, {'#', 18}};
     char texto_18[5][501] = {"-Enigma: Alto la, sou o Enigma, o primeiro e unico, assim como minha prima distante,\nEsfinge, voce tem que responder para passar: \nQual destes queima azul?\nA-Na B-Cu C-Mg D-K\nV-Voltar \nDigite uma opcao: ", "Qual a ideia, aluno?\n", "Ate que voce sabe alguma coisa.\n", "Soh pode ser brincadeira, neh?\n", "kkkkkkkkkkkk\n"};
@@ -745,18 +752,31 @@ opcao opcoes_50[1] = {{'#', 51}};
         opcoes_58,
         "./imagens/andar2/lobo.txt");
     
-    opcao opcoes_62[3] = {{'#', 63}, {'#', 64}, {'#', 51}};
+    opcao opcoes_62[3] = {{'#', 63}, {'#', 64}};
     char texto_62[3][501] = {"-Voce: Uau, uma armadura incrivel, o que eh isso que estah escrito na parede??\n", "-Servo: Criada com a fibra varonil de um nobre Engenheiro Militar, a Couraca do RF e mais\nresistente que placas de aco e mais leve que um manto de seda. Por isso, muitas vezes e\ncomparada com as melhores armaduras do mundo.\n-Servo: guerreiro tolo, nao sabe nem ler em elfico.?\n", "-Voce: Uau, ela eh realmente leve.\n"};
 	cadastrar_no(
         62,
         -1, 
         texto_62,
-        3,
+        2,
 		nao_terminal,
         sala_item,
-        3,
+        2,
         opcoes_62,
         "./imagens/ambientacao/tesouro.txt");
+    
+    opcao opcoes_64[1] = {{'#', 51}};
+    char texto_64[1][501] = {"-Voce: Uau, ela eh realmente leve.\n"};
+	cadastrar_no(
+        64,
+        -1, 
+        texto_64,
+        0,
+		nao_terminal,
+        dialogo,
+        1,
+        opcoes_64,
+        "./imagens/andar3/personagempeitoral.txt");
     
     opcao opcoes_65[3] = {{'E', 72}, {'D', 66}, {'V', 51}};
     char texto_65[1][501] = {"-Voce: E ca estamos em mais uma decisao de caminho.\nE-Esquerda D-Direita V-Voltar\nDigite uma opcao: "};
@@ -821,7 +841,7 @@ opcao opcoes_50[1] = {{'#', 51}};
         luta,
         4,
         opcoes_75,
-        "./imagens/andar2/zao.txt");
+        "./imagens/andar2/vampirozao.txt");
     
     opcao opcoes_79[1] = {{'#', 100}};
     char texto_79[1][501] = {"-Voz misteriosa: Conseguiu sobreviver a mais esse andar, quero ver quantos mais voce\nconseguir, mas aposto que nao passa do terceiro.\n"};
@@ -916,18 +936,31 @@ opcao opcoes_100[3] = {{'#', 101}};
         opcoes_108,
         "./imagens/andar2/lobo.txt");
 
-    opcao opcoes_112[3] = {{'#', 113}, {'#', 114}, {'#', 101}};
-    char texto_112[3][501] = {"-Voce: outra sala do tesouro, o que sera que tem aqui?\n", "-Voce: Um anel, o que eh esse anel sera?\n-Servo: E eu vou saber? Pare de falar sozinho seu humano burro.\n", "-Voz misteriosa: Esse eh um anel que emana poder magico, expandindo as capacidades de\nquem o equipa. Dizem que o preco a ser pago por tanto poder afeta diretamente a alma.\n"};
+    opcao opcoes_112[2] = {{'#', 113}, {'#', 114}};
+    char texto_112[2][501] = {"-Voce: outra sala do tesouro, o que sera que tem aqui?\n", "-Voce: Um anel, o que eh esse anel sera?\n-Servo: E eu vou saber? Pare de falar sozinho seu humano burro.\n"};
 	cadastrar_no(
         112,
         -1, 
         texto_112,
-        3,
+        2,
 		nao_terminal,
         sala_item,
-        3,
+        2,
         opcoes_112,
         "./imagens/ambientacao/tesouro.txt");
+    
+    opcao opcoes_114[1] = {{'#', 101}};
+    char texto_114[1][501] = {"-Voz misteriosa: Esse eh um anel que emana poder magico, expandindo as capacidades de\nquem o equipa. Dizem que o preco a ser pago por tanto poder afeta diretamente a alma.\n"};
+	cadastrar_no(
+        114,
+        -1, 
+        texto_114,
+        0,
+		nao_terminal,
+        dialogo,
+        1,
+        opcoes_114,
+        "./imagens/andar3/anel.txt");
 
     opcao opcoes_115[3] = {{'E', 116}, {'D', 123}, {'V', 101}};
     char texto_115[1][501] = {"-Voce: Uma bifurcacao, que caminho sera o melhor?\n-Servo: arggggg, voce me da nos nervos.\nE-Esquerda D-Direita V-Voltar\nDigite uma opcao: "};
@@ -1008,14 +1041,14 @@ opcao opcoes_100[3] = {{'#', 101}};
         "./imagens/andar3/batalhaboss3.txt");
     
     opcao opcoes_130[3] = {{'#', 131}, {'#', 132}, {'#', 133}};
-    char texto_130[3][501] = {"-Voce: Caramba, ele deixou cair a espada.\n-Voz misteriosa: Vamos-la, vai deixa-la para tras?\n", "-Voce: Ele eh muito quente.\n-Voz misteriosa: Obvio, esse eh o pau de fogo, a arma mais poderosa do submundo. Nao sei\nnem explicar como voce, um mero mortal conseguiu sobreviver ao implacavel poder dela.\n", "-Voce: Agora ninguem consegue me parar.\n\n"};
+    char texto_130[3][501] = {"-Voce: Caramba, ele deixou cair a espada.\n-Voz misteriosa: Vamos-la, vai deixa-la para tras?\n", "-Voce: Ele eh muito quente.\n-Voz misteriosa: Obvio, esse eh o pau de fogo, a arma mais poderosa do submundo. Nao sei\nnem explicar como voce, um mero mortal conseguiu sobreviver ao implacavel poder dela.\n", "-Voce: Agora ninguem consegue me parar.\n"};
 	cadastrar_no(
         130,
         -1, 
         texto_130,
         3,
 		nao_terminal,
-        sala_item,
+        dialogo,
         3,
         opcoes_130,
         "./imagens/andar3/paudefogo.txt");
@@ -1100,7 +1133,7 @@ opcao opcoes_150[1] = {{'#', 151}};
         opcoes_158,
         "./imagens/ambientacao/taverna.txt");
 
-    opcao opcoes_159[5]={{'L', 160}, {'V', 151}, {"#", 161}, {'#', 162},{'#',163}};
+    opcao opcoes_159[5]={{'L', 160}, {'V', 151}, {'#', 161}, {'#', 162},{'#',163}};
     char texto_159[4][501] = {"-Voce(sussurando): Algo com uma forma arredondada estranha estah aproximando... espere, mas\n ele tem uma boca gigante.\n-Servo(sussurando): Pela sua cara, parece que voce o conhece, nao eh mesmo? Para prosse\nguir tera que enfrenta-lo. Deseja seguir em frente e lutar com ele?\nL-Lutar V-Voltar\n Digite sua escolha: ", "-PACMAN: Croc! Croc! Crunch!\n-Voce: Ele quer me comer mas nao vai conseguir de modo algum!\n", "-PACMAN: Croc! Croc! Crunch!\n-Voce: Voce nao cansa seu bicho maldito!? Eu vou te matar!\n","-Voz misteriosa: Quase que ele te transformava num fantasminha, vai ter que melhorar\nainda, aluno...\n"};
 	cadastrar_no(
         159,
@@ -1139,7 +1172,7 @@ opcao opcoes_150[1] = {{'#', 151}};
         opcoes_164,
         "./imagens/ambientacao/bifurcacao.txt");
     
-    opcao opcoes_165[4]={{'#', 166}, {"#", 167}, {'#', 168},{'#',169}};
+    opcao opcoes_165[4]={{'#', 166}, {'#', 167}, {'#', 168},{'#',169}};
     char texto_165[4][501] = {"-Voz misteriosa: Entre mortos e feridos, um morto-vivo se apresenta diante de voce. Para\nnao perecer como os demais jogadores que passaram por aqui, tera que enfrentar aquele que\nanda apos a morte, um zumbi Draugr. Para prosseguir tera que enfrenta-lo. Vamos ver se\nsobrevivera?\n-Voce(gritando): Eu vou mata-lo de qualquer jeitooooo!.\n", "-Zumbi: \"Aaaahhh!!\"\n-Voce: Ele quer me devorar mas nao vai conseguir!!!\n", "-Zumbi: \"Aaahhh!!\"\n-Voce: Seu ser malditoooooo! Eu vou te matar!\n","-Voz misteriosa: Vai ter que fazer muito melhor que isso se nao quiser morrer agora!\n"};
 	cadastrar_no(
         165,
@@ -1152,18 +1185,31 @@ opcao opcoes_150[1] = {{'#', 151}};
         opcoes_165,
         "./imagens/andar4/zumbi.txt");
     
-    opcao opcoes_169[3]={{'#', 170},{'#', 171},{'#', 164}}; 
-    char texto_169[3][501] = {"Voce acabou de ganhar um anel de esmeralda.\n","O anel carrega uma gigantesca e rara joia, a qual serviu de adorno para as mais belas deu\nsas, incluindo a Deusa Freyja.\n","Cuidado para nao perde-la!\n"};
+    opcao opcoes_169[2]={{'#', 170},{'#', 171}}; 
+    char texto_169[2][501] = {"-Voce: olha, outro tesouro, o que temos nesse?\n","-Voz misteriosa: O amuleto carrega uma gigantesca e rara joia, a qual serviu de adorno para\nas mais belas deusas, incluindo a Deusa Freyja.\n"};
 	cadastrar_no(
-        169,3
+        169,
         -1, 
         texto_169,
-        3,
+        2,
 		nao_terminal,
         sala_item,
-        3,
+        2,
         opcoes_169,
         "./imagens/ambientacao/tesouro.txt");
+    
+    opcao opcoes_171[1]={{'#', 164}}; 
+    char texto_171[1][501] = {"-Voce: sinto que esse amuleto eh muito poderoso.\n"};
+	cadastrar_no(
+        171,
+        -1, 
+        texto_171,
+        0,
+		nao_terminal,
+        dialogo,
+        1,
+        opcoes_171,
+        "./imagens/andar4/amuleto.txt");
 
     opcao opcoes_172[4]={{'T', 16173}, {'V', 164}, {'#', 175}, {'#', 164}}; 
     char texto_172[3][501] = {"-Voce: Outra porta, essa parece emanar uma aura estranha.\nT-Tentar abrir V-Voltar\nDigite uma opcao: ", "-Porta: Eh por sua conta em risco aluno, pode passar.\n","-Porta: So queria te dizer que talvez voce possa estar deixando algo de muito precioso\npara a sua sobrevivencia nesse jogo.\n" };
@@ -1189,7 +1235,7 @@ opcao opcoes_150[1] = {{'#', 151}};
         luta,
         4,
         opcoes_175,
-        "./imagens/andar4/cerqueira.txt");
+        "./imagens/andar4/cerquinha.txt");
     
     opcao opcoes_179[1]={{'#',200}}; 
     char texto_179[1][501] = {"-Voz misteriosa: Vamos, suba! essa eh a ultima escada. Depois disso, vem a queda hahaha.\n"};
@@ -1197,9 +1243,9 @@ opcao opcoes_150[1] = {{'#', 151}};
         179,
         -1, 
         texto_179,
-        1,
+        0,
 		nao_terminal,
-        sala_item,
+        saida,
         1,
         opcoes_179,
         "./imagens/ambientacao/escada.txt");
@@ -1297,17 +1343,30 @@ opcao opcoes_200[1] = {{'#', 201}};
         opcoes_210,
         "./imagens/andar5/touro.txt");
 
-    opcao opcoes_214[3] = {{'#', 215}, {'#', 216}, {'#', 209}};
-    char texto_214[3][501] = {"-Servo: Parabens! Ate que voce nao eh inutil! Voce coletou a ponta do chifre desse touro\ncomo recompensa por essa vitoria.\n", "-Voz misteriosa: Antes mesmo de que eu fosse criado, os grandes deuses utilizavam chifres\ndesses touros mitologicos para conjurar legioes de guerreiros, quem sabe nao lhe possa ser\nutil.\n", "-Voce: Isso quer dizer que agora sou um deus?\n-Servo: Vamos logo com isso, aluno, quero te enterrar logo.\n"};
+    opcao opcoes_214[2] = {{'#', 215}, {'#', 216}};
+    char texto_214[2][501] = {"-Servo: Parabens! Ate que voce nao eh inutil! Voce coletou a ponta do chifre desse touro\ncomo recompensa por essa vitoria.\n", "-Voz misteriosa: Antes mesmo de que eu fosse criado, os grandes deuses utilizavam chifres\ndesses touros mitologicos para conjurar legioes de guerreiros, quem sabe nao lhe possa ser\nutil.\n"};
 	cadastrar_no(
         214,
         -1, 
         texto_214,
-        3,
+        2,
 		nao_terminal,
         sala_item,
-        3,
+        2,
         opcoes_214,
+        "./imagens/andar5/chifre.txt");
+    
+    opcao opcoes_216[1] = {{'#', 209}};
+    char texto_216[1][501] = {"-Voce: Isso quer dizer que agora sou um deus?\n-Servo: Vamos logo com isso, aluno, quero te enterrar logo.\n"};
+	cadastrar_no(
+        216,
+        -1, 
+        texto_216,
+        0,
+		nao_terminal,
+        dialogo,
+        1,
+        opcoes_216,
         "./imagens/andar5/chifre.txt");
 
     opcao opcoes_217[4] = {{'T', 500218}, {'V', 209}, {'#', 220}, {'#', 211}};

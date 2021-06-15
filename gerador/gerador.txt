@@ -1,0 +1,1383 @@
+  0  passar
+raiz
+./imagens/ambientacao/sala.txt
+Quinta-feira pela manha, aula de AlgLin que parece nao ter fim, e la esta o Aluno do 
+IMEnso instituto, tentando se concentrar na aulinha enquanto nao para de pensar no Empire
+of Dungeons, um jogo que encontrou na internet recentemente e nao ve a hora de comprar.
+Essa aula esta realmente chata e o aluno esta muito concentrado em seus pensamentos,
+imagiando cada detalhe do jogo, quando derrepente um clarao.
+
+# vai para no de indice:   1
+##########################################################################################
+  1  dialogo
+nao_terminal
+./imagens/andar1/guianu.txt
+-Voz misteriosa: Ola, quem vos fala eh o proprio jogo. Por enquanto, voces nao
+saberao quem sou eu... na verdade, poucos descobrirao. O que esta em jogo agora eh a sua
+vida.
+
+# vai para no de indice:   2
+##########################################################################################
+  2  dialogo
+nao_terminal
+./imagens/andar1/guianu.txt
+Se conseguir chegar ao ultimo andar da torre de 5 andares que se apresenta adiante,
+resolvendo todos os enigmas necessarios, coletando todos os itens, tornando-se mais forte
+e derrotando os BOSSs de cada andar, saira vivo.
+
+# vai para no de indice:   3
+##########################################################################################
+  3  dialogo
+nao_terminal
+./imagens/andar1/guianu.txt
+Caso contrario, voce ja sabe. Por que estou fazendo isso? pura diversao. No mais, boa
+sorte!
+
+# vai para no de indice:   4
+##########################################################################################
+  4  passar
+nao_terminal
+./imagens/ambientacao/bifurcacao.txt
+-Voce: Uma bifurcacao, por onde devo ir? 
+E-Esquerda D-Direita 
+Digite uma opcao: 
+E vai para no de indice:   5
+D vai para no de indice:  10
+##########################################################################################
+  5  luta
+nao_terminal
+./imagens/andar1/goblim.txt
+-Voce: O que eh aquilo, parece um goblim, ele esta dormindo.
+-Servo: Errado Aluno, nao esta mais.
+
+# vai para no de indice:   6
+##########################################################################################
+  6  luta
+nao_terminal
+./imagens/andar1/goblim.txt
+-Goblim: lara ratu peri.
+-Voce: Seja la o que for, eu quem vou ganhar, sou treinado na arte das integrais.
+
+# vai para no de indice:   7
+##########################################################################################
+  7  luta
+nao_terminal
+./imagens/andar1/goblim.txt
+-Goblim: baru sate lorem.
+-Voce: morraaaaa!
+
+# vai para no de indice:   8
+##########################################################################################
+  8  luta
+nao_terminal
+./imagens/andar1/goblim.txt
+-Servo: estou impressionado de que voce tenha saido dessa vivo, a maioria morre antes de
+virar a esquerda.
+-Voz misteriosa: Nao encoraje esse quadrupede, esse eh soh o principio das dores.
+
+# vai para no de indice:   9
+##########################################################################################
+  9  joia
+nao_terminal
+./imagens/ambientacao/gema.txt
+-Voce: Olha, parece so uma pedra, devo pegar?
+-Servo: Nao estou aqui para ser sua baba, faca o que quiser
+-Voce: vou levar comigo.
+-Voz misteriosa: Veja se nao temos um colecionador de pedras aqui, vai mesmo guardar essa
+pedra?
+-Voce: Vai que preciso jogar em alguem
+-Voz misteriosa: ou em algo.
+
+# vai para no de indice:   4
+##########################################################################################
+ 10  passar
+nao_terminal
+./imagens/ambientacao/trifurcacao.txt
+-Voce: 3 nao_complexo agora, estou comecando a me perder aqui.
+-Servo: Hehe, soh continue andando aluno, quanto mais cedo voce morrer, mais cedo estou
+livre.
+E-Esquerda F-Frente D-Direita V-Voltar 
+Digite uma opcao: 
+E vai para no de indice:  11
+F vai para no de indice:  24
+D vai para no de indice:  18
+V vai para no de indice:   4
+##########################################################################################
+ 11  luta
+nao_terminal
+./imagens/andar1/fantasma.txt
+-Voce(sussurando): Aquilo eh um fantasma?
+-Servo(sussurando): Acorde ele e descubra.
+ L-Lutar V-Voltar
+Digite uma opcao: 
+L vai para no de indice:  12
+V vai para no de indice:  10
+##########################################################################################
+ 12  luta
+nao_terminal
+./imagens/andar1/fantasma.txt
+-Servo: agora me diga como acertar um fantasma?
+-Voce: facil, eles sao frageis contra raios, e basta gerar um pouco de atrito que consigo
+produzir faiscas.
+
+# vai para no de indice:  13
+##########################################################################################
+ 13  luta
+nao_terminal
+./imagens/andar1/fantasma.txt
+-Fantasma: ihhhhhhhhh.
+-Voce: Morra denovo seu infame.
+
+# vai para no de indice:  14
+##########################################################################################
+ 14  luta
+nao_terminal
+./imagens/andar1/fantasma.txt
+-Voz misteriosa: Vai ter que fazer muito melhor que isso se quiser sair vivo desse lugar.
+
+# vai para no de indice:  15
+##########################################################################################
+ 15  item
+nao_terminal
+./imagens/ambientacao/tesouro.txt
+-Voce: Uau, que sala incrivel, deve ter alguma armadilha aqui, parece aquelas salas do
+tesouro.
+-Servo: Cala a boca aluno, so joga, voce fala demais.
+-Voce: Olha, tem mesmo um tesouro ali, o que eh aquilo?
+
+# vai para no de indice:  16
+##########################################################################################
+ 16  item
+nao_terminal
+./imagens/ambientacao/tesouro.txt
+-Voz misteriosa: O elmo de Richard Franco, forjado com escama de dragoes nas profundezas
+masmorra do trem. Eh um objeto indispensavel para derrotar o TC Rock.
+
+# vai para no de indice:  17
+##########################################################################################
+ 17  item
+nao_terminal
+./imagens/ambientacao/tesouro.txt
+#
+- vai para no de indice: 1970481253
+##########################################################################################
+ 17  dialogo
+nao_terminal
+./imagens/andar1/personagemelmo.txt
+-Voce: parece pesado, mas eh muito legal.
+
+# vai para no de indice:  10
+##########################################################################################
+ 18  enigma
+nao_terminal
+./imagens/ambientacao/enigma.txt
+-Enigma: Alto la, sou o Enigma, o primeiro e unico, assim como minha prima distante,
+Esfinge, voce tem que responder para passar: 
+Qual destes queima azul?
+A-Na B-Cu C-Mg D-K
+V-Voltar 
+Digite uma opcao: 
+A vai para no de indice:  19
+B vai para no de indice:  20
+C vai para no de indice:  21
+D vai para no de indice:  22
+V vai para no de indice:  10
+##########################################################################################
+ 19  enigma
+nao_terminal
+./imagens/ambientacao/enigma.txt
+Qual a ideia, aluno?
+
+# vai para no de indice:  18
+##########################################################################################
+ 20  enigma
+nao_terminal
+./imagens/ambientacao/enigma.txt
+Ate que voce sabe alguma coisa.
+
+# vai para no de indice:  23
+##########################################################################################
+ 21  enigma
+nao_terminal
+./imagens/ambientacao/enigma.txt
+Soh pode ser brincadeira, neh?
+
+# vai para no de indice:  18
+##########################################################################################
+ 22  enigma
+nao_terminal
+./imagens/ambientacao/enigma.txt
+kkkkkkkkkkkk
+
+# vai para no de indice:  18
+##########################################################################################
+ 23  dialogo
+nao_terminal
+./imagens/ambientacao/velho.txt
+-Senhor perdido: Alguem finalmente me libertou, estou preso nessa sala dos enigmas desde
+que comecei a sonhar.
+
+# vai para no de indice:  10
+##########################################################################################
+ 24  fechadura
+nao_terminal
+./imagens/ambientacao/fechadura.txt
+-Voce: que porta maneira.
+T-Tentar abrir V-Voltar
+Digite uma opcao: 
+T vai para no de indice: 4025
+V vai para no de indice:  10
+##########################################################################################
+ 25  fechadura
+nao_terminal
+./imagens/ambientacao/fechadura.txt
+-Porta: Eh por sua conta e risco aluno, pode passar.
+
+# vai para no de indice:  27
+##########################################################################################
+ 26  fechadura
+nao_terminal
+./imagens/ambientacao/fechadura.txt
+-Porta: Parece que voce ainda nao conseguiu um elmo, nao posso deixar voce passar. Apesar
+de querer que voce morra logo o show tem que durar mais que 3s.
+
+# vai para no de indice:  24
+##########################################################################################
+ 27  luta
+nao_terminal
+./imagens/andar1/tcrock.txt
+-TC: haha, veja se nao temos uma criaturinha aqui.
+-Voce: Eh uma pedra?
+-Servo: Voce nao devia ter dito isso.
+-TC: Ninguem me chama de pedraaaa.
+
+# vai para no de indice:  28
+##########################################################################################
+ 28  luta
+nao_terminal
+./imagens/andar1/tcrock.txt
+-Voce: Entao eh para isso que serve o elmo.
+-TC: Voce nao vai sair dessa vivo seu aluno incopetente, ninguem sobrevive a minha rajada
+diferencial.
+
+# vai para no de indice:  29
+##########################################################################################
+ 29  luta
+nao_terminal
+./imagens/andar1/tcrock.txt
+-Voce: Eu tenho o poder da integral comigo.
+-TC: grhhhhh.
+
+# vai para no de indice:  30
+##########################################################################################
+ 30  luta
+nao_terminal
+./imagens/andar1/tcrock.txt
+-Voz misteriosa: Veja soh se n temos o primeiro guerreiro nos ultimos 229 anos que consegue
+derrotar o TC Rock.
+
+# vai para no de indice:  31
+##########################################################################################
+ 31  saida
+nao_terminal
+./imagens/ambientacao/escada.txt
+-Voz misteriosa: Vamos, suba a escada, quero ver voce ser trucidado pelos proximos
+desafios. E voce, servo imundo, esta fazendo seu trabalho de forma errada, o infeliz
+ainda esta vivo, esta ajudando ele por acaso?
+-Servo: Nao, senhor, estou seguindo suas ordens.
+
+# vai para no de indice:  50
+##########################################################################################
+ 50  passar
+nao_terminal
+./imagens/ambientacao/corredor.txt
+-Servo: Vamos ver como sobrevive a esse andar, voce nao eh pario para esses monstros,
+hahaha.
+
+# vai para no de indice:  51
+##########################################################################################
+ 51  passar
+nao_terminal
+./imagens/ambientacao/trifurcacao.txt
+-Voce: Uma trifurcacao, que caminho sera o melhor? Algo me diz que eh bom ir para a
+direita, mas qual sera que eh melhor?
+E-Esquerda F-Frente D-Direita
+Digite uma opcao: 
+E vai para no de indice:  52
+F vai para no de indice:  65
+D vai para no de indice:  58
+##########################################################################################
+ 52  luta
+nao_terminal
+./imagens/andar2/morcego.txt
+-Servo: Veja se nao temos um conhecido se aproximando, quanto tempo que nao o encontro. 
+-Voce: Esse animal parece ser fraco, mas sinto uma aura magica.
+L-Lutar V-Voltar
+Digite uma opcao: 
+L vai para no de indice:  53
+V vai para no de indice:  51
+##########################################################################################
+ 53  luta
+nao_terminal
+./imagens/andar2/morcego.txt
+-Morcego: Guerreiro, quer tentar passar? So por cima do meu cadaver.
+-Voce: Isso ai ser facil e rapido!
+
+# vai para no de indice:  54
+##########################################################################################
+ 54  luta
+nao_terminal
+./imagens/andar2/morcego.txt
+-Morcego: Hahahaha, vou te dar o prazer de sentir um pouco das minhas habilidades. Golpe
+Vida Sanguessuga!
+-Voce: Arg! Minha vitalidade? Morcego maldito, o que voce estah fazendo com minha vida?
+Pelos poderes concedido por esse elmo, tome essa capacetada no meio dessa tua boca
+venenosa!
+
+# vai para no de indice:  55
+##########################################################################################
+ 55  luta
+nao_terminal
+./imagens/andar2/morcego.txt
+-Morcego: Maldito humano, dessa vez vou fugir, mas saiba que isso eh soh por hoje.
+
+# vai para no de indice:  56
+##########################################################################################
+ 56  dialogo
+nao_terminal
+./imagens/ambientacao/beco_diagonal.txt
+-Voce: Mas o que e isso? Um caminho sem saida? O que eh esse muro engracado? E o que eh
+essa placa escrita... Beco Diagonal??
+-Servo: Parece que voce nasceu ontem? Voce eh muito burro. Esse eh um muro magico, deixe
+que eu abro ele.
+
+# vai para no de indice:  57
+##########################################################################################
+ 57  joia
+nao_terminal
+./imagens/ambientacao/gema.txt
+-Voce: Hmmm. Uma pedra esquisita com um encaixe atras e um saco com Essencia Solar? Isso
+estava escondido atras desses tijolos!? Nao consigo nem acreditar que itens raros desses
+estavam escondidos nesse buraco. Vou guardar.
+-Voz misteriosa: Eu sabia que tinhamos um colecionador de pedras.
+# vai para no de indice:  51
+##########################################################################################
+ 58  luta
+nao_terminal
+./imagens/andar2/lobo.txt
+-Voce(sussurando): Um lobo monstruoso se aproxima, melhor sacar a minha arma para me
+defender, porem posso fugir, o que fazer??
+-Servo(sussurando): Fugir e claro, voce soh foge. Desde que virei seu guia voce so sabe
+fugir dos teus problemas.
+L-Lutar V-Voltar
+Digite uma opcao: 
+L vai para no de indice:  59
+V vai para no de indice:  51
+##########################################################################################
+ 59  luta
+nao_terminal
+./imagens/andar2/lobo.txt
+-Lobo: Auuuuu! Humano maldito, voce nao eh pareo para o meu poder! Sua morte sera rapida.
+-Voce: Hamm! Um lobo falante, isso eh novidade vou te queimar ate morrer!
+
+# vai para no de indice:  60
+##########################################################################################
+ 60  luta
+nao_terminal
+./imagens/andar2/lobo.txt
+-Lobo: Auuuuuuu! Nao vou deixar voce passar tao facil. Experimente um pouco das minhas
+garras afiadas!!!
+-Voce: Deixa de ser bobo, seu lobo infeliz! Vou te calar agora mesmo.
+
+# vai para no de indice:  61
+##########################################################################################
+ 61  luta
+nao_terminal
+./imagens/andar2/lobo.txt
+-Lobo: Humano insolente, auuuuuu! Sua escoria, vera o que acontecera quando meus irmaos
+chegarem. Auuuuuu!
+-Voce: Pode deixar eles virem.
+# vai para no de indice:  62
+##########################################################################################
+ 62  item
+nao_terminal
+./imagens/ambientacao/tesouro.txt
+-Voce: Uau, uma armadura incrivel, o que eh isso que estah escrito na parede??
+
+# vai para no de indice:  63
+##########################################################################################
+ 63  item
+nao_terminal
+./imagens/ambientacao/tesouro.txt
+-Servo: Criada com a fibra varonil de um nobre Engenheiro Militar, a Couraca do RF e mais
+resistente que placas de aco e mais leve que um manto de seda. Por isso, muitas vezes e
+comparada com as melhores armaduras do mundo.
+-Servo: guerreiro tolo, nao sabe nem ler em elfico.?
+
+# vai para no de indice:  64
+##########################################################################################
+ 64  item
+nao_terminal
+./imagens/ambientacao/tesouro.txt
+-Voce: Uau, ela eh realmente leve.
+
+##########################################################################################
+ 64  dialogo
+nao_terminal
+./imagens/andar3/personagempeitoral.txt
+-Voce: Uau, ela eh realmente leve.
+
+# vai para no de indice:  51
+##########################################################################################
+ 65  passar
+nao_terminal
+./imagens/ambientacao/bifurcacao.txt
+-Voce: E ca estamos em mais uma decisao de caminho.
+E-Esquerda D-Direita V-Voltar
+Digite uma opcao: 
+E vai para no de indice:  72
+D vai para no de indice:  66
+V vai para no de indice:  51
+##########################################################################################
+ 66  enigma
+nao_terminal
+./imagens/ambientacao/enigma.txt
+-Enigma: Mais um viajante perdido, vamos ver se alem de conseguir sobreviver ate aqui
+voce eh esperto: dy/dx = y
+Entao qual funcao representa y?
+A-logx B-e^x C-x^x D-lnx
+V-Voltar
+Digite uma opcao: 
+A vai para no de indice:  67
+B vai para no de indice:  68
+C vai para no de indice:  69
+D vai para no de indice:  70
+V vai para no de indice:  65
+##########################################################################################
+ 67  enigma
+nao_terminal
+./imagens/ambientacao/enigma.txt
+-Enigma: Serio isso aluno? nao estudou log no cursinho?
+
+# vai para no de indice:  66
+##########################################################################################
+ 68  enigma
+nao_terminal
+./imagens/ambientacao/enigma.txt
+-Enigma: Bom, quase um Euler ja.
+
+# vai para no de indice:  71
+##########################################################################################
+ 69  enigma
+nao_terminal
+./imagens/ambientacao/enigma.txt
+-Enigma: Ai voce esta de brincadeira.
+
+# vai para no de indice:  66
+##########################################################################################
+ 70  enigma
+nao_terminal
+./imagens/ambientacao/enigma.txt
+-Enigma: Passou muito longe, aluno.
+
+# vai para no de indice:  66
+##########################################################################################
+ 71  rancho
+nao_terminal
+./imagens/ambientacao/velho_morto.txt
+-Voce: Um guerreiro morto, sera que posso encontrar algo de util na mochila dele? 
+-Servo: Hum, um humano morto no caminho,  isso e normal? 
+-Voce: Essa pocao vermelha deve ser suficiente para recuperar um pouco da minha vida.
+
+# vai para no de indice:  65
+##########################################################################################
+ 72  fechadura
+nao_terminal
+./imagens/ambientacao/fechadura.txt
+-Voce: Essa porta emana algo diferete
+T-Tentar abrir V-Voltar
+Digite uma opcao: 
+T vai para no de indice: 8073
+V vai para no de indice:  65
+##########################################################################################
+ 73  fechadura
+nao_terminal
+./imagens/ambientacao/fechadura.txt
+-Porta: Boa sorte, mortal.
+
+# vai para no de indice:  75
+##########################################################################################
+ 74  fechadura
+nao_terminal
+./imagens/ambientacao/fechadura.txt
+-Porta: Ha perigos inimaginaveis a frente. Acho bom voce se preparar melhor.
+
+# vai para no de indice:  72
+##########################################################################################
+ 75  luta
+nao_terminal
+./imagens/andar2/zao.txt
+-Voce: O que isso caindo do teto?
+
+# vai para no de indice:  76
+##########################################################################################
+ 76  luta
+nao_terminal
+./imagens/andar2/zao.txt
+-Monstro: Kikikkikiki. Um mero mortal entrando no
+meu territorio?! Eu sou o Vampirozao, o vampiro do sangue de ferro, Sangue Quente e
+Sangue Frio. Vivo nesse teto faz mais de dois milenios, nunca deixei um inseto passar.
+-Voce: Prazer, o heroi que vai te derrator! Saia desse teto seu chupa sangue maldito.
+
+# vai para no de indice:  77
+##########################################################################################
+ 77  luta
+nao_terminal
+./imagens/andar2/zao.txt
+-Vampirozao: Inseto maldito. Esse teu sangue vai ser meu lanchinho, experimente meu golpe
+perpendicular!!!
+-Voce: Defesa RETA! - Bradou colocando seus bracos, no formato de uma reta, frente ao
+corpo.
+
+# vai para no de indice:  78
+##########################################################################################
+ 78  luta
+nao_terminal
+./imagens/andar2/zao.txt
+-Voce: eureca - rapidamente retirou do bolso a essencia solar que havia encontrado.
+-Vampirozao: Aaaahhhhh! Inseto infeliz, voce eh soh um mero mortal. O que eh isso?
+-Voce: Isso eh um pouquinho do sol para essa sua cara palida.
+-Vampirozao: Naaaaaaooooo.
+-Servo: Quanta sorte voce teve mestre, mas se depender dela
+vai morrer cedo.
+
+# vai para no de indice:  79
+##########################################################################################
+ 79  saida
+nao_terminal
+./imagens/ambientacao/escada.txt
+-Voz misteriosa: Conseguiu sobreviver a mais esse andar, quero ver quantos mais voce
+conseguir, mas aposto que nao passa do terceiro.
+
+# vai para no de indice: 100
+##########################################################################################
+100  passar
+nao_terminal
+./imagens/ambientacao/corredor.txt
+-Servo: Acho que meu senhor esta certo, desse voce nao sai, nao com vida pelo menos.
+
+# vai para no de indice: 101
+##########################################################################################
+101  passar
+nao_terminal
+./imagens/ambientacao/trifurcacao.txt
+-Voce: Uma trifurcacao, que caminho sera o melhor? Sinto um bom chiero vindo da esquerda,
+sera que eh alguma armadilha? Vamos decidir isso logo.
+E-Esquerda F-Frente D-Direita
+Digite uma opcao: 
+E vai para no de indice: 102
+F vai para no de indice: 115
+D vai para no de indice: 108
+##########################################################################################
+102  luta
+nao_terminal
+./imagens/andar3/virus.txt
+-Voce: O que eh aquilo? Parece um virus mas como pode ser tao grande?
+-Voz misteriosa: Esta com medo? Deseja seguir em frente e lutar com ele?
+L-Lutar V-Voltar
+Digite uma opcao: 
+L vai para no de indice: 103
+V vai para no de indice: 101
+##########################################################################################
+103  luta
+nao_terminal
+./imagens/andar3/virus.txt
+-Voce: Pode vir bicho esquisito. Nao eh uma gripezinha que vai me matar.
+-Virus: Voce acha que sou apenas um virus qualquer? Eu ja matei varios aventureiros
+igual a voce. Os humanos sao tao fracos, e, em se tratando do sistema imunologico  sao
+mais fracos ainda. Mua hahahahaha! :p
+
+# vai para no de indice: 104
+##########################################################################################
+104  luta
+nao_terminal
+./imagens/andar3/virus.txt
+-Voce: Pare de brincadeira seu virus.
+-Virus: Gosta de uma tosse? Entao vem pra cima!
+
+# vai para no de indice: 105
+##########################################################################################
+105  luta
+nao_terminal
+./imagens/andar3/virus.txt
+-Voce: Eh esse aqui nao aguentou meus socos. Talvez seja por que tomo vitamina C todos
+os dias kkkkk.
+-Servo: Nao seja tolo, seu burro. Isso foi apenas sorte
+
+# vai para no de indice: 106
+##########################################################################################
+106  dialogo
+nao_terminal
+./imagens/ambientacao/tesouro.txt
+-Voce: Uma caixa de pratas! Vou estar rico quando sair daqui! Sao dez moedas.
+-Servo: Esse dinheiro soh pode estar amaldicoado, aluno idiota.
+
+# vai para no de indice: 107
+##########################################################################################
+107  dialogo
+nao_terminal
+./imagens/ambientacao/velho.txt
+-Senhor perdido: Pelas barbas de Odin, que dor de cabeca. Parece que dormi faz tanto tem-
+po, mas agora nao me lembro de nada. Preciso dar uma caminhada para me lembrar dos fatos.
+-Voce(susurro): Que homem estranho.
+
+# vai para no de indice: 101
+##########################################################################################
+108  luta
+nao_terminal
+./imagens/andar2/lobo.txt
+-Voce: Eh um lobo com aura verde, so pode ser o Wolf-Champion.
+-Servo: Agora eh o fim da linha para sua historia de heroi, duvido que voce o derrote.
+
+# vai para no de indice: 109
+##########################################################################################
+109  luta
+nao_terminal
+./imagens/andar2/lobo.txt
+-Voce: Indentifique-se lobo maldito!
+-Fenrir: Humano, acha que um mero humano pode me tratar assim? Eu sou Fenrir, sou o
+lendario Fenrir, aquele que arrancou a mao de um deus, sou filho de Loki!
+
+# vai para no de indice: 110
+##########################################################################################
+110  luta
+nao_terminal
+./imagens/andar2/lobo.txt
+-Voce: Acha que isso me assusta? Com ajuda do elmo de escamas de um dragao, com essa
+forca insana que recebi experimente meu soco melhorado. Haia!!!
+-Lobo: Minha mordida vai te dilacerar raca inferior.
+
+# vai para no de indice: 111
+##########################################################################################
+111  luta
+nao_terminal
+./imagens/andar2/lobo.txt
+-Voce: -rapidamente se esquivou da tentativa da mordida, e logo desfere um golpe
+certeiro-.
+-Lobo: Como isso aconteceu? Meu nivel eh muito superior. Hm, o que te espera a frente faz
+parte da minha colecao de trofeus. Essa batalha, nao se engane, isso foi apenas um
+deslize da minha atencao.
+
+# vai para no de indice: 112
+##########################################################################################
+112  item
+nao_terminal
+./imagens/ambientacao/tesouro.txt
+-Voce: outra sala do tesouro, o que sera que tem aqui?
+
+# vai para no de indice: 113
+##########################################################################################
+113  item
+nao_terminal
+./imagens/ambientacao/tesouro.txt
+-Voce: Um anel, o que eh esse anel sera?
+-Servo: E eu vou saber? Pare de falar sozinho seu humano burro.
+
+# vai para no de indice: 114
+##########################################################################################
+114  item
+nao_terminal
+./imagens/ambientacao/tesouro.txt
+#
+- vai para no de indice: 1159740005
+##########################################################################################
+114  dialogo
+nao_terminal
+./imagens/andar3/anel.txt
+-Voz misteriosa: Esse eh um anel que emana poder magico, expandindo as capacidades de
+quem o equipa. Dizem que o preco a ser pago por tanto poder afeta diretamente a alma.
+
+# vai para no de indice: 101
+##########################################################################################
+115  passar
+nao_terminal
+./imagens/ambientacao/bifurcacao.txt
+-Voce: Uma bifurcacao, que caminho sera o melhor?
+-Servo: arggggg, voce me da nos nervos.
+E-Esquerda D-Direita V-Voltar
+Digite uma opcao: 
+E vai para no de indice: 116
+D vai para no de indice: 123
+V vai para no de indice: 101
+##########################################################################################
+116  enigma
+nao_terminal
+./imagens/ambientacao/enigma.txt
+-Enigma: Vejo que chegou ate esse andar, porem lamento te informar que a partir daqui sua
+aventura so vai ficar mais e mais dificil. Sem mais delongas, vamos ao enigma:
+Tres resistores de 33 ohms sao ligados em paralelo a um cofre. Qual eh o nome do filme?
+A-Titanic           B-11 ohms e um segredo
+C-Missao Impossivel D-Jogos Vorazes
+V-Voltar
+Digite uma opcao: 
+A vai para no de indice: 117
+B vai para no de indice: 118
+C vai para no de indice: 119
+D vai para no de indice: 120
+V vai para no de indice: 115
+##########################################################################################
+117  enigma
+nao_terminal
+./imagens/ambientacao/enigma.txt
+-Enigma: Acho que esse eh aquele do barco.
+
+# vai para no de indice: 116
+##########################################################################################
+118  enigma
+nao_terminal
+./imagens/ambientacao/enigma.txt
+-Enigma: hahahaha, essa foi boa, nao?
+
+# vai para no de indice: 121
+##########################################################################################
+119  enigma
+nao_terminal
+./imagens/ambientacao/enigma.txt
+-Enigma: Essa dai passou longe, aluno.
+
+# vai para no de indice: 116
+##########################################################################################
+120  enigma
+nao_terminal
+./imagens/ambientacao/enigma.txt
+-Enigma: Os resistores sao assassinos agora?
+
+# vai para no de indice: 116
+##########################################################################################
+121  rancho
+nao_terminal
+./imagens/ambientacao/taverna.txt
+-Taberneiro sagaz: Bem-vindo a Taberna! Hoje temos um otimo ensopado de peixe e uma
+salada especial, feita com ingredientes coletados no bosque imperial, cultivado por
+aldeoes elficos.
+-Voce: Nossa, agora meu poder parece estar recuperado!
+
+# vai para no de indice: 122
+##########################################################################################
+122  joia
+nao_terminal
+./imagens/ambientacao/gema.txt
+-Voce: Mais uma pedra, essa ja eh a terceira, acho que vou sair daqui com muitas.
+
+# vai para no de indice: 115
+##########################################################################################
+123  fechadura
+nao_terminal
+./imagens/ambientacao/fechadura.txt
+-Voce: Outra porta, vamos ver...
+T-Tentar abrir V-Voltar
+Digite uma opcao: 
+T vai para no de indice: 12124
+V vai para no de indice: 115
+##########################################################################################
+124  fechadura
+nao_terminal
+./imagens/ambientacao/fechadura.txt
+-Porta: Espero que goste do inferno.
+
+# vai para no de indice: 126
+##########################################################################################
+125  fechadura
+nao_terminal
+./imagens/ambientacao/fechadura.txt
+-Porta: Se prepare melhor antes de embarcar na Highway to Hell
+
+# vai para no de indice: 123
+##########################################################################################
+126  luta
+nao_terminal
+./imagens/andar3/batalhaboss3.txt
+-Voce: Pelas barbas de Odin, que calor eh esse? Parece que estamos chegando no inferno.
+-Servo: Voce continua falando demais, melhor voce se proteger, olha aquela figura com
+cara de diabo te esperando.
+
+# vai para no de indice: 127
+##########################################################################################
+127  luta
+nao_terminal
+./imagens/andar3/batalhaboss3.txt
+
+-Demonio: Morraaaaa!
+-Voce: Calma la, mal cheguei e o anfitriao me recebe assim? Saudades de quando as pessoas
+ainda possuiam respeito pelas outras.
+-Demonio: Eu vivo nesse labirinto a anos, e nunca deixei nem um humano passar. Sou mais
+antigo que qualquer ser que voce viu ate agora. Meus poderes superam tudo, meu corpo eh
+tao poderoso e resistente que nem uma armadura chega a ter a mesma resistencia. Um mero
+humano nao chega a nem fazer cocegas em mim. Isso nunca vai acontecer.
+
+# vai para no de indice: 128
+##########################################################################################
+128  luta
+nao_terminal
+./imagens/andar3/batalhaboss3.txt
+-Voce: Aaaaaaaaaaaaaahhhhh! Se liga nesse anel! O anel expansivo vai me dar o poder
+magico que preciso para acabar com esse monstro.
+-Demonio: Ta legal, esse anel nao fara nem cocegas em mim, ja te avisei.
+-Voce: -voce colocou o anel no dedo e apontou para o demonio-.
+-Demonio: Nao pode ser, esse anel esta encantado com propriedades sagradas! Saia ja
+daqui. Seu verme, quem te deu isso?!
+-Voce: Entao isso te afeta, esse eh o seu fim!
+
+# vai para no de indice: 129
+##########################################################################################
+129  luta
+nao_terminal
+./imagens/andar3/batalhaboss3.txt
+-Voz misteriosa: Como foi possivel!? O Demonio foi derrotado? Isso nao vai sair barato,
+os inimigos a frente vao te dar uma licao Soh espere...
+-Voce: Esse bicho foi dificil de matar, mas por pouco consegui. E essa espada que ele
+usava... parecia interessante.
+
+# vai para no de indice: 130
+##########################################################################################
+130  dialogo
+nao_terminal
+./imagens/andar3/paudefogo.txt
+-Voce: Caramba, ele deixou cair a espada.
+-Voz misteriosa: Vamos-la, vai deixa-la para tras?
+
+# vai para no de indice: 131
+##########################################################################################
+131  dialogo
+nao_terminal
+./imagens/andar3/paudefogo.txt
+-Voce: Ele eh muito quente.
+-Voz misteriosa: Obvio, esse eh o pau de fogo, a arma mais poderosa do submundo. Nao sei
+nem explicar como voce, um mero mortal conseguiu sobreviver ao implacavel poder dela.
+
+# vai para no de indice: 132
+##########################################################################################
+132  dialogo
+nao_terminal
+./imagens/andar3/paudefogo.txt
+-Voce: Agora ninguem consegue me parar.
+
+# vai para no de indice: 133
+##########################################################################################
+133  saida
+nao_terminal
+./imagens/ambientacao/escada.txt
+-Servo: Nao acredito que voce ainda esta vivo, ser repugnante. Vamos suba logo, voce tem
+que morrer.
+
+# vai para no de indice: 150
+##########################################################################################
+150  passar
+nao_terminal
+./imagens/ambientacao/corredor.txt
+-Servo: Eh, ate parece que voce eh um bom jogador. Pena que soh tera essa fama por pouco
+tempo. Vamos ver se sobrevive a mais esse andar... 
+
+# vai para no de indice: 151
+##########################################################################################
+151  passar
+nao_terminal
+./imagens/ambientacao/trifurcacao.txt
+-Voce: Uma nova trifurcacao? nunca sei para onde devo ir. Vou escolher na sorte dessa vez.
+-Servo: Nao importa qual dos 3 nao_complexo voce escolha, a morte eh certa, eh apenas questao
+de tempo. Ela tem te acompanhado desde o inicio do jogo, a espera do momento perfeito.
+E-Esquerda F-Frente D-Direita
+Digite uma opcao: 
+E vai para no de indice: 152
+D vai para no de indice: 158
+F vai para no de indice: 164
+##########################################################################################
+152  enigma
+nao_terminal
+./imagens/ambientacao/enigma.txt
+-Enigma: Talvez voce ate tenha sobrevivido a ele la embaixo,
+mas agora tera que saber uma das figuras mais poderosas que ja existiu e que nao se manteve
+intacta lutando com esse monstro. Qual dos deuses listados abaixo perdeu o braco direito
+parao lobo Fenris?
+A-Thor B-Loki C-Frea D-Tyr
+V-Voltar 
+Digite uma opcao: 
+A vai para no de indice: 153
+B vai para no de indice: 154
+C vai para no de indice: 155
+D vai para no de indice: 156
+V vai para no de indice: 151
+##########################################################################################
+153  enigma
+nao_terminal
+./imagens/ambientacao/enigma.txt
+Aquele loiro forte com uma martelo? nao.
+
+# vai para no de indice: 152
+##########################################################################################
+154  enigma
+nao_terminal
+./imagens/ambientacao/enigma.txt
+O irmao do loiro bonitao? definitivamente nao.
+
+# vai para no de indice: 152
+##########################################################################################
+155  enigma
+nao_terminal
+./imagens/ambientacao/enigma.txt
+Freya nao perderia o braco para um lobo qualquer
+
+# vai para no de indice: 152
+##########################################################################################
+156  enigma
+nao_terminal
+./imagens/ambientacao/enigma.txt
+Muito bem! Andou estudando mitologia nordica aluno? Agora que acertou teras acesso a um pre
+cioso tesouro...
+
+# vai para no de indice: 157
+##########################################################################################
+157  joia
+nao_terminal
+./imagens/ambientacao/gema.txt
+Voce: Olha la, outra daquelas pedras, essa brilha mais que as outras.
+Servo: Eu ja disse que voce fala demais?
+# vai para no de indice: 151
+##########################################################################################
+158  rancho
+nao_terminal
+./imagens/ambientacao/taverna.txt
+-Voce: Que cheiro bom, de onde estah vindo?
+-Taberneiro: Bem-vindo a Taberna! Recupere suas forcas com alguns petiscos e um bom vinho!
+
+# vai para no de indice: 159
+##########################################################################################
+159  luta
+nao_terminal
+./imagens/andar4/pac_man.txt
+-Voce(sussurando): Algo com uma forma arredondada estranha estah aproximando... espere, mas
+ ele tem uma boca gigante.
+-Servo(sussurando): Pela sua cara, parece que voce o conhece, nao eh mesmo? Para prosse
+guir tera que enfrenta-lo. Deseja seguir em frente e lutar com ele?
+L-Lutar V-Voltar
+ Digite sua escolha: 
+L vai para no de indice: 160
+V vai para no de indice: 151
+##########################################################################################
+160  luta
+nao_terminal
+./imagens/andar4/pac_man.txt
+-PACMAN: Croc! Croc! Crunch!
+-Voce: Ele quer me comer mas nao vai conseguir de modo algum!
+
+# vai para no de indice: 161
+##########################################################################################
+161  luta
+nao_terminal
+./imagens/andar4/pac_man.txt
+-PACMAN: Croc! Croc! Crunch!
+-Voce: Voce nao cansa seu bicho maldito!? Eu vou te matar!
+
+# vai para no de indice: 162
+##########################################################################################
+162  luta
+nao_terminal
+./imagens/andar4/pac_man.txt
+-Voz misteriosa: Quase que ele te transformava num fantasminha, vai ter que melhorar
+ainda, aluno...
+
+# vai para no de indice: 163
+##########################################################################################
+163  dialogo
+nao_terminal
+./imagens/ambientacao/velho.txt
+-Voce: O senhor parece onipresente nesse jogo
+-Senhor perdido: Enquanto o peao continuar girando, eu estarei aqui.
+
+# vai para no de indice: 151
+##########################################################################################
+164  passar
+nao_terminal
+./imagens/ambientacao/bifurcacao.txt
+-Voce: Agora uma bifurcacao, por onde devo ir?
+D-Direita E-Esquerda V-Voltar
+Digite uma opcao: 
+E vai para no de indice: 165
+D vai para no de indice: 172
+V vai para no de indice: 151
+##########################################################################################
+165  luta
+nao_terminal
+./imagens/andar4/zumbi.txt
+-Voz misteriosa: Entre mortos e feridos, um morto-vivo se apresenta diante de voce. Para
+nao perecer como os demais jogadores que passaram por aqui, tera que enfrentar aquele que
+anda apos a morte, um zumbi Draugr. Para prosseguir tera que enfrenta-lo. Vamos ver se
+sobrevivera?
+-Voce(gritando): Eu vou mata-lo de qualquer jeitooooo!.
+
+# vai para no de indice: 166
+##########################################################################################
+166  luta
+nao_terminal
+./imagens/andar4/zumbi.txt
+-Zumbi: "Aaaahhh!!"
+-Voce: Ele quer me devorar mas nao vai conseguir!!!
+
+# vai para no de indice: 167
+##########################################################################################
+167  luta
+nao_terminal
+./imagens/andar4/zumbi.txt
+-Zumbi: "Aaahhh!!"
+-Voce: Seu ser malditoooooo! Eu vou te matar!
+
+# vai para no de indice: 168
+##########################################################################################
+168  luta
+nao_terminal
+./imagens/andar4/zumbi.txt
+-Voz misteriosa: Vai ter que fazer muito melhor que isso se nao quiser morrer agora!
+
+# vai para no de indice: 169
+##########################################################################################
+169  item
+nao_terminal
+./imagens/ambientacao/tesouro.txt
+-Voce: olha, outro tesouro, o que temos nesse?
+
+# vai para no de indice: 170
+##########################################################################################
+170  item
+nao_terminal
+./imagens/ambientacao/tesouro.txt
+-Voz misteriosa: O amuleto carrega uma gigantesca e rara joia, a qual serviu de adorno para
+as mais belas deusas, incluindo a Deusa Freyja.
+
+# vai para no de indice: 171
+##########################################################################################
+171  item
+nao_terminal
+./imagens/ambientacao/tesouro.txt
+#
+- vai para no de indice: 1936289056
+##########################################################################################
+171  dialogo
+nao_terminal
+./imagens/andar4/amuleto.txt
+-Voce: sinto que esse amuleto eh muito poderoso.
+
+# vai para no de indice: 164
+##########################################################################################
+172  fechadura
+nao_terminal
+./imagens/ambientacao/fechadura.txt
+-Voce: Outra porta, essa parece emanar uma aura estranha.
+T-Tentar abrir V-Voltar
+Digite uma opcao: 
+T vai para no de indice: 16173
+V vai para no de indice: 164
+##########################################################################################
+173  fechadura
+nao_terminal
+./imagens/ambientacao/fechadura.txt
+-Porta: Eh por sua conta em risco aluno, pode passar.
+
+# vai para no de indice: 175
+##########################################################################################
+174  fechadura
+nao_terminal
+./imagens/ambientacao/fechadura.txt
+-Porta: So queria te dizer que talvez voce possa estar deixando algo de muito precioso
+para a sua sobrevivencia nesse jogo.
+
+# vai para no de indice: 164
+##########################################################################################
+175  luta
+nao_terminal
+./imagens/andar4/cerqueira.txt
+-Cerquinha: Nao sou um piadista
+qualquer. Te derrotarei com o poder da matemagica!
+-Voce: Outro que acha que vai me derrotar com umas integrais quaisquer!.
+
+# vai para no de indice: 176
+##########################################################################################
+176  luta
+nao_terminal
+./imagens/andar4/cerqueira.txt
+-Voce: Vou honrar as joias que coletei!
+-Cerquinha: Mais um que se acha diferente. Voce eh igual aos outros, aluno!
+
+# vai para no de indice: 177
+##########################################################################################
+177  luta
+nao_terminal
+./imagens/andar4/cerqueira.txt
+-Voce: Ninguem pode me parar!.
+-Cerquinha: hahahah!
+
+# vai para no de indice: 178
+##########################################################################################
+178  luta
+nao_terminal
+./imagens/andar4/cerqueira.txt
+-Voz misteriosa: Veja soh. Resistiu ao poderoso Cerquinha. Sua morte ja eh certa aluno,
+nao resistira na proxima. Se chegar la, neh?
+
+# vai para no de indice: 179
+##########################################################################################
+179  saida
+nao_terminal
+./imagens/ambientacao/escada.txt
+-Voz misteriosa: Vamos, suba! essa eh a ultima escada. Depois disso, vem a queda hahaha.
+
+# vai para no de indice: 200
+##########################################################################################
+200  passar
+nao_terminal
+./imagens/ambientacao/corredor.txt
+-Servo: Eh, eu ate poderia te deixar seguir nesse ultimo andar sozinho... mas quem iria te
+enterrar? Precisa ter um inutil como eu ao seu lado para fazer esse servico sujo...
+
+# vai para no de indice: 201
+##########################################################################################
+201  passar
+nao_terminal
+./imagens/ambientacao/trifurcacao.txt
+-Voce: Uma nova trifurcacao? Sera essa a ultima?
+-Servo: Nao importa aluno, pare de fazer perguntas retoricas o tempo todo. Escolha que
+caminho deseja seguir:
+E-Esquerda F-Frente D-Direita
+Digite uma opcao: 
+E vai para no de indice: 202
+D vai para no de indice: 208
+F vai para no de indice: 209
+##########################################################################################
+202  enigma
+nao_terminal
+./imagens/ambientacao/enigma.txt
+-Enigma: Eh aluno. Esse eh o ultimo enigma que tera que resolver para sobreviver nessa
+torre. Talvez voce se considere um genio, mas esse enigma foi escrito a milhares de anos 
+atras pelo criador desse jogo, Duvido que conseguira acertar.
+int x=10;
+int y=10;
+return x+y; Qual o nome do filme?
+A-Missao impossivel B-O Codigo da Vinte
+C-Indiana Jones     D-Dez eh pouco, vinte eh demais 
+V-Voltar
+Digite uma opcao: 
+A vai para no de indice: 203
+B vai para no de indice: 204
+C vai para no de indice: 205
+D vai para no de indice: 206
+V vai para no de indice: 201
+##########################################################################################
+203  enigma
+nao_terminal
+./imagens/ambientacao/enigma.txt
+Programacao nao eh impossivel aluno! tenta denovo.
+
+# vai para no de indice: 202
+##########################################################################################
+204  enigma
+nao_terminal
+./imagens/ambientacao/enigma.txt
+Essa tava na cara! voce eh espertinho mesmo.
+
+# vai para no de indice: 207
+##########################################################################################
+205  enigma
+nao_terminal
+./imagens/ambientacao/enigma.txt
+Ta viajando aluno? acorda!
+
+# vai para no de indice: 202
+##########################################################################################
+206  enigma
+nao_terminal
+./imagens/ambientacao/enigma.txt
+Ta quente! tenta denovo.
+
+# vai para no de indice: 202
+##########################################################################################
+207  joia
+nao_terminal
+./imagens/ambientacao/gema.txt
+-Voce: Parece que essas pedras tem algo de importante, eu sinto isso
+-Servo: Vamos logo aluno, soh pegue essa pedra, nao precisa falar muito.
+-Voce: Agora que eu percebi, essa daqui parece ter algum numero, parece um V.
+-Voz misteriosa: Voce eh muito lento aluno.
+
+# vai para no de indice: 201
+##########################################################################################
+208  rancho
+nao_terminal
+./imagens/ambientacao/taverna.txt
+-Voce: Que cheiro bom, de onde estah vindo?
+-Taberneiro: Bem-vindo a Taberna! Recupere suas forcas com alguns petiscos e um bom vinho!
+
+# vai para no de indice: 201
+##########################################################################################
+209  passar
+nao_terminal
+./imagens/ambientacao/bifurcacao.txt
+-Servo: Como voce eh insuportavel, eu vou falar! Se voce fizer a escolha certa, essa sera
+a ultima bifurcacao desse jogo. Escolha que caminho deseja seguir:
+E-Esquerda D-Direita V-Voltar
+Digite uma opcao: 
+E vai para no de indice: 210
+D vai para no de indice: 217
+V vai para no de indice: 201
+##########################################################################################
+210  luta
+nao_terminal
+./imagens/andar5/touro.txt
+-Voz misteriosa: Sera esse o ultimo monstro desse andar? Tem porte para isso? the Gleam
+Eyes eh um monstro demoniaco parecendo um touro,com musculos tao tensos quanto as cordas
+ondulando sua forma onipotente. sua pele tem um tom azul profundo e seus olhos tem essa
+chama ardente que envolve essa sala. Gostou dessa descricao? pena que sua morte nao sera
+tao bela assim. Para prosseguir tera que enfrenta-lo. Deseja lutar com ele?
+L-Lutar V-Voltar
+Digite uma opcao: 
+L vai para no de indice: 211
+V vai para no de indice: 209
+##########################################################################################
+211  luta
+nao_terminal
+./imagens/andar5/touro.txt
+-Voce(gritando): Eu vou mata-lo! nem que essa seja a ultima coisa que eu faca!
+
+# vai para no de indice: 212
+##########################################################################################
+212  luta
+nao_terminal
+./imagens/andar5/touro.txt
+-Touro: "Aaahhh!!"
+-Voce: Seu ser malditoooooo! Eu vou te matar!.
+
+# vai para no de indice: 213
+##########################################################################################
+213  luta
+nao_terminal
+./imagens/andar5/touro.txt
+-Voz misteriosa: Vai morrer agora nos acrescimos do segundo tempo? no ultimo andar?
+
+# vai para no de indice: 214
+##########################################################################################
+214  item
+nao_terminal
+./imagens/andar5/chifre.txt
+-Servo: Parabens! Ate que voce nao eh inutil! Voce coletou a ponta do chifre desse touro
+como recompensa por essa vitoria.
+
+# vai para no de indice: 215
+##########################################################################################
+215  item
+nao_terminal
+./imagens/andar5/chifre.txt
+-Voz misteriosa: Antes mesmo de que eu fosse criado, os grandes deuses utilizavam chifres
+desses touros mitologicos para conjurar legioes de guerreiros, quem sabe nao lhe possa ser
+util.
+
+# vai para no de indice: 216
+##########################################################################################
+216  item
+nao_terminal
+./imagens/andar5/chifre.txt
+#
+- vai para no de indice: 1936289056
+##########################################################################################
+216  dialogo
+nao_terminal
+./imagens/andar5/chifre.txt
+-Voce: Isso quer dizer que agora sou um deus?
+-Servo: Vamos logo com isso, aluno, quero te enterrar logo.
+
+# vai para no de indice: 209
+##########################################################################################
+217  fechadura
+nao_terminal
+./imagens/ambientacao/porta.txt
+-Voce: Nossa! Que hall legal! Nunca vi um corredor tao longo, para onde sera que ele leva?
+ Uma porta sem fechadura? Mas como posso abri-la?
+T-Tentar abrir V-Voltar
+Digite uma opcao: 
+T vai para no de indice: 500218
+V vai para no de indice: 209
+##########################################################################################
+218  fechadura
+nao_terminal
+./imagens/ambientacao/porta.txt
+-Porta: Voce possui todas as joias que pertencem a poderosa deusa, idealizadora desta
+torre, pode passar!
+
+# vai para no de indice: 220
+##########################################################################################
+219  fechadura
+nao_terminal
+./imagens/ambientacao/porta.txt
+-Porta: Acho que esta faltando alguma joia, ache-as e podera passar.
+
+# vai para no de indice: 211
+##########################################################################################
+220  luta
+nao_terminal
+./imagens/andar5/gabiqueen.txt
+-Gabiqueen: Uau, pensei que nunca me conheceria. Que privilegio aluno! Agora voce sabe que
+nao foi um Deus que criou esse mundo,mas sim uma deusa.Como me diverti com voces colocando
+suas vidas em risco apenas porque eu quis assim. Vamos direto ao ponto...Te derrotarei de
+uma vez por todas com o poder da computacao!
+-Voce: Lutei bastante para chegar ate aqui! Nao vou deixar uma deusa sequer me derrotar!.
+
+# vai para no de indice: 221
+##########################################################################################
+221  luta
+nao_terminal
+./imagens/andar5/gabiqueen.txt
+-Voce: Vou honrar as joias que coletei!
+-Gabiqueen: Mais um que se acha diferente. Todas as joias sempre foram minhas, aluno!
+
+# vai para no de indice: 222
+##########################################################################################
+222  luta
+nao_terminal
+./imagens/andar5/gabiqueen.txt
+
+-Voce: NInguem pode me parar!.
+-Gabiqueen: Ninguem nunca passou por mim!
+
+# vai para no de indice: 223
+##########################################################################################
+223  luta
+nao_terminal
+./imagens/andar5/gabiqueen.txt
+-Servo: Eh, voce nao era qualquer um...
+
+# vai para no de indice: 224
+##########################################################################################
+224  passar
+nao_terminal
+./imagens/ambientacao/cenariofinal.txt
+
+-Voz misteriosa: Primeiramente, morra servo imundo, nao consegue nem matar um aluno.
+-Servo: Naaaaaaao - e morreu.
+-Voz misteriosa: Em segundo lugar, parabens aluno, nunca vi ninguem derrotar minha
+criadora, nem sei o que acontecera comigo, mas sei que voce esta livre, pode atravessar o portal para seu mundo de novo.
+-Voce: Nunca vou me esquecer do que aconteceu aqui
+-assim o aluno corre em direcao ao portal-
+
+# vai para no de indice: 225
+##########################################################################################
+225  saida
+nao_terminal
+./imagens/andar5/salacap.txt
+-Cap: Dormindo em aula, aluno?
+
+# vai para no de indice: 226
+##########################################################################################
+226  passar
+terminal
+./imagens/ambientacao/TORRADO.txt
+                                         Duvidas?                                         
+OBRIGADO POR TER JOGADO CodeDungeon!
+
+##########################################################################################
