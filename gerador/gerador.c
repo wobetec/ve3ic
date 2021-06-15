@@ -6,7 +6,7 @@
 
 
 ////////////////////////DEFINICAO DE CONSTANTES///////////////////////
-#define NOME_ARQUIVO_SAIDA "saida.txt"
+#define NOME_ARQUIVO_SAIDA "gerador.txt"
 #define MAX_OPCOES 10
 
 //////////////////////////DEFINICAO DE ENUMS//////////////////////////
@@ -132,7 +132,7 @@ int main(){
         fprintf(arquivo_saida, "%s\n", ptr_atual->endereco_imagem);
         fprintf(arquivo_saida, "%s\n", ptr_atual->texto);
         for(int j=0; j<ptr_atual->n_opcoes; j++){
-            fprintf(arquivo_saida, "%c %3d\n", ptr_atual->opcoes[j].opcao_selecionada, ptr_atual->opcoes[j].indice_proximo_no);
+            fprintf(arquivo_saida, "%c vai para no de indice: %3d\n", ptr_atual->opcoes[j].opcao_selecionada, ptr_atual->opcoes[j].indice_proximo_no);
         }
         fprintf(arquivo_saida, "##########################################################################################\n");
         ptr_atual = ptr_atual->prox;

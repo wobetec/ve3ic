@@ -16,6 +16,7 @@
                 `-._.-'                                         `-._.-'
 Bem-vindo a masmorra da casa do trem, ALUNO!
 Pressione qualquer tecla para continuar. . .
+<<<<<<< HEAD
 ----------------------------- -----------------------------  -------  ---------  ---------
 HP: ################# 100/100 XP:                     0/100  NIVEL:0  ATAQUE:14  PEDRAS: 0
 ----------------------------- -----------------------------  -------  ---------  ---------
@@ -1268,3 +1269,5 @@ HP: ##########         64/100 XP: ###########        70/100  NIVEL:0  ATAQUE:14 
 
 -Porta: Parece que voce ainda nao conseguiu um elmo, nao posso deixar voce passar. Apesar
 de querer que voce morra logo o show tem que durar mais que 3s.
+=======
+>>>>>>> 97225a9eb11847ad0f5f9c3905284a497bbf0663
