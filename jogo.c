@@ -776,7 +776,7 @@ opcao opcoes_50[1] = {{'#', 51}};
         dialogo,
         1,
         opcoes_64,
-        "./imagens/andar3/personagempeitoral.txt");
+        "./imagens/andar2/personagempeitoral.txt");
     
     opcao opcoes_65[3] = {{'E', 72}, {'D', 66}, {'V', 51}};
     char texto_65[1][501] = {"-Voce: E ca estamos em mais uma decisao de caminho.\nE-Esquerda D-Direita V-Voltar\nDigite uma opcao: "};
