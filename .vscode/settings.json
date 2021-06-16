@@ -3,5 +3,6 @@
         "stdlib.h": "c",
         "stdio.h": "c"
     },
-    "diffEditor.wordWrap": "on"
+    "diffEditor.wordWrap": "on",
+    "C_Cpp.dimInactiveRegions": true
 }

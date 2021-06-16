@@ -1396,7 +1396,7 @@ opcao opcoes_200[1] = {{'#', 201}};
         "./imagens/andar5/gabiqueen.txt");
     
     opcao opcoes_224[1] = {{'#', 225}};
-    char texto_224[1][501] = {"\n-Voz misteriosa: Primeiramente, morra servo imundo, nao consegue nem matar um aluno.\n-Servo: Naaaaaaao - e morreu.\n-Voz misteriosa: Em segundo lugar, parabens aluno, nunca vi ninguem derrotar minha\ncriadora, nem sei o que acontecera comigo, mas sei que voce esta livre, pode atravessar o portal para seu mundo de novo.\n-Voce: Nunca vou me esquecer do que aconteceu aqui\n-assim o aluno corre em direcao ao portal-\n"};
+    char texto_224[1][501] = {"\n-Voz misteriosa: Primeiramente, morra servo imundo, nao consegue nem matar um aluno.\n-Servo: Naaaaaaao - e morreu.\n-Voz misteriosa: Em segundo lugar, parabens aluno, nunca vi ninguem derrotar minha\ncriadora, nem sei o que acontecera comigo, mas sei que voce esta livre, pode atravessar o\nportal para seu mundo de novo.\n-Voce: Nunca vou me esquecer do que aconteceu aqui\n-assim o aluno corre em direcao ao portal-\n"};
 	cadastrar_no(
         224,
         -1, 
@@ -1549,7 +1549,6 @@ void imagem(char *nome_arquivo){//print as imagens na tela e escreve no arquivo 
 
 void barra_superior(){// vida, xp, nivel, ataque, pedras
     //parte de cima
-    char temp[90];
     printf("----------------------------- -----------------------------  -------  ---------  ---------\n");
     fprintf(arquivo_saida, "----------------------------- -----------------------------  -------  ---------  ---------\n");
 
@@ -1637,36 +1636,35 @@ void barra_superior_luta(){//gera a barra de vida superior com vida e ataque ape
 
 //#########################PARTE GRAFICA DO TERMINAL#########################//
 void limpar(){//limpa o cmd de maneira portavel
-    #ifdef LINUX
+    #ifdef _linux_
     system ("clear");
-    #elif defined WIN32
+    #elif defined _WIN32
     system ("cls");
     #else
-    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     #endif
 }
 
 void pausa(){//um system pause que funciona em outros OS
-    #ifdef WIN32
+    #ifdef _WIN32
     system("pause");
     fprintf(arquivo_saida, "Pressione qualquer tecla para continuar. . .\n");
     #else
-    char c;
-    printf("\nPressione ENTER para continuar. . .");
-    fprintf(arquivo_saida, "\nPressione ENTER para continuar. . .");
-    scanf("%c%*c", &c);
+    char buffer[64];
+    printf("\nPressione algum caractere + ENTER para continuar. . .");
+    fprintf(arquivo_saida, "\nPressione algum caractere + ENTER para continuar. . .");
+    scanf("%63s", buffer);
     #endif
 
     
 }
 
 void resize(){//atualiza o tamanho do cmd em win32, se for outro OS ele sugere a alteracao
-    #ifdef WIN32
+    #ifdef _WIN32
     system("MODE con cols=91 lines=35 ");
     #else
     printf("Para uma melhor experiencia, redimencione seu terminal para 90x35\n");
     fprintf(arquivo_saida, "Para uma melhor experiencia, redimencione seu terminal para 90x35\n");
-    pausa();
     #endif
 }
 
@@ -1730,6 +1728,10 @@ void dano_vida_luta(){//da e recebe dano(altera direto nas globais) plausivel de
 
 void morrer(){
     if(vida==0){
+        for(int i=0; i<cont_salas; i++){
+            salas_bloqueadas[i]=0;
+        }
+        cont_salas=0;
         ptr_atual = ptr_inicio;
         vida=vida_MAX;
         limpar();

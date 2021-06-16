@@ -125,10 +125,12 @@ int main(){
     //inicializacoes necessarias
     cadastrar_nos();
     ptr_atual = buscar_no(0);
+    int cont=0;
 
     //Tela de boas vindas
     while(ptr_atual!=NULL){
         printf("%d\n", ptr_atual->indice);
+        cont++;
         fprintf(arquivo_saida, "%3d  %s\n", ptr_atual->indice, retornar_tipo1());
         fprintf(arquivo_saida, "%s\n", retornar_tipo2());
         fprintf(arquivo_saida, "%s\n", ptr_atual->endereco_imagem);
@@ -144,6 +146,7 @@ int main(){
         fprintf(arquivo_saida, "\n#########################################################################################\n\n");
         ptr_atual = ptr_atual->prox;
     }
+    printf("nos %d", cont);
 
     //Libera o espaço utlizado pela lista encadeada
     apagar_lista();
