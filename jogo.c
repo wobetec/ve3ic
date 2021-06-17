@@ -1550,7 +1550,7 @@ void imagem(char *nome_arquivo){//print as imagens na tela e escreve no arquivo 
 void barra_superior(){// vida, xp, nivel, ataque, pedras
     //parte de cima
     printf("----------------------------- -----------------------------  -------  ---------  ---------\n");
-    fprintf(arquivo_saida, "----------------------------- -----------------------------  -------  ---------  ---------\n");
+    fprintf(arquivo_saida, "\n----------------------------- -----------------------------  -------  ---------  ---------\n");
 
     //vida
     printf("HP: ");
@@ -1595,7 +1595,7 @@ void barra_superior(){// vida, xp, nivel, ataque, pedras
 void barra_superior_luta(){//gera a barra de vida superior com vida e ataque apenas
     //parte de cima
     printf("------------------------------ ---------          --------- ------------------------------\n");
-    fprintf(arquivo_saida, "------------------------------ ---------          --------- ------------------------------\n");
+    fprintf(arquivo_saida, "\n------------------------------ ---------          --------- ------------------------------\n");
     //vida
     printf("HP: ");
     fprintf(arquivo_saida, "HP: ");
@@ -1664,7 +1664,6 @@ void resize(){//atualiza o tamanho do cmd em win32, se for outro OS ele sugere a
     system("MODE con cols=91 lines=35 ");
     #else
     printf("Para uma melhor experiencia, redimencione seu terminal para 90x35\n");
-    fprintf(arquivo_saida, "Para uma melhor experiencia, redimencione seu terminal para 90x35\n");
     #endif
 }
 
