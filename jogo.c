@@ -1,3 +1,10 @@
+/*
+TRABALHO (VE 3)
+GRUPO: Alu ESDRAS, Alu CONRADO, Alu HORIE e Alu JOB,
+Sistema operacional: Windows
+Programa em C que implementa um jogo que mistura RPG com labirinto 
+*/
+
 ////////////////////////INCLUSAO DE BIBLIOTECAS///////////////////////
 #include<stdio.h>
 #include<stdlib.h>
@@ -9,6 +16,7 @@
 #define NOME_ARQUIVO_ENTRADA "entrada.txt"
 #define NOME_ARQUIVO_SAIDA "saida.txt"
 #define MAX_OPCOES 10
+
 
 //////////////////////////DEFINICAO DE ENUMS//////////////////////////
 typedef enum _tipo_no {//enum exigido pelo professor
@@ -89,6 +97,7 @@ void bloquear_no(int indice);
 int checar_bloqueio(int indice);
 
 void atualizar_XP(int valor);
+
 
 /////////////////////////////////MAIN/////////////////////////////////
 int main(){
@@ -1769,3 +1778,4 @@ void atualizar_XP(int valor){
         XP+=valor;
     }
 }
+
